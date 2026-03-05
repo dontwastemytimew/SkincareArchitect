@@ -1,4 +1,4 @@
-name: .NET Build and Docs Check
+name: .NET CI
 
 on:
   push:
@@ -16,13 +16,10 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: '10.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore Backend/Backend.sln
+        run: dotnet restore SkincareArchitect.sln
 
-      - name: Build Project
-        run: dotnet build Backend/Backend.sln --no-restore --configuration Release
-
-      - name: Documentation Check
-        run: echo "Code is ready for Doxygen documentation generation." ./Backend
+      - name: Build
+        run: dotnet build SkincareArchitect.sln --no-restore --configuration Release
