@@ -1,0 +1,13 @@
+2026-03-05 21:18:53.115 +02:00 [INF] Now listening on: http://localhost:5016
+2026-03-05 21:18:53.181 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-05 21:18:53.183 +02:00 [INF] Hosting environment: Development
+2026-03-05 21:18:53.184 +02:00 [INF] Content root path: D:\riderprojects\SkincareArchitect\SkincareArchitect\Backend
+2026-03-05 21:20:27.132 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5016/api/skincare/test - null null
+2026-03-05 21:20:27.203 +02:00 [INF] Executing endpoint 'Backend.Controllers.SkincareController.GetTest (Backend)'
+2026-03-05 21:20:27.244 +02:00 [INF] Route matched with {action = "GetTest", controller = "Skincare"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTest() on controller Backend.Controllers.SkincareController (Backend).
+2026-03-05 21:20:27.251 +02:00 [INF] Current Culture: uk
+2026-03-05 21:20:27.258 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-03-05 21:20:27.300 +02:00 [INF] Executed action Backend.Controllers.SkincareController.GetTest (Backend) in 49.8978ms
+2026-03-05 21:20:27.302 +02:00 [INF] Executed endpoint 'Backend.Controllers.SkincareController.GetTest (Backend)'
+2026-03-05 21:20:27.306 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5016/api/skincare/test - 200 null application/json; charset=utf-8 176.9371ms
+2026-03-05 21:21:52.704 +02:00 [INF] Application is shutting down...
