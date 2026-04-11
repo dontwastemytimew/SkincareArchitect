@@ -1,0 +1,156 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;600&family=WindSong:wght@400;500&display=swap');
+
+:root {
+    --burgundy: #6C0820;
+    --cherry-pink: #F2AEBC;
+    --misty-rose: #F2DCDB;
+    --silver-blue: #5A86CB;
+    --lapis-lazuli: #3D5D91;
+    --white: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Фон із сакурою */
+    background: url('https://i.pinimg.com/736x/aa/81/1d/aa811dfd29fb100e4d6319a3ec47d853.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Ефект блюру на фоні */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(242, 220, 219, 0.3);
+    backdrop-filter: blur(6px);
+    z-index: -1;
+}
+
+header {
+    background-color: var(--cherry-pink);
+    padding: 15px 0 25px 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(108, 8, 32, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-content {
+    display: inline-block;
+    position: relative;
+    margin-top: -5px;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    margin: 0;
+    letter-spacing: 4px;
+    font-style: italic;
+    text-transform: lowercase;
+    color: var(--burgundy);
+    position: relative;
+    z-index: 1;
+}
+
+.overlay-text {
+    font-family: 'WindSong', cursive;
+    font-size: 3rem;
+    color: var(--misty-rose); 
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0.8;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Контейнер */
+.main-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: var(--white);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    padding: 30px;
+    width: 380px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(242, 174, 188, 0.5);
+}
+
+h3 {
+    color: var(--burgundy);
+    font-family: 'Playfair Display', serif;
+    border-bottom: 1px solid var(--cherry-pink);
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* Кнопки */
+.btn-add {
+    background-color: var(--burgundy);
+    color: var(--misty-rose);
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-undo {
+    background-color: var(--silver-blue);
+    color: var(--white);
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-scan {
+    background-color: var(--lapis-lazuli);
+    color: var(--misty-rose);
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+}
+
+/* Поля вводу */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid var(--misty-rose);
+    border-radius: 8px;
+    background: rgba(242, 220, 219, 0.5);
+    color: var(--lapis-lazuli);
+}
+
+.report-box {
+    background-color: rgba(108, 8, 32, 0.9);
+    color: var(--cherry-pink);
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}

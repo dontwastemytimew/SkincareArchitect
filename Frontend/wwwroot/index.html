@@ -2,70 +2,40 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Skincare Architect</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
-        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 400px; }
-        h1 { color: #34495e; font-size: 24px; margin-bottom: 20px; }
-        .status-box { padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-top: 20px; background: #fafafa; }
-        button { background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; }
-        button:hover { background: #2980b9; }
-        .log-info { font-size: 12px; color: #7f8c8d; margin-top: 10px; }
-    </style>
+    <title>skincare architect</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container">
-    <h1>Skincare Architect</h1>
 
-    <div style="margin-bottom: 10px;">
-        <button onclick="fetchInfo()" style="background: #95a5a6;">Статус системи (Singleton)</button>
+<header>
+    <div class="header-content">
+        <h1>skincare architect</h1>
+        <span class="overlay-text">yes or no?</span>
+    </div>
+</header>
+
+<main class="main-container">
+    <div class="card">
+        <h3>конструктор</h3>
+        <input type="text" id="prodName" placeholder="назва продукту">
+        <select id="ingType">
+            <option value="Retinoid">ретиноїди (конфлікт з кислотами)</option>
+            <option value="Acid">кислоти (конфлікт з ретиноїдами)</option>
+            <option value="Moisturizer">зволоження (безпечно)</option>
+        </select>
+        <button class="btn-add" onclick="addProduct()">додати до аналізу</button>
+        <button class="btn-undo" onclick="undoProduct()">скасувати дію</button>
+
+        <div id="queueList" style="margin-top: 30px;"></div>
     </div>
 
-    <div>
-        <button onclick="checkConflict()">Перевірити конфлікт (Strategy + Builder)</button>
+    <div class="card">
+        <h3>діагностика</h3>
+        <button class="btn-scan" onclick="runAnalysis()">запустити сканування</button>
+        <div id="reportArea" class="report-box" style="display:none;"></div>
     </div>
+</main>
 
-    <div id="result" class="status-box" style="display:none;">
-        <p id="msg" style="font-weight: bold; font-size: 18px;"></p>
-        <div id="details" class="log-info"></div>
-    </div>
-</div>
-
-<script>
-    // Попередній метод для інфо
-    async function fetchInfo() {
-        const response = await fetch('http://localhost:5016/api/skincare/info');
-        const data = await response.json();
-        alert(`Версія: ${data.appName} ${data.version}\nЗапущено: ${new Date(data.serverStartedAt).toLocaleString()}`);
-    }
-
-    // НОВИЙ МЕТОД для аналізу конфліктів
-    async function checkConflict() {
-        try {
-            const response = await fetch('http://localhost:5016/api/skincare/test-conflict');
-            const data = await response.json();
-
-            const resultDiv = document.getElementById('result');
-            const msgP = document.getElementById('msg');
-            const detailsDiv = document.getElementById('details');
-
-            resultDiv.style.display = 'block';
-
-            // Якщо фасад повернув "Conflict detected!"
-            if (data.analysis === "Conflict detected!") {
-                msgP.innerText = "❌ Знайдено конфлікт!";
-                msgP.style.color = "#e74c3c";
-            } else {
-                msgP.innerText = "✅ Засоби сумісні";
-                msgP.style.color = "#27ae60";
-            }
-
-            detailsDiv.innerHTML = `Продукт 1: ${data.product1}<br>Продукт 2: ${data.product2}`;
-        } catch (error) {
-            console.error(error);
-            alert("Помилка зв'язку з бекендом.");
-        }
-    }
-</script>
+<script src="js/script.js"></script>
 </body>
 </html>
