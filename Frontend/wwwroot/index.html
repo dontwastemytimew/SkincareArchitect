@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Skincare Architect</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f4f7f6; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; }
+        #message { color: #2c3e50; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>Skincare Architect</h1>
+    <p id="message">Завантаження...</p>
+    <button onclick="checkStatus()">Перевірити зв'язок</button>
+</div>
+
+<script>
+    async function checkStatus() {
+        const response = await fetch('http://localhost:5016/api/skincare/test');
+        const data = await response.json();
+        document.getElementById('message').innerText = data.message;
+    }
+</script>
+</body>
+</html>
