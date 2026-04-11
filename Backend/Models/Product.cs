@@ -1,12 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 
 namespace Backend.Models;
 
-/// <summary> Косметичний засіб. </summary>
-public class Product
+/// <summary>
+/// Косметичний продукт, що містить інгредієнти.
+/// </summary>
+public class Product : ISkincareComponent
 {
-    public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
-    public string Brand { get; set; } = string.Empty;
     public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
+
+    public string GetName() => Name;
+    public List<Ingredient> GetAllIngredients() => Ingredients;
+
+    // Для ітератора: окремий продукт повертає сам себе
+    public IEnumerator<ISkincareComponent> GetEnumerator() { yield return this; }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

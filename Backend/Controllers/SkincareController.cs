@@ -1,8 +1,6 @@
 ﻿using Backend.Models;
 using Backend.Services;
-using Backend.Resources;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Localization;
 
 namespace Backend.Controllers;
 
@@ -13,38 +11,67 @@ namespace Backend.Controllers;
 [Route("api/[controller]")]
 public class SkincareController : ControllerBase
 {
-    private readonly ICompatibilityStrategy _strategy;
-    private readonly ILogger<SkincareController> _logger;
-    private readonly IStringLocalizer<SharedResource> _localizer;
+    private readonly SkincareFacade _facade;
 
     /// <summary>
-    /// Конструктор з впровадженням залежностей.
+    /// Фасад всередині тримає логер, стратегію та локалізатор.
     /// </summary>
-    public SkincareController(
-        ICompatibilityStrategy strategy, 
-        ILogger<SkincareController> logger,
-        IStringLocalizer<SharedResource> localizer)
+    public SkincareController(SkincareFacade facade)
     {
-        _strategy = strategy;
-        _logger = logger;
-        _localizer = localizer;
+        _facade = facade;
     }
 
     /// <summary>
-    /// Тестовий метод для перевірки роботи системи.
+    /// Тестовий метод.
     /// </summary>
     [HttpGet("test")]
     public IActionResult GetTest()
     {
-        var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
-        _logger.LogInformation("Current Culture: {Culture}", currentCulture);
-
-        string message = Backend.Resources.SharedResource.Greeting; 
+        var p1 = new Product { Name = "Product 1" };
+        var p2 = new Product { Name = "Product 2" };
+        
+        string message = _facade.SimpleCheck(p1, p2);
 
         return Ok(new { 
             status = "Active", 
-            detectedCulture = currentCulture,
             message = message 
+        });
+    }
+    
+    [HttpGet("info")]
+    public IActionResult GetInfo()
+    {
+        var settings = HttpContext.RequestServices.GetRequiredService<SystemSettings>();
+
+        return Ok(new {
+            AppName = "Skincare Architect",
+            Version = settings.Version,
+            ServerStartedAt = settings.InitializedAt, 
+            CurrentTime = DateTime.Now
+        });
+    }
+    
+    [HttpGet("test-conflict")]
+    public IActionResult GetConflict()
+    {
+        var builder = new ProductBuilder();
+
+        // Створюємо сироватку з Ретинолом
+        var p1 = builder.Create("Retinol Serum")
+            .AddIngredient("Pure Retinol", "Retinoid")
+            .Build();
+
+        // Створюємо пілінг з Кислотами
+        var p2 = builder.Create("Acid Peel")
+            .AddIngredient("Glycolic Acid", "Acid")
+            .Build();
+
+        string result = _facade.SimpleCheck(p1, p2);
+
+        return Ok(new { 
+            product1 = p1.Name, 
+            product2 = p2.Name, 
+            analysis = result 
         });
     }
 }

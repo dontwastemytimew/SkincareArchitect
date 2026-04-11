@@ -14,6 +14,7 @@ builder.Services.AddLocalization(options => options.ResourcesPath = "Resources")
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<ICompatibilityStrategy, SimpleCompatibilityStrategy>();
+builder.Services.AddScoped<SkincareFacade>();
 
 builder.Services.AddSingleton<SystemSettings>(sp => 
     SystemSettings.GetInstance(sp.GetRequiredService<ILogger<SystemSettings>>()));

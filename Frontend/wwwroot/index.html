@@ -4,23 +4,67 @@
     <meta charset="UTF-8">
     <title>Skincare Architect</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f4f7f6; }
-        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; }
-        #message { color: #2c3e50; font-weight: bold; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
+        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 400px; }
+        h1 { color: #34495e; font-size: 24px; margin-bottom: 20px; }
+        .status-box { padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-top: 20px; background: #fafafa; }
+        button { background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; }
+        button:hover { background: #2980b9; }
+        .log-info { font-size: 12px; color: #7f8c8d; margin-top: 10px; }
     </style>
 </head>
 <body>
-<div class="card">
+<div class="container">
     <h1>Skincare Architect</h1>
-    <p id="message">Завантаження...</p>
-    <button onclick="checkStatus()">Перевірити зв'язок</button>
+
+    <div style="margin-bottom: 10px;">
+        <button onclick="fetchInfo()" style="background: #95a5a6;">Статус системи (Singleton)</button>
+    </div>
+
+    <div>
+        <button onclick="checkConflict()">Перевірити конфлікт (Strategy + Builder)</button>
+    </div>
+
+    <div id="result" class="status-box" style="display:none;">
+        <p id="msg" style="font-weight: bold; font-size: 18px;"></p>
+        <div id="details" class="log-info"></div>
+    </div>
 </div>
 
 <script>
-    async function checkStatus() {
-        const response = await fetch('http://localhost:5016/api/skincare/test');
+    // Попередній метод для інфо
+    async function fetchInfo() {
+        const response = await fetch('http://localhost:5016/api/skincare/info');
         const data = await response.json();
-        document.getElementById('message').innerText = data.message;
+        alert(`Версія: ${data.appName} ${data.version}\nЗапущено: ${new Date(data.serverStartedAt).toLocaleString()}`);
+    }
+
+    // НОВИЙ МЕТОД для аналізу конфліктів
+    async function checkConflict() {
+        try {
+            const response = await fetch('http://localhost:5016/api/skincare/test-conflict');
+            const data = await response.json();
+
+            const resultDiv = document.getElementById('result');
+            const msgP = document.getElementById('msg');
+            const detailsDiv = document.getElementById('details');
+
+            resultDiv.style.display = 'block';
+
+            // Якщо фасад повернув "Conflict detected!"
+            if (data.analysis === "Conflict detected!") {
+                msgP.innerText = "❌ Знайдено конфлікт!";
+                msgP.style.color = "#e74c3c";
+            } else {
+                msgP.innerText = "✅ Засоби сумісні";
+                msgP.style.color = "#27ae60";
+            }
+
+            detailsDiv.innerHTML = `Продукт 1: ${data.product1}<br>Продукт 2: ${data.product2}`;
+        } catch (error) {
+            console.error(error);
+            alert("Помилка зв'язку з бекендом.");
+        }
     }
 </script>
 </body>
