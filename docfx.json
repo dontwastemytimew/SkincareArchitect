@@ -53,9 +53,10 @@
     ],
     "globalMetadata": {
       "_appName": "SkincareArchitect",
-      "_appTitle": "SkincareArchitect Docs",
+      "_appTitle": "SkincareArchitect Documentation",
       "_enableSearch": true,
-      "pdf": false
+      "pdf": false,
+      "_basePath": "/SkincareArchitect/"
     }
   }
 }
