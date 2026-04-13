@@ -84,7 +84,8 @@ public class SkincareController : ControllerBase
             "NavConstructor", "NavShelf", "NavCatalog", "NavAbout", "AuthLogin", 
             "SourceAll", "SourceShelf", "BtnAddAnalysis", "BtnRunScan", "BtnBack",
             "HeaderOverlay", "TitleConstructor", "TitleAnalysis", "SelectPlaceholder",
-            "AboutDescription", "FooterText" 
+            "AboutDescription", "FooterText", "BtnConfirm", "BtnCancel", "PlaceholderName", 
+            "CatalogSub", "BtnToShelf", "MorningTitle", "EveningTitle", "RoutineHeader"
         };
         
         var translations = keys.ToDictionary(k => k, k => _facade.GetTranslation(k));

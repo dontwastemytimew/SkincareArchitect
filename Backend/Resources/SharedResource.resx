@@ -84,4 +84,22 @@
     <data name="AboutDescription" xml:space="preserve">
         <value>Skincare Architect is your intelligent assistant in the world of cosmetology. We created this service so you can easily check the compatibility of your favorite products and build the perfect routine without risking your skin.</value>
     </data>
+    <data name="BtnConfirm" xml:space="preserve">
+        <value>LOGIN</value>
+    </data>
+    <data name="BtnCancel" xml:space="preserve">
+        <value>CANCEL</value>
+    </data>
+    <data name="PlaceholderName" xml:space="preserve">
+        <value>Your name</value>
+    </data>
+    <data name="AlertTitle" xml:space="preserve">
+        <value>Notification</value>
+    </data>
+    <data name="CatalogSub" xml:space="preserve">
+        <value>Choose products to add them to your collection</value>
+    </data>
+    <data name="BtnToShelf" xml:space="preserve">
+        <value>to shelf</value>
+    </data>
 </root>

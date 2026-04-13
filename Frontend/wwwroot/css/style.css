@@ -376,3 +376,169 @@ footer {
     font-size: 0.8rem;
     color: var(--misty-rose);
 }
+
+/* Модальні вікна */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(108, 8, 32, 0.2); /* Твій бордовий, але прозорий */
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-card {
+    width: 350px;
+    text-align: center;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.auth-wrapper {
+    position: absolute;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logout-icon {
+    background: none;
+    border: none;
+    color: var(--burgundy);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    transition: 0.3s;
+}
+
+.logout-icon:hover {
+    color: var(--lapis-lazuli);
+    transform: rotate(-15deg);
+}
+
+/* Сітка каталогу */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+/* Красива картка продукту в каталозі */
+.catalog-card {
+    background: var(--white);
+    border: 1px solid var(--misty-rose);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(108, 8, 32, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.catalog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(108, 8, 32, 0.1);
+    border-color: var(--cherry-pink);
+}
+
+/* Декоративний елемент зверху */
+.catalog-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 5px;
+    background: var(--cherry-pink);
+    opacity: 0.5;
+}
+
+/* "Фото" продукту */
+.catalog-img {
+    width: 90px;
+    height: 90px;
+    background: var(--misty-rose);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--silver-blue);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    border: 3px solid var(--white);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* Назва та тип */
+.catalog-card h4 {
+    margin: 0 0 5px 0;
+    font-family: 'Playfair Display', serif;
+    color: var(--burgundy);
+    font-size: 1.1rem;
+}
+
+.catalog-card small {
+    color: var(--lapis-lazuli);
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-catalog-add {
+    background: none;
+    border: 1px solid var(--burgundy);
+    color: var(--burgundy);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: auto;
+}
+
+.btn-catalog-add:hover {
+    background: var(--burgundy);
+    color: var(--misty-rose);
+}
+
+.btn-catalog-added {
+    background-color: var(--burgundy);
+    color: white;
+    border-color: var(--burgundy);
+    pointer-events: none;
+}
+
+.btn-catalog-added:hover {
+    background-color: var(--burgundy);
+}
+
+.btn-remove-shelf {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--silver-blue);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.btn-remove-shelf:hover {
+    color: var(--burgundy);
+    transform: scale(1.2);
+}

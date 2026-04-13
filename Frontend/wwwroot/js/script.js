@@ -32,9 +32,11 @@ async function applyTranslations() {
         });
         const translations = await response.json();
 
-        document.querySelectorAll('[data-i18n]').forEach(el => {
+        document.querySelectorAll('[data-i18n], [data-i18n-placeholder]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (translations[key]) {
+            const phKey = el.getAttribute('data-i18n-placeholder');
+
+            if (key && translations[key]) {
                 if (el.tagName === 'SELECT') {
                     if (el.options.length > 0) el.options[0].text = translations[key];
                 } else {
@@ -47,6 +49,9 @@ async function applyTranslations() {
                         el.innerText = translations[key];
                     }
                 }
+            }
+            if (phKey && translations[phKey]) {
+                el.setAttribute('placeholder', translations[phKey]);
             }
         });
     } catch (e) {
@@ -61,8 +66,32 @@ function showConstructor() {
     updateNavActive(0);
 }
 
+function addToShelf(id, buttonElement) {
+    if (!isLogged) {
+        showAlert(currentLang === 'uk' ? "Спочатку увійдіть!" : "Please login first!");
+        login();
+        return;
+    }
+
+    const product = mockProducts.find(p => p.id === id);
+
+    if (!myShelf.some(p => p.id === id)) {
+        myShelf.push(product);
+        
+        if (buttonElement) {
+            buttonElement.classList.add('btn-catalog-added');
+            buttonElement.innerHTML = `<i class="fas fa-check"></i> ${currentLang === 'uk' ? 'Додано' : 'Added'}`;
+        }
+        
+        renderFullShelf();
+    }
+}
+
 function showMyShelf() {
-    if (!isLogged) { login(); return; }
+    if (!isLogged) {
+        login();
+        return;
+    }
     hideAllSections();
     document.getElementById('shelfSection').style.display = 'block';
     updateNavActive(1);
@@ -102,7 +131,7 @@ function setSource(source) {
 
     if (source === 'shelf') {
         if (!isLogged || myShelf.length === 0) {
-            alert(currentLang === 'uk' ? "Ваша поличка порожня!" : "Your shelf is empty!");
+            showAlert(currentLang === 'uk' ? "Ваша поличка порожня!" : "Your shelf is empty!");
             setSource('all');
             return;
         }
@@ -158,7 +187,8 @@ function removeFromAnalysis(index) {
 // Аналіз
 async function runAnalysis() {
     if (analysisQueue.length < 2) {
-        alert(currentLang === 'uk' ? "додайте хоча б два засоби" : "add at least two products");
+        const msg = currentLang === 'uk' ? "додайте хоча б два засоби" : "add at least two products";
+        showAlert(msg);
         return;
     }
 
@@ -184,7 +214,7 @@ async function runAnalysis() {
             .replace(/--- ANALYSIS RESULT ---/g, '')
             .replace(/\[SkincareArchitect 2026\]/g, '')
             .trim();
-
+        
         reportArea.innerHTML = `
             <div class="analysis-result-header" data-i18n="RoutineHeader">РЕЗУЛЬТАТ АНАЛІЗУ</div>
             <div class="analysis-main-msg">${cleanAnalysis}</div>
@@ -199,7 +229,9 @@ async function runAnalysis() {
                 </div>
             </div>
         `;
-        applyTranslations();
+        
+        await applyTranslations();
+
     } catch (e) {
         reportArea.innerText = "Error: Server not responding";
     }
@@ -228,3 +260,148 @@ window.onload = async () => {
     await applyTranslations();
     setSource('all');
 };
+
+function showAlert(message, title = "Skincare Architect") {
+    document.getElementById('alertTitle').innerText = title;
+    document.getElementById('alertMessage').innerText = message;
+    document.getElementById('customAlert').style.display = 'flex';
+}
+
+function closeAlert() {
+    document.getElementById('customAlert').style.display = 'none';
+}
+
+function login() {
+    document.getElementById('loginModal').style.display = 'flex';
+    document.getElementById('loginName').focus();
+}
+
+function closeLogin() {
+    document.getElementById('loginModal').style.display = 'none';
+}
+
+function confirmLogin() {
+    const nameInput = document.getElementById('loginName');
+    if (nameInput.value.trim()) {
+        userName = nameInput.value;
+        isLogged = true;
+        
+        const btn = document.querySelector('.auth-btn');
+        btn.innerHTML = `<i class="fas fa-user"></i> ${userName}`;
+        btn.onclick = null;
+
+        document.getElementById('logoutBtn').style.display = 'inline-block';
+        closeLogin();
+
+        const msg = currentLang === 'uk' ? `Вітаємо, ${userName}!` : `Welcome, ${userName}!`;
+        showAlert(msg);
+    }
+}
+
+function logout() {
+    isLogged = false;
+    userName = "";
+    analysisQueue = [];
+    myShelf = [];
+
+    // Оновлюємо кнопку профілю
+    const btn = document.querySelector('.auth-btn');
+    btn.innerHTML = '';
+    btn.onclick = login;
+
+    document.getElementById('logoutBtn').style.display = 'none';
+    document.getElementById('loginName').value = '';
+    
+    if (document.getElementById('catalogSection').style.display === 'block') {
+        renderCatalog();
+    }
+    
+    if (document.getElementById('shelfSection').style.display === 'block') {
+        renderFullShelf();
+    }
+
+    showConstructor();
+    applyTranslations();
+}
+
+function showCatalog() {
+    hideAllSections();
+    document.getElementById('catalogSection').style.display = 'block';
+    updateNavActive(2); // Індекс 2 для каталогу
+    renderCatalog();
+}
+
+function hideAllSections() {
+    document.getElementById('constructorSection').style.display = 'none';
+    document.getElementById('shelfSection').style.display = 'none';
+    document.getElementById('aboutSection').style.display = 'none';
+    document.getElementById('catalogSection').style.display = 'none';
+}
+
+function renderCatalog() {
+    const container = document.getElementById('catalogGrid');
+    if (!container) return;
+    const btnText = currentLang === 'uk' ? "на поличку" : "to shelf";
+    const addedText = currentLang === 'uk' ? "Додано" : "Added";
+
+    container.innerHTML = mockProducts.map(p => {
+        const alreadyInShelf = myShelf.some(item => item.id === p.id);
+        const btnClass = alreadyInShelf ? "btn-catalog-add btn-catalog-added" : "btn-catalog-add";
+        const label = alreadyInShelf ? addedText : btnText;
+        const icon = alreadyInShelf ? "fa-check" : "fa-plus";
+
+        return `
+        <div class="catalog-card">
+            <div class="catalog-img"><i class="fas fa-pump-soap"></i></div>
+            <h4>${p.name}</h4>
+            <small>${p.type}</small>
+            <button class="${btnClass}" onclick="addToShelf(${p.id}, this)">
+                <i class="fas ${icon}"></i> ${label}
+            </button>
+        </div>`;
+    }).join('');
+}
+
+function renderFullShelf() {
+    const container = document.getElementById('fullShelfDisplay');
+    const userTitle = document.getElementById('shelfUserName');
+
+    if (!container) return;
+
+    userTitle.innerText = currentLang === 'uk' ? `Колекція: ${userName}` : `Collection: ${userName}`;
+
+    if (myShelf.length === 0) {
+        container.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                <i class="fas fa-ghost" style="font-size: 3rem; color: #ccc; margin-bottom: 15px;"></i>
+                <p>${currentLang === 'uk' ? 'Тут поки порожньо. Додайте щось із каталогу!' : 'Empty here. Add something from catalog!'}</p>
+            </div>`;
+        return;
+    }
+    
+    container.innerHTML = myShelf.map((p, index) => `
+        <div class="catalog-card">
+            <button class="btn-remove-shelf" onclick="removeFromShelf(${index})" title="${currentLang === 'uk' ? 'Прибрати з полички' : 'Remove from shelf'}">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="catalog-img">
+                <i class="fas fa-wine-bottle"></i>
+            </div>
+            <h4>${p.name}</h4>
+            <small>${p.type}</small>
+            
+            <div style="font-size: 0.7rem; color: var(--silver-blue); margin-top: 10px;">
+                <i class="fas fa-clock"></i> ${p.time === 'both' ? (currentLang === 'uk' ? 'Ранок та вечір' : 'Morning & Evening') : (p.time === 'morning' ? (currentLang === 'uk' ? 'Ранок' : 'Morning') : (currentLang === 'uk' ? 'Вечір' : 'Evening'))}
+            </div>
+        </div>
+    `).join('');
+}
+
+function removeFromShelf(index) {
+    myShelf.splice(index, 1);
+    renderFullShelf();
+    if (document.getElementById('catalogSection').style.display === 'block') {
+        renderCatalog();
+    }
+}
