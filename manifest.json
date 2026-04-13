@@ -1,0 +1,448 @@
+{
+  "source_base_path": "/home/runner/work/SkincareArchitect/SkincareArchitect",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Controllers.SkincareController.ProductViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Controllers.SkincareController.ProductViewModel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Controllers.SkincareController.ProductViewModel",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Controllers.SkincareController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Controllers.SkincareController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Controllers.SkincareController",
+      "Summary": "<p sourcefile=\"api/Backend.Controllers.SkincareController.yml\" sourcestartlinenumber=\"1\">Контролер для керування аналізом косметичних засобів.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Controllers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Controllers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Models.ISkincareComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Models.ISkincareComponent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Models.ISkincareComponent",
+      "Summary": "<p sourcefile=\"api/Backend.Models.ISkincareComponent.yml\" sourcestartlinenumber=\"1\">Патерн Composite. Спільний інтерфейс для окремих продуктів та їх наборів.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Models.Ingredient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Models.Ingredient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Models.Ingredient",
+      "Summary": "<p sourcefile=\"api/Backend.Models.Ingredient.yml\" sourcestartlinenumber=\"1\">Хімічний інгредієнт.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Models.Product.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Models.Product.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Models.Product",
+      "Summary": "<p sourcefile=\"api/Backend.Models.Product.yml\" sourcestartlinenumber=\"1\">Косметичний продукт, що містить інгредієнти.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Models.Routine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Models.Routine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Models.Routine",
+      "Summary": "<p sourcefile=\"api/Backend.Models.Routine.yml\" sourcestartlinenumber=\"1\">Патерн Composite. Набір засобів (рутина). Може містити як окремі продукти, так і інші набори.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.AddProductCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.AddProductCommand.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.AddProductCommand",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.BasicProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.BasicProvider.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.BasicProvider",
+      "Summary": "<p sourcefile=\"api/Backend.Services.BasicProvider.yml\" sourcestartlinenumber=\"1\">Конкретна фабрика для базового аналізу.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.CompatibilityProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.CompatibilityProxy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.CompatibilityProxy",
+      "Summary": "<p sourcefile=\"api/Backend.Services.CompatibilityProxy.yml\" sourcestartlinenumber=\"1\">Патерн Proxy. Замісник для кешування результатів перевірки сумісності.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.ConflictNotifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.ConflictNotifier.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.ConflictNotifier",
+      "Summary": "<p sourcefile=\"api/Backend.Services.ConflictNotifier.yml\" sourcestartlinenumber=\"1\">Суб'єкт, який розсилає сповіщення.\nПатерн Observer.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.DiagnosticDecorator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.DiagnosticDecorator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.DiagnosticDecorator",
+      "Summary": "<p sourcefile=\"api/Backend.Services.DiagnosticDecorator.yml\" sourcestartlinenumber=\"1\">Патерн Decorator для вимірювання часу виконання стратегії.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.ICommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.ICommand.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.ICommand",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.ICompatibilityStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.ICompatibilityStrategy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.ICompatibilityStrategy",
+      "Summary": "<p sourcefile=\"api/Backend.Services.ICompatibilityStrategy.yml\" sourcestartlinenumber=\"1\">Інтерфейс стратегії для перевірки сумісності продуктів.\nПатерн: Strategy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.IObserver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.IObserver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.IObserver",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.ProductBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.ProductBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.ProductBuilder",
+      "Summary": "<p sourcefile=\"api/Backend.Services.ProductBuilder.yml\" sourcestartlinenumber=\"1\">Патерн Builder для створення складних об'єктів Product.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.ReportGenerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.ReportGenerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.ReportGenerator",
+      "Summary": "<p sourcefile=\"api/Backend.Services.ReportGenerator.yml\" sourcestartlinenumber=\"1\">Базовий клас для генерації звітів.\nПатерн Template Method.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.SecurityLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.SecurityLogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.SecurityLogger",
+      "Summary": "<p sourcefile=\"api/Backend.Services.SecurityLogger.yml\" sourcestartlinenumber=\"1\">Конкретний спостерігач — логер безпеки.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.SimpleCompatibilityStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.SimpleCompatibilityStrategy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.SimpleCompatibilityStrategy",
+      "Summary": "<p sourcefile=\"api/Backend.Services.SimpleCompatibilityStrategy.yml\" sourcestartlinenumber=\"1\">Реалізація базової стратегії перевірки сумісності інгредієнтів.\nПатерн: Strategy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.SimpleTextReport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.SimpleTextReport.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.SimpleTextReport",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.SkincareFacade.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.SkincareFacade.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.SkincareFacade",
+      "Summary": "<p sourcefile=\"api/Backend.Services.SkincareFacade.yml\" sourcestartlinenumber=\"1\">Патерн Facade для керування складними операціями аналізу догляду.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.SkincareProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.SkincareProvider.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.SkincareProvider",
+      "Summary": "<p sourcefile=\"api/Backend.Services.SkincareProvider.yml\" sourcestartlinenumber=\"1\">Абстрактний клас &quot;Творець&quot; для фабричного методу.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.SystemSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.SystemSettings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services.SystemSettings",
+      "Summary": "<p sourcefile=\"api/Backend.Services.SystemSettings.yml\" sourcestartlinenumber=\"1\">Глобальні налаштування системи. Реалізує патерн Singleton.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Backend.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Backend.Services.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Backend.Services",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
