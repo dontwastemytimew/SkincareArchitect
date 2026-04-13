@@ -14,11 +14,23 @@
   ],
   "build": {
     "content": [
-      { "files": ["docs/**/*.md", "docs/**/toc.yml"] },
-      { "files": ["api/**/*.yml", "api/index.md"] },
-      { "files": ["toc.yml"] }
+      {
+        "files": ["index.md", "toc.yml"],
+        "exclude": ["README.md", "_site/**", "obj/**"]
+      },
+      {
+        "files": ["docs/**/*.md", "docs/**/toc.yml"],
+        "exclude": ["README.md"]
+      },
+      {
+        "files": ["api/**/*.yml", "api/index.md"]
+      }
     ],
-    "resource": [ { "files": ["images/**"] } ],
+    "resource": [
+      {
+        "files": ["images/**"]
+      }
+    ],
     "output": "_site",
     "template": ["default", "modern"],
     "globalMetadata": {
