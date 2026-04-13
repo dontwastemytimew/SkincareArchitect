@@ -30,6 +30,9 @@ jobs:
       - name: Build Documentation
         run: docfx docfx.json
 
+      - name: Add .nojekyll
+        run: touch ./_site/.nojekyll
+
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v4
