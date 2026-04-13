@@ -1,6 +1,12 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
+- uid: Backend
+  name: Backend
+  href: api/Backend.html
+  commentId: N:Backend
+  fullName: Backend
+  nameWithType: Backend
 - uid: Backend.Controllers
   name: Backend.Controllers
   href: api/Backend.Controllers.html
@@ -87,6 +93,19 @@ references:
   isSpec: "True"
   fullName: Backend.Controllers.SkincareController.GetTest
   nameWithType: SkincareController.GetTest
+- uid: Backend.Controllers.SkincareController.GetTranslations
+  name: GetTranslations()
+  href: api/Backend.Controllers.SkincareController.html#Backend_Controllers_SkincareController_GetTranslations
+  commentId: M:Backend.Controllers.SkincareController.GetTranslations
+  fullName: Backend.Controllers.SkincareController.GetTranslations()
+  nameWithType: SkincareController.GetTranslations()
+- uid: Backend.Controllers.SkincareController.GetTranslations*
+  name: GetTranslations
+  href: api/Backend.Controllers.SkincareController.html#Backend_Controllers_SkincareController_GetTranslations_
+  commentId: Overload:Backend.Controllers.SkincareController.GetTranslations
+  isSpec: "True"
+  fullName: Backend.Controllers.SkincareController.GetTranslations
+  nameWithType: SkincareController.GetTranslations
 - uid: Backend.Controllers.SkincareController.ProductViewModel
   name: SkincareController.ProductViewModel
   href: api/Backend.Controllers.SkincareController.ProductViewModel.html
@@ -934,15 +953,15 @@ references:
   commentId: T:Backend.Services.SkincareFacade
   fullName: Backend.Services.SkincareFacade
   nameWithType: SkincareFacade
-- uid: Backend.Services.SkincareFacade.#ctor(Backend.Services.ICompatibilityStrategy,Microsoft.Extensions.Logging.ILogger{Backend.Services.SkincareFacade},Microsoft.Extensions.Localization.IStringLocalizer{Backend.Services.SkincareFacade},Microsoft.Extensions.Logging.ILogger{Backend.Services.DiagnosticDecorator})
-  name: SkincareFacade(ICompatibilityStrategy, ILogger<SkincareFacade>, IStringLocalizer<SkincareFacade>, ILogger<DiagnosticDecorator>)
-  href: api/Backend.Services.SkincareFacade.html#Backend_Services_SkincareFacade__ctor_Backend_Services_ICompatibilityStrategy_Microsoft_Extensions_Logging_ILogger_Backend_Services_SkincareFacade__Microsoft_Extensions_Localization_IStringLocalizer_Backend_Services_SkincareFacade__Microsoft_Extensions_Logging_ILogger_Backend_Services_DiagnosticDecorator__
-  commentId: M:Backend.Services.SkincareFacade.#ctor(Backend.Services.ICompatibilityStrategy,Microsoft.Extensions.Logging.ILogger{Backend.Services.SkincareFacade},Microsoft.Extensions.Localization.IStringLocalizer{Backend.Services.SkincareFacade},Microsoft.Extensions.Logging.ILogger{Backend.Services.DiagnosticDecorator})
-  name.vb: New(ICompatibilityStrategy, ILogger(Of SkincareFacade), IStringLocalizer(Of SkincareFacade), ILogger(Of DiagnosticDecorator))
-  fullName: Backend.Services.SkincareFacade.SkincareFacade(Backend.Services.ICompatibilityStrategy, Microsoft.Extensions.Logging.ILogger<Backend.Services.SkincareFacade>, Microsoft.Extensions.Localization.IStringLocalizer<Backend.Services.SkincareFacade>, Microsoft.Extensions.Logging.ILogger<Backend.Services.DiagnosticDecorator>)
-  fullName.vb: Backend.Services.SkincareFacade.New(Backend.Services.ICompatibilityStrategy, Microsoft.Extensions.Logging.ILogger(Of Backend.Services.SkincareFacade), Microsoft.Extensions.Localization.IStringLocalizer(Of Backend.Services.SkincareFacade), Microsoft.Extensions.Logging.ILogger(Of Backend.Services.DiagnosticDecorator))
-  nameWithType: SkincareFacade.SkincareFacade(ICompatibilityStrategy, ILogger<SkincareFacade>, IStringLocalizer<SkincareFacade>, ILogger<DiagnosticDecorator>)
-  nameWithType.vb: SkincareFacade.New(ICompatibilityStrategy, ILogger(Of SkincareFacade), IStringLocalizer(Of SkincareFacade), ILogger(Of DiagnosticDecorator))
+- uid: Backend.Services.SkincareFacade.#ctor(Backend.Services.ICompatibilityStrategy,Microsoft.Extensions.Logging.ILogger{Backend.Services.SkincareFacade},Microsoft.Extensions.Localization.IStringLocalizer{Backend.SharedResource},Microsoft.Extensions.Logging.ILogger{Backend.Services.DiagnosticDecorator})
+  name: SkincareFacade(ICompatibilityStrategy, ILogger<SkincareFacade>, IStringLocalizer<SharedResource>, ILogger<DiagnosticDecorator>)
+  href: api/Backend.Services.SkincareFacade.html#Backend_Services_SkincareFacade__ctor_Backend_Services_ICompatibilityStrategy_Microsoft_Extensions_Logging_ILogger_Backend_Services_SkincareFacade__Microsoft_Extensions_Localization_IStringLocalizer_Backend_SharedResource__Microsoft_Extensions_Logging_ILogger_Backend_Services_DiagnosticDecorator__
+  commentId: M:Backend.Services.SkincareFacade.#ctor(Backend.Services.ICompatibilityStrategy,Microsoft.Extensions.Logging.ILogger{Backend.Services.SkincareFacade},Microsoft.Extensions.Localization.IStringLocalizer{Backend.SharedResource},Microsoft.Extensions.Logging.ILogger{Backend.Services.DiagnosticDecorator})
+  name.vb: New(ICompatibilityStrategy, ILogger(Of SkincareFacade), IStringLocalizer(Of SharedResource), ILogger(Of DiagnosticDecorator))
+  fullName: Backend.Services.SkincareFacade.SkincareFacade(Backend.Services.ICompatibilityStrategy, Microsoft.Extensions.Logging.ILogger<Backend.Services.SkincareFacade>, Microsoft.Extensions.Localization.IStringLocalizer<Backend.SharedResource>, Microsoft.Extensions.Logging.ILogger<Backend.Services.DiagnosticDecorator>)
+  fullName.vb: Backend.Services.SkincareFacade.New(Backend.Services.ICompatibilityStrategy, Microsoft.Extensions.Logging.ILogger(Of Backend.Services.SkincareFacade), Microsoft.Extensions.Localization.IStringLocalizer(Of Backend.SharedResource), Microsoft.Extensions.Logging.ILogger(Of Backend.Services.DiagnosticDecorator))
+  nameWithType: SkincareFacade.SkincareFacade(ICompatibilityStrategy, ILogger<SkincareFacade>, IStringLocalizer<SharedResource>, ILogger<DiagnosticDecorator>)
+  nameWithType.vb: SkincareFacade.New(ICompatibilityStrategy, ILogger(Of SkincareFacade), IStringLocalizer(Of SharedResource), ILogger(Of DiagnosticDecorator))
 - uid: Backend.Services.SkincareFacade.#ctor*
   name: SkincareFacade
   href: api/Backend.Services.SkincareFacade.html#Backend_Services_SkincareFacade__ctor_
@@ -953,6 +972,22 @@ references:
   fullName.vb: Backend.Services.SkincareFacade.New
   nameWithType: SkincareFacade.SkincareFacade
   nameWithType.vb: SkincareFacade.New
+- uid: Backend.Services.SkincareFacade.GetTranslation(System.String)
+  name: GetTranslation(string)
+  href: api/Backend.Services.SkincareFacade.html#Backend_Services_SkincareFacade_GetTranslation_System_String_
+  commentId: M:Backend.Services.SkincareFacade.GetTranslation(System.String)
+  name.vb: GetTranslation(String)
+  fullName: Backend.Services.SkincareFacade.GetTranslation(string)
+  fullName.vb: Backend.Services.SkincareFacade.GetTranslation(String)
+  nameWithType: SkincareFacade.GetTranslation(string)
+  nameWithType.vb: SkincareFacade.GetTranslation(String)
+- uid: Backend.Services.SkincareFacade.GetTranslation*
+  name: GetTranslation
+  href: api/Backend.Services.SkincareFacade.html#Backend_Services_SkincareFacade_GetTranslation_
+  commentId: Overload:Backend.Services.SkincareFacade.GetTranslation
+  isSpec: "True"
+  fullName: Backend.Services.SkincareFacade.GetTranslation
+  nameWithType: SkincareFacade.GetTranslation
 - uid: Backend.Services.SkincareFacade.SimpleCheck(Backend.Models.Product,Backend.Models.Product)
   name: SimpleCheck(Product, Product)
   href: api/Backend.Services.SkincareFacade.html#Backend_Services_SkincareFacade_SimpleCheck_Backend_Models_Product_Backend_Models_Product_
@@ -1046,3 +1081,9 @@ references:
   isSpec: "True"
   fullName: Backend.Services.SystemSettings.Version
   nameWithType: SystemSettings.Version
+- uid: Backend.SharedResource
+  name: SharedResource
+  href: api/Backend.SharedResource.html
+  commentId: T:Backend.SharedResource
+  fullName: Backend.SharedResource
+  nameWithType: SharedResource
