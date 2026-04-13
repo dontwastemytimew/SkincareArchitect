@@ -21,4 +21,16 @@
     <data name="Greeting" xml:space="preserve">
         <value>Привіт від Skincare Architect!</value>
     </data>
+    <data name="Compatible" xml:space="preserve">
+        <value>Засоби сумісні!</value>
+    </data>
+    <data name="Conflict" xml:space="preserve">
+        <value>Конфлікт: Ретиноїди та кислоти не можна вживати разом!</value>
+    </data>
+    <data name="RoutineHeader" xml:space="preserve">
+        <value>--- РЕЗУЛЬТАТ АНАЛІЗУ ---</value>
+    </data>
+    <data name="RoutineFooter" xml:space="preserve">
+        <value>[SkincareArchitect 2026 - Сяйте]</value>
+    </data>
 </root>

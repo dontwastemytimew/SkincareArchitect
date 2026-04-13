@@ -74,4 +74,28 @@ public class SkincareController : ControllerBase
             analysis = result 
         });
     }
+    
+    [HttpPost("analyze")]
+    public IActionResult Analyze([FromBody] List<ProductViewModel> frontendProducts)
+    {
+        
+        if (frontendProducts == null || frontendProducts.Count < 2) 
+            return BadRequest("Додайте хоча б два засоби");
+        
+        var builder = new ProductBuilder();
+        var products = frontendProducts.Select(fp => 
+            builder.Create(fp.Name)
+                .AddIngredient(fp.Name, fp.Type)
+                .Build()
+        ).ToList();
+        
+        string report = _facade.SimpleCheck(products[0], products[1]);
+    
+        return Ok(new { analysis = report });
+    }
+    
+    public class ProductViewModel {
+        public string Name { get; set; }
+        public string Type { get; set; }
+    }
 }

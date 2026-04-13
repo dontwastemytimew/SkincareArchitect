@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "..",
+          "files": [
+            "**/*.csproj"
+          ],
+          "exclude": [
+            "**/Backend.Tests/**",
+            "**/bin/**",
+            "**/obj/**"
+          ]
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "docs/**/*.md",
+          "docs/**/toc.yml"
+        ]
+      },
+      {
+        "files": [
+          "api/**/*.yml",
+          "api/index.md"
+        ]
+      },
+      {
+        "files": [
+          "toc.yml"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "overwrite": [],
+    "dest": "_site",
+    "template": [
+      "default",
+      "modern"
+    ],
+    "globalMetadata": {
+      "_appName": "SkincareArchitect",
+      "_appTitle": "SkincareArchitect Docs",
+      "_enableSearch": true,
+      "pdf": false
+    }
+  }
+}

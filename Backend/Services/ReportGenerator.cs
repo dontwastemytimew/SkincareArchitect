@@ -1,4 +1,6 @@
-﻿namespace Backend.Services;
+﻿using Microsoft.Extensions.Localization;
+namespace Backend.Services;
+// using Backend.Resources;
 
 /// <summary>
 /// Базовий клас для генерації звітів.
@@ -6,19 +8,31 @@
 /// </summary>
 public abstract class ReportGenerator
 {
-    // Шаблонний метод
-    public string CreateFullReport(string content)
+    protected readonly IStringLocalizer _localizer;
+
+    protected ReportGenerator(IStringLocalizer localizer)
     {
-        return $"{FormatHeader()}\n{FormatBody(content)}\n{FormatFooter()}";
+        _localizer = localizer;
+    }
+
+    public string CreateFullReport(string contentKey)
+    {
+        return $"{FormatHeader()}\n{FormatBody(contentKey)}\n{FormatFooter()}";
     }
 
     protected abstract string FormatHeader();
-    protected abstract string FormatBody(string content);
-    private string FormatFooter() => "\n[SkincareArchitect 2026]";
+    protected abstract string FormatBody(string contentKey);
+    protected abstract string FormatFooter();
 }
 
 public class SimpleTextReport : ReportGenerator
 {
+    public SimpleTextReport(IStringLocalizer localizer) : base(localizer) { }
+    
     protected override string FormatHeader() => "--- РЕЗУЛЬТАТ АНАЛІЗУ ---";
-    protected override string FormatBody(string content) => $"Повідомлення: {content}";
+    
+    protected override string FormatBody(string contentKey) => 
+        contentKey == "Compatible" ? "Засоби сумісні! Можна наносити." : "КОНФЛІКТ: Ці засоби не можна вживати разом!";
+        
+    protected override string FormatFooter() => "[SkincareArchitect 2026]";
 }

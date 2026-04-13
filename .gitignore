@@ -15,3 +15,7 @@ riderModule.iml
 .DS_Store
 Thumbs.db
 Logs/
+_site/
+obj/
+api/
+.manifest

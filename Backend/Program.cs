@@ -32,10 +32,12 @@ var app = builder.Build();
 app.UseCors("AllowFrontend");
 
 var supportedCultures = new[] { "uk", "en" };
-app.UseRequestLocalization(new RequestLocalizationOptions()
+var localizationOptions = new RequestLocalizationOptions()
     .SetDefaultCulture("uk")
     .AddSupportedCultures(supportedCultures)
-    .AddSupportedUICultures(supportedCultures));
+    .AddSupportedUICultures(supportedCultures);
+
+app.UseRequestLocalization(localizationOptions);
 
 app.MapControllers();
 app.Run();

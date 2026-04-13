@@ -3,38 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <title>skincare architect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
+    <div class="lang-switcher">
+        <span onclick="changeLang('uk')">UA</span> | <span onclick="changeLang('en')">EN</span>
+    </div>
     <div class="header-content">
         <h1>skincare architect</h1>
         <span class="overlay-text">yes or no?</span>
     </div>
 </header>
 
+<nav class="top-nav">
+    <a href="#" class="active" onclick="showConstructor()">конструктор</a>
+    <a href="#" onclick="showMyShelf()">моя полиця</a>
+    <a href="#">каталог</a>
+    <a href="#" onclick="showAbout()">про нас</a>
+    <button class="auth-btn" onclick="login()">увійти</button>
+</nav>
+
+<div id="settingsPanel" class="settings-panel" style="display:none;">
+    <h4>мова / language</h4>
+    <button class="lang-btn" onclick="changeLang('uk')">українська</button>
+    <button class="lang-btn" onclick="changeLang('en')">english</button>
+</div>
+
 <main class="main-container">
-    <div class="card">
-        <h3>конструктор</h3>
-        <input type="text" id="prodName" placeholder="назва продукту">
-        <select id="ingType">
-            <option value="Retinoid">ретиноїди (конфлікт з кислотами)</option>
-            <option value="Acid">кислоти (конфлікт з ретиноїдами)</option>
-            <option value="Moisturizer">зволоження (безпечно)</option>
-        </select>
-        <button class="btn-add" onclick="addProduct()">додати до аналізу</button>
-        <button class="btn-undo" onclick="undoProduct()">скасувати дію</button>
+    <div id="constructorSection" class="grid-layout">
+        <div class="card">
+            <h3>конструктор рутини</h3>
+            <div class="source-toggle">
+                <button id="btnAll" class="toggle-btn active" onclick="setSource('all')">Вся база</button>
+                <button id="btnShelf" class="toggle-btn" onclick="setSource('shelf')">Моя поличка</button>
+            </div>
+            <select id="prodSelect">
+                <option value="">— виберіть баночку —</option>
+            </select>
+            <button class="btn-add" onclick="addProductToAnalysis()">додати до аналізу</button>
+            <div id="queueList" class="shelf-grid"></div>
+        </div>
 
-        <div id="queueList" style="margin-top: 30px;"></div>
+        <div class="card">
+            <h3>діагностика</h3>
+            <button class="btn-scan" onclick="runAnalysis()">запустити аналіз</button>
+            <div id="reportArea" class="report-box" style="display:none;"></div>
+        </div>
+    </div> <div id="shelfSection" style="display:none; width: 100%;">
+    <div class="card" style="width: 100%; max-width: 800px; margin: 0 auto;">
+        <h3><i class="fas fa-box-open"></i> моя поличка</h3>
+        <p id="shelfUserName" style="font-style: italic; color: var(--lapis-lazuli);"></p>
+        <div id="fullShelfDisplay" class="full-shelf-grid"></div>
+        <button class="btn-undo" onclick="showConstructor()" style="margin-top:20px;">повернутись до конструктора</button>
     </div>
-
-    <div class="card">
-        <h3>діагностика</h3>
-        <button class="btn-scan" onclick="runAnalysis()">запустити сканування</button>
-        <div id="reportArea" class="report-box" style="display:none;"></div>
+</div>
+    <div id="aboutSection" style="display:none; width: 100%;">
+        <div class="card shelf-card" style="text-align: center;">
+            <h3>про skincare architect</h3>
+            <div class="about-decor"></div>
+            <p class="about-text">
+                <strong>Skincare Architect</strong> — це ваш інтелектуальний помічник у світі косметології. Ми створили цей сервіс, щоб ви могли легко перевіряти сумісність ваших улюблених засобів та будувати ідеальну рутину без ризику для шкіри.
+                <br><br>
+                Наша система використовує сучасні алгоритми аналізу інгредієнтів, щоб ви точно знали результат вашого догляду.
+            </p>
+            <div class="about-decor"></div>
+            <button class="btn-undo" onclick="showConstructor()">повернутись до конструктора</button>
+        </div>
     </div>
 </main>
+
+<footer>
+    <div class="footer-content">
+        <p>© 2026 skincare architect. created for software engineering course.</p>
+        <div class="socials">
+            <i class="fab fa-github"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-pinterest"></i>
+            <i class="fab fa-linkedin"></i>
+        </div>
+    </div>
+</footer>
 
 <script src="js/script.js"></script>
 </body>
