@@ -129,8 +129,8 @@
     "title": "Getting Started | SkincareArchitect Documentation",
     "summary": "Getting Started"
   },
-  "docs/introduction.html": {
-    "href": "docs/introduction.html",
+  "index.html": {
+    "href": "index.html",
     "title": "Introduction | SkincareArchitect Documentation",
     "summary": "Introduction"
   }
