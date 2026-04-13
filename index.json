@@ -1,147 +1,137 @@
 {
-  "README.html": {
-    "href": "README.html",
-    "title": "Skincare Architect | SkincareArchitect Documentation",
-    "summary": "Skincare Architect Веб-додаток для аналізу сумісності інгредієнтів косметики та побудови безпечної рутини."
-  },
   "api/Backend.Controllers.SkincareController.ProductViewModel.html": {
     "href": "api/Backend.Controllers.SkincareController.ProductViewModel.html",
-    "title": "Class SkincareController.ProductViewModel | SkincareArchitect Documentation",
+    "title": "Class SkincareController.ProductViewModel | SkincareArchitect Docs",
     "summary": "Class SkincareController.ProductViewModel Namespace Backend.Controllers Assembly Backend.dll public class SkincareController.ProductViewModel Inheritance object SkincareController.ProductViewModel Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Properties Name public string Name { get; set; } Property Value string Type public string Type { get; set; } Property Value string"
   },
   "api/Backend.Controllers.SkincareController.html": {
     "href": "api/Backend.Controllers.SkincareController.html",
-    "title": "Class SkincareController | SkincareArchitect Documentation",
+    "title": "Class SkincareController | SkincareArchitect Docs",
     "summary": "Class SkincareController Namespace Backend.Controllers Assembly Backend.dll Контролер для керування аналізом косметичних засобів. [ApiController] [Route(\"api/[controller]\")] public class SkincareController : ControllerBase Inheritance object ControllerBase SkincareController Inherited Members ControllerBase.StatusCode(int) ControllerBase.StatusCode(int, object) ControllerBase.Content(string) ControllerBase.Content(string, string) ControllerBase.Content(string, string, Encoding) ControllerBase.Content(string, MediaTypeHeaderValue) ControllerBase.NoContent() ControllerBase.Ok() ControllerBase.Ok(object) ControllerBase.Redirect(string) ControllerBase.RedirectPermanent(string) ControllerBase.RedirectPreserveMethod(string) ControllerBase.RedirectPermanentPreserveMethod(string) ControllerBase.LocalRedirect(string) ControllerBase.LocalRedirectPermanent(string) ControllerBase.LocalRedirectPreserveMethod(string) ControllerBase.LocalRedirectPermanentPreserveMethod(string) ControllerBase.RedirectToAction() ControllerBase.RedirectToAction(string) ControllerBase.RedirectToAction(string, object) ControllerBase.RedirectToAction(string, string) ControllerBase.RedirectToAction(string, string, object) ControllerBase.RedirectToAction(string, string, string) ControllerBase.RedirectToAction(string, string, object, string) ControllerBase.RedirectToActionPreserveMethod(string, string, object, string) ControllerBase.RedirectToActionPermanent(string) ControllerBase.RedirectToActionPermanent(string, object) ControllerBase.RedirectToActionPermanent(string, string) ControllerBase.RedirectToActionPermanent(string, string, string) ControllerBase.RedirectToActionPermanent(string, string, object) ControllerBase.RedirectToActionPermanent(string, string, object, string) ControllerBase.RedirectToActionPermanentPreserveMethod(string, string, object, string) ControllerBase.RedirectToRoute(string) ControllerBase.RedirectToRoute(object) ControllerBase.RedirectToRoute(string, object) ControllerBase.RedirectToRoute(string, string) ControllerBase.RedirectToRoute(string, object, string) ControllerBase.RedirectToRoutePreserveMethod(string, object, string) ControllerBase.RedirectToRoutePermanent(string) ControllerBase.RedirectToRoutePermanent(object) ControllerBase.RedirectToRoutePermanent(string, object) ControllerBase.RedirectToRoutePermanent(string, string) ControllerBase.RedirectToRoutePermanent(string, object, string) ControllerBase.RedirectToRoutePermanentPreserveMethod(string, object, string) ControllerBase.RedirectToPage(string) ControllerBase.RedirectToPage(string, object) ControllerBase.RedirectToPage(string, string) ControllerBase.RedirectToPage(string, string, object) ControllerBase.RedirectToPage(string, string, string) ControllerBase.RedirectToPage(string, string, object, string) ControllerBase.RedirectToPagePermanent(string) ControllerBase.RedirectToPagePermanent(string, object) ControllerBase.RedirectToPagePermanent(string, string) ControllerBase.RedirectToPagePermanent(string, string, string) ControllerBase.RedirectToPagePermanent(string, string, object, string) ControllerBase.RedirectToPagePreserveMethod(string, string, object, string) ControllerBase.RedirectToPagePermanentPreserveMethod(string, string, object, string) ControllerBase.File(byte[], string) ControllerBase.File(byte[], string, bool) ControllerBase.File(byte[], string, string) ControllerBase.File(byte[], string, string, bool) ControllerBase.File(byte[], string, DateTimeOffset?, EntityTagHeaderValue) ControllerBase.File(byte[], string, DateTimeOffset?, EntityTagHeaderValue, bool) ControllerBase.File(byte[], string, string, DateTimeOffset?, EntityTagHeaderValue) ControllerBase.File(byte[], string, string, DateTimeOffset?, EntityTagHeaderValue, bool) ControllerBase.File(Stream, string) ControllerBase.File(Stream, string, bool) ControllerBase.File(Stream, string, string) ControllerBase.File(Stream, string, string, bool) ControllerBase.File(Stream, string, DateTimeOffset?, EntityTagHeaderValue) ControllerBase.File(Stream, string, DateTimeOffset?, EntityTagHeaderValue, bool) ControllerBase.File(Stream, string, string, DateTimeOffset?, EntityTagHeaderValue) ControllerBase.File(Stream, string, string, DateTimeOffset?, EntityTagHeaderValue, bool) ControllerBase.File(string, string) ControllerBase.File(string, string, bool) ControllerBase.File(string, string, string) ControllerBase.File(string, string, string, bool) ControllerBase.File(string, string, DateTimeOffset?, EntityTagHeaderValue) ControllerBase.File(string, string, DateTimeOffset?, EntityTagHeaderValue, bool) ControllerBase.File(string, string, string, DateTimeOffset?, EntityTagHeaderValue) ControllerBase.File(string, string, string, DateTimeOffset?, EntityTagHeaderValue, bool) ControllerBase.PhysicalFile(string, string) ControllerBase.PhysicalFile(string, string, bool) ControllerBase.PhysicalFile(string, string, string) ControllerBase.PhysicalFile(string, string, string, bool) ControllerBase.PhysicalFile(string, string, DateTimeOffset?, EntityTagHeaderValue) ControllerBase.PhysicalFile(string, string, DateTimeOffset?, EntityTagHeaderValue, bool) ControllerBase.PhysicalFile(string, string, string, DateTimeOffset?, EntityTagHeaderValue) ControllerBase.PhysicalFile(string, string, string, DateTimeOffset?, EntityTagHeaderValue, bool) ControllerBase.Unauthorized() ControllerBase.Unauthorized(object) ControllerBase.NotFound() ControllerBase.NotFound(object) ControllerBase.BadRequest() ControllerBase.BadRequest(object) ControllerBase.BadRequest(ModelStateDictionary) ControllerBase.UnprocessableEntity() ControllerBase.UnprocessableEntity(object) ControllerBase.UnprocessableEntity(ModelStateDictionary) ControllerBase.Conflict() ControllerBase.Conflict(object) ControllerBase.Conflict(ModelStateDictionary) ControllerBase.Problem(string, string, int?, string, string) ControllerBase.Problem(string, string, int?, string, string, IDictionary<string, object>) ControllerBase.ValidationProblem(ValidationProblemDetails) ControllerBase.ValidationProblem(ModelStateDictionary) ControllerBase.ValidationProblem() ControllerBase.ValidationProblem(string, string, int?, string, string, ModelStateDictionary) ControllerBase.ValidationProblem(string, string, int?, string, string, ModelStateDictionary, IDictionary<string, object>) ControllerBase.Created() ControllerBase.Created(string, object) ControllerBase.Created(Uri, object) ControllerBase.CreatedAtAction(string, object) ControllerBase.CreatedAtAction(string, object, object) ControllerBase.CreatedAtAction(string, string, object, object) ControllerBase.CreatedAtRoute(string, object) ControllerBase.CreatedAtRoute(object, object) ControllerBase.CreatedAtRoute(string, object, object) ControllerBase.Accepted() ControllerBase.Accepted(object) ControllerBase.Accepted(Uri) ControllerBase.Accepted(string) ControllerBase.Accepted(string, object) ControllerBase.Accepted(Uri, object) ControllerBase.AcceptedAtAction(string) ControllerBase.AcceptedAtAction(string, string) ControllerBase.AcceptedAtAction(string, object) ControllerBase.AcceptedAtAction(string, string, object) ControllerBase.AcceptedAtAction(string, object, object) ControllerBase.AcceptedAtAction(string, string, object, object) ControllerBase.AcceptedAtRoute(object) ControllerBase.AcceptedAtRoute(string) ControllerBase.AcceptedAtRoute(string, object) ControllerBase.AcceptedAtRoute(object, object) ControllerBase.AcceptedAtRoute(string, object, object) ControllerBase.Challenge() ControllerBase.Challenge(params string[]) ControllerBase.Challenge(AuthenticationProperties) ControllerBase.Challenge(AuthenticationProperties, params string[]) ControllerBase.Forbid() ControllerBase.Forbid(params string[]) ControllerBase.Forbid(AuthenticationProperties) ControllerBase.Forbid(AuthenticationProperties, params string[]) ControllerBase.SignIn(ClaimsPrincipal) ControllerBase.SignIn(ClaimsPrincipal, string) ControllerBase.SignIn(ClaimsPrincipal, AuthenticationProperties) ControllerBase.SignIn(ClaimsPrincipal, AuthenticationProperties, string) ControllerBase.SignOut() ControllerBase.SignOut(AuthenticationProperties) ControllerBase.SignOut(params string[]) ControllerBase.SignOut(AuthenticationProperties, params string[]) ControllerBase.TryUpdateModelAsync<TModel>(TModel) ControllerBase.TryUpdateModelAsync<TModel>(TModel, string) ControllerBase.TryUpdateModelAsync<TModel>(TModel, string, IValueProvider) ControllerBase.TryUpdateModelAsync<TModel>(TModel, string, params Expression<Func<TModel, object>>[]) ControllerBase.TryUpdateModelAsync<TModel>(TModel, string, Func<ModelMetadata, bool>) ControllerBase.TryUpdateModelAsync<TModel>(TModel, string, IValueProvider, params Expression<Func<TModel, object>>[]) ControllerBase.TryUpdateModelAsync<TModel>(TModel, string, IValueProvider, Func<ModelMetadata, bool>) ControllerBase.TryUpdateModelAsync(object, Type, string) ControllerBase.TryUpdateModelAsync(object, Type, string, IValueProvider, Func<ModelMetadata, bool>) ControllerBase.TryValidateModel(object) ControllerBase.TryValidateModel(object, string) ControllerBase.HttpContext ControllerBase.Request ControllerBase.Response ControllerBase.RouteData ControllerBase.ModelState ControllerBase.ControllerContext ControllerBase.MetadataProvider ControllerBase.ModelBinderFactory ControllerBase.Url ControllerBase.ObjectValidator ControllerBase.ProblemDetailsFactory ControllerBase.User ControllerBase.Empty object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors SkincareController(SkincareFacade) Фасад всередині тримає логер, стратегію та локалізатор. public SkincareController(SkincareFacade facade) Parameters facade SkincareFacade Methods Analyze(List<ProductViewModel>) [HttpPost(\"analyze\")] public IActionResult Analyze(List<SkincareController.ProductViewModel> frontendProducts) Parameters frontendProducts List<SkincareController.ProductViewModel> Returns IActionResult GetConflict() [HttpGet(\"test-conflict\")] public IActionResult GetConflict() Returns IActionResult GetInfo() [HttpGet(\"info\")] public IActionResult GetInfo() Returns IActionResult GetTest() Тестовий метод. [HttpGet(\"test\")] public IActionResult GetTest() Returns IActionResult"
   },
   "api/Backend.Controllers.html": {
     "href": "api/Backend.Controllers.html",
-    "title": "Namespace Backend.Controllers | SkincareArchitect Documentation",
+    "title": "Namespace Backend.Controllers | SkincareArchitect Docs",
     "summary": "Namespace Backend.Controllers Classes SkincareController Контролер для керування аналізом косметичних засобів. SkincareController.ProductViewModel"
   },
   "api/Backend.Models.ISkincareComponent.html": {
     "href": "api/Backend.Models.ISkincareComponent.html",
-    "title": "Interface ISkincareComponent | SkincareArchitect Documentation",
+    "title": "Interface ISkincareComponent | SkincareArchitect Docs",
     "summary": "Interface ISkincareComponent Namespace Backend.Models Assembly Backend.dll Патерн Composite. Спільний інтерфейс для окремих продуктів та їх наборів. public interface ISkincareComponent : IEnumerable<ISkincareComponent>, IEnumerable Inherited Members IEnumerable<ISkincareComponent>.GetEnumerator() Methods GetAllIngredients() List<Ingredient> GetAllIngredients() Returns List<Ingredient> GetName() string GetName() Returns string"
   },
   "api/Backend.Models.Ingredient.html": {
     "href": "api/Backend.Models.Ingredient.html",
-    "title": "Class Ingredient | SkincareArchitect Documentation",
+    "title": "Class Ingredient | SkincareArchitect Docs",
     "summary": "Class Ingredient Namespace Backend.Models Assembly Backend.dll Хімічний інгредієнт. public class Ingredient Inheritance object Ingredient Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Properties ActiveType public string ActiveType { get; set; } Property Value string Description public string Description { get; set; } Property Value string Id public int Id { get; set; } Property Value int Name public string Name { get; set; } Property Value string"
   },
   "api/Backend.Models.Product.html": {
     "href": "api/Backend.Models.Product.html",
-    "title": "Class Product | SkincareArchitect Documentation",
+    "title": "Class Product | SkincareArchitect Docs",
     "summary": "Class Product Namespace Backend.Models Assembly Backend.dll Косметичний продукт, що містить інгредієнти. public class Product : ISkincareComponent, IEnumerable<ISkincareComponent>, IEnumerable Inheritance object Product Implements ISkincareComponent IEnumerable<ISkincareComponent> IEnumerable Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Properties Ingredients public List<Ingredient> Ingredients { get; set; } Property Value List<Ingredient> Name public string Name { get; set; } Property Value string Methods GetAllIngredients() public List<Ingredient> GetAllIngredients() Returns List<Ingredient> GetEnumerator() Returns an enumerator that iterates through the collection. public IEnumerator<ISkincareComponent> GetEnumerator() Returns IEnumerator<ISkincareComponent> An enumerator that can be used to iterate through the collection. GetName() public string GetName() Returns string"
   },
   "api/Backend.Models.Routine.html": {
     "href": "api/Backend.Models.Routine.html",
-    "title": "Class Routine | SkincareArchitect Documentation",
+    "title": "Class Routine | SkincareArchitect Docs",
     "summary": "Class Routine Namespace Backend.Models Assembly Backend.dll Патерн Composite. Набір засобів (рутина). Може містити як окремі продукти, так і інші набори. public class Routine : ISkincareComponent, IEnumerable<ISkincareComponent>, IEnumerable Inheritance object Routine Implements ISkincareComponent IEnumerable<ISkincareComponent> IEnumerable Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors Routine(string) public Routine(string name) Parameters name string Methods Add(ISkincareComponent) public void Add(ISkincareComponent component) Parameters component ISkincareComponent GetAllIngredients() public List<Ingredient> GetAllIngredients() Returns List<Ingredient> GetEnumerator() Returns an enumerator that iterates through the collection. public IEnumerator<ISkincareComponent> GetEnumerator() Returns IEnumerator<ISkincareComponent> An enumerator that can be used to iterate through the collection. GetName() public string GetName() Returns string"
   },
   "api/Backend.Models.html": {
     "href": "api/Backend.Models.html",
-    "title": "Namespace Backend.Models | SkincareArchitect Documentation",
+    "title": "Namespace Backend.Models | SkincareArchitect Docs",
     "summary": "Namespace Backend.Models Classes Ingredient Хімічний інгредієнт. Product Косметичний продукт, що містить інгредієнти. Routine Патерн Composite. Набір засобів (рутина). Може містити як окремі продукти, так і інші набори. Interfaces ISkincareComponent Патерн Composite. Спільний інтерфейс для окремих продуктів та їх наборів."
   },
   "api/Backend.Services.AddProductCommand.html": {
     "href": "api/Backend.Services.AddProductCommand.html",
-    "title": "Class AddProductCommand | SkincareArchitect Documentation",
+    "title": "Class AddProductCommand | SkincareArchitect Docs",
     "summary": "Class AddProductCommand Namespace Backend.Services Assembly Backend.dll public class AddProductCommand : ICommand Inheritance object AddProductCommand Implements ICommand Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors AddProductCommand(List<Product>, Product) public AddProductCommand(List<Product> list, Product product) Parameters list List<Product> product Product Methods Execute() public void Execute() Undo() public void Undo()"
   },
   "api/Backend.Services.BasicProvider.html": {
     "href": "api/Backend.Services.BasicProvider.html",
-    "title": "Class BasicProvider | SkincareArchitect Documentation",
+    "title": "Class BasicProvider | SkincareArchitect Docs",
     "summary": "Class BasicProvider Namespace Backend.Services Assembly Backend.dll Конкретна фабрика для базового аналізу. public class BasicProvider : SkincareProvider Inheritance object SkincareProvider BasicProvider Inherited Members SkincareProvider.PerformCheck(Product, Product) object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors BasicProvider(ILogger<SimpleCompatibilityStrategy>) public BasicProvider(ILogger<SimpleCompatibilityStrategy> logger) Parameters logger ILogger<SimpleCompatibilityStrategy> Methods CreateStrategy() public override ICompatibilityStrategy CreateStrategy() Returns ICompatibilityStrategy"
   },
   "api/Backend.Services.CompatibilityProxy.html": {
     "href": "api/Backend.Services.CompatibilityProxy.html",
-    "title": "Class CompatibilityProxy | SkincareArchitect Documentation",
+    "title": "Class CompatibilityProxy | SkincareArchitect Docs",
     "summary": "Class CompatibilityProxy Namespace Backend.Services Assembly Backend.dll Патерн Proxy. Замісник для кешування результатів перевірки сумісності. public class CompatibilityProxy : ICompatibilityStrategy Inheritance object CompatibilityProxy Implements ICompatibilityStrategy Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors CompatibilityProxy(ICompatibilityStrategy) public CompatibilityProxy(ICompatibilityStrategy realStrategy) Parameters realStrategy ICompatibilityStrategy Methods Check(Product, Product) Перевіряє сумісність двох продуктів. public bool Check(Product p1, Product p2) Parameters p1 Product p2 Product Returns bool"
   },
   "api/Backend.Services.ConflictNotifier.html": {
     "href": "api/Backend.Services.ConflictNotifier.html",
-    "title": "Class ConflictNotifier | SkincareArchitect Documentation",
+    "title": "Class ConflictNotifier | SkincareArchitect Docs",
     "summary": "Class ConflictNotifier Namespace Backend.Services Assembly Backend.dll Суб'єкт, який розсилає сповіщення. Патерн Observer. public class ConflictNotifier Inheritance object ConflictNotifier Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Methods Attach(IObserver) public void Attach(IObserver observer) Parameters observer IObserver Notify(string) public void Notify(string message) Parameters message string"
   },
   "api/Backend.Services.DiagnosticDecorator.html": {
     "href": "api/Backend.Services.DiagnosticDecorator.html",
-    "title": "Class DiagnosticDecorator | SkincareArchitect Documentation",
+    "title": "Class DiagnosticDecorator | SkincareArchitect Docs",
     "summary": "Class DiagnosticDecorator Namespace Backend.Services Assembly Backend.dll Патерн Decorator для вимірювання часу виконання стратегії. public class DiagnosticDecorator : ICompatibilityStrategy Inheritance object DiagnosticDecorator Implements ICompatibilityStrategy Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors DiagnosticDecorator(ICompatibilityStrategy, ILogger<DiagnosticDecorator>) public DiagnosticDecorator(ICompatibilityStrategy innerStrategy, ILogger<DiagnosticDecorator> logger) Parameters innerStrategy ICompatibilityStrategy logger ILogger<DiagnosticDecorator> Methods Check(Product, Product) Перевіряє сумісність двох продуктів. public bool Check(Product p1, Product p2) Parameters p1 Product p2 Product Returns bool"
   },
   "api/Backend.Services.ICommand.html": {
     "href": "api/Backend.Services.ICommand.html",
-    "title": "Interface ICommand | SkincareArchitect Documentation",
+    "title": "Interface ICommand | SkincareArchitect Docs",
     "summary": "Interface ICommand Namespace Backend.Services Assembly Backend.dll public interface ICommand Methods Execute() void Execute() Undo() void Undo()"
   },
   "api/Backend.Services.ICompatibilityStrategy.html": {
     "href": "api/Backend.Services.ICompatibilityStrategy.html",
-    "title": "Interface ICompatibilityStrategy | SkincareArchitect Documentation",
+    "title": "Interface ICompatibilityStrategy | SkincareArchitect Docs",
     "summary": "Interface ICompatibilityStrategy Namespace Backend.Services Assembly Backend.dll Інтерфейс стратегії для перевірки сумісності продуктів. Патерн: Strategy. public interface ICompatibilityStrategy Methods Check(Product, Product) Перевіряє сумісність двох продуктів. bool Check(Product p1, Product p2) Parameters p1 Product p2 Product Returns bool"
   },
   "api/Backend.Services.IObserver.html": {
     "href": "api/Backend.Services.IObserver.html",
-    "title": "Interface IObserver | SkincareArchitect Documentation",
+    "title": "Interface IObserver | SkincareArchitect Docs",
     "summary": "Interface IObserver Namespace Backend.Services Assembly Backend.dll public interface IObserver Methods Update(string) void Update(string message) Parameters message string"
   },
   "api/Backend.Services.ProductBuilder.html": {
     "href": "api/Backend.Services.ProductBuilder.html",
-    "title": "Class ProductBuilder | SkincareArchitect Documentation",
+    "title": "Class ProductBuilder | SkincareArchitect Docs",
     "summary": "Class ProductBuilder Namespace Backend.Services Assembly Backend.dll Патерн Builder для створення складних об'єктів Product. public class ProductBuilder Inheritance object ProductBuilder Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Methods AddIngredient(string, string) public ProductBuilder AddIngredient(string name, string type) Parameters name string type string Returns ProductBuilder Build() public Product Build() Returns Product Create(string) public ProductBuilder Create(string name) Parameters name string Returns ProductBuilder"
   },
   "api/Backend.Services.ReportGenerator.html": {
     "href": "api/Backend.Services.ReportGenerator.html",
-    "title": "Class ReportGenerator | SkincareArchitect Documentation",
+    "title": "Class ReportGenerator | SkincareArchitect Docs",
     "summary": "Class ReportGenerator Namespace Backend.Services Assembly Backend.dll Базовий клас для генерації звітів. Патерн Template Method. public abstract class ReportGenerator Inheritance object ReportGenerator Derived SimpleTextReport Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors ReportGenerator(IStringLocalizer) protected ReportGenerator(IStringLocalizer localizer) Parameters localizer IStringLocalizer Fields _localizer protected readonly IStringLocalizer _localizer Field Value IStringLocalizer Methods CreateFullReport(string) public string CreateFullReport(string contentKey) Parameters contentKey string Returns string FormatBody(string) protected abstract string FormatBody(string contentKey) Parameters contentKey string Returns string FormatFooter() protected abstract string FormatFooter() Returns string FormatHeader() protected abstract string FormatHeader() Returns string"
   },
   "api/Backend.Services.SecurityLogger.html": {
     "href": "api/Backend.Services.SecurityLogger.html",
-    "title": "Class SecurityLogger | SkincareArchitect Documentation",
+    "title": "Class SecurityLogger | SkincareArchitect Docs",
     "summary": "Class SecurityLogger Namespace Backend.Services Assembly Backend.dll Конкретний спостерігач — логер безпеки. public class SecurityLogger : IObserver Inheritance object SecurityLogger Implements IObserver Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors SecurityLogger(ILogger) public SecurityLogger(ILogger logger) Parameters logger ILogger Methods Update(string) public void Update(string message) Parameters message string"
   },
   "api/Backend.Services.SimpleCompatibilityStrategy.html": {
     "href": "api/Backend.Services.SimpleCompatibilityStrategy.html",
-    "title": "Class SimpleCompatibilityStrategy | SkincareArchitect Documentation",
+    "title": "Class SimpleCompatibilityStrategy | SkincareArchitect Docs",
     "summary": "Class SimpleCompatibilityStrategy Namespace Backend.Services Assembly Backend.dll Реалізація базової стратегії перевірки сумісності інгредієнтів. Патерн: Strategy. public class SimpleCompatibilityStrategy : ICompatibilityStrategy Inheritance object SimpleCompatibilityStrategy Implements ICompatibilityStrategy Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors SimpleCompatibilityStrategy(ILogger<SimpleCompatibilityStrategy>) public SimpleCompatibilityStrategy(ILogger<SimpleCompatibilityStrategy> logger) Parameters logger ILogger<SimpleCompatibilityStrategy> Methods Check(Product, Product) Перевіряє, чи немає конфлікту між активними компонентами. public bool Check(Product p1, Product p2) Parameters p1 Product p2 Product Returns bool"
   },
   "api/Backend.Services.SimpleTextReport.html": {
     "href": "api/Backend.Services.SimpleTextReport.html",
-    "title": "Class SimpleTextReport | SkincareArchitect Documentation",
+    "title": "Class SimpleTextReport | SkincareArchitect Docs",
     "summary": "Class SimpleTextReport Namespace Backend.Services Assembly Backend.dll public class SimpleTextReport : ReportGenerator Inheritance object ReportGenerator SimpleTextReport Inherited Members ReportGenerator._localizer ReportGenerator.CreateFullReport(string) object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors SimpleTextReport(IStringLocalizer) public SimpleTextReport(IStringLocalizer localizer) Parameters localizer IStringLocalizer Methods FormatBody(string) protected override string FormatBody(string contentKey) Parameters contentKey string Returns string FormatFooter() protected override string FormatFooter() Returns string FormatHeader() protected override string FormatHeader() Returns string"
   },
   "api/Backend.Services.SkincareFacade.html": {
     "href": "api/Backend.Services.SkincareFacade.html",
-    "title": "Class SkincareFacade | SkincareArchitect Documentation",
+    "title": "Class SkincareFacade | SkincareArchitect Docs",
     "summary": "Class SkincareFacade Namespace Backend.Services Assembly Backend.dll Патерн Facade для керування складними операціями аналізу догляду. public class SkincareFacade Inheritance object SkincareFacade Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors SkincareFacade(ICompatibilityStrategy, ILogger<SkincareFacade>, IStringLocalizer<SkincareFacade>, ILogger<DiagnosticDecorator>) public SkincareFacade(ICompatibilityStrategy strategy, ILogger<SkincareFacade> logger, IStringLocalizer<SkincareFacade> localizer, ILogger<DiagnosticDecorator> diagnosticLogger) Parameters strategy ICompatibilityStrategy logger ILogger<SkincareFacade> localizer IStringLocalizer<SkincareFacade> diagnosticLogger ILogger<DiagnosticDecorator> Methods SimpleCheck(Product, Product) public string SimpleCheck(Product p1, Product p2) Parameters p1 Product p2 Product Returns string"
   },
   "api/Backend.Services.SkincareProvider.html": {
     "href": "api/Backend.Services.SkincareProvider.html",
-    "title": "Class SkincareProvider | SkincareArchitect Documentation",
+    "title": "Class SkincareProvider | SkincareArchitect Docs",
     "summary": "Class SkincareProvider Namespace Backend.Services Assembly Backend.dll Абстрактний клас \"Творець\" для фабричного методу. public abstract class SkincareProvider Inheritance object SkincareProvider Derived BasicProvider Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Methods CreateStrategy() public abstract ICompatibilityStrategy CreateStrategy() Returns ICompatibilityStrategy PerformCheck(Product, Product) public bool PerformCheck(Product p1, Product p2) Parameters p1 Product p2 Product Returns bool"
   },
   "api/Backend.Services.SystemSettings.html": {
     "href": "api/Backend.Services.SystemSettings.html",
-    "title": "Class SystemSettings | SkincareArchitect Documentation",
+    "title": "Class SystemSettings | SkincareArchitect Docs",
     "summary": "Class SystemSettings Namespace Backend.Services Assembly Backend.dll Глобальні налаштування системи. Реалізує патерн Singleton. public sealed class SystemSettings Inheritance object SystemSettings Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.ReferenceEquals(object, object) object.ToString() Properties InitializedAt Час ініціалізації налаштувань. public DateTime InitializedAt { get; } Property Value DateTime Version Версія застосунку. public string Version { get; } Property Value string Methods GetInstance(ILogger<SystemSettings>) Метод для отримання єдиного екземпляра класу. public static SystemSettings GetInstance(ILogger<SystemSettings> logger) Parameters logger ILogger<SystemSettings> Returns SystemSettings"
   },
   "api/Backend.Services.html": {
     "href": "api/Backend.Services.html",
-    "title": "Namespace Backend.Services | SkincareArchitect Documentation",
+    "title": "Namespace Backend.Services | SkincareArchitect Docs",
     "summary": "Namespace Backend.Services Classes AddProductCommand BasicProvider Конкретна фабрика для базового аналізу. CompatibilityProxy Патерн Proxy. Замісник для кешування результатів перевірки сумісності. ConflictNotifier Суб'єкт, який розсилає сповіщення. Патерн Observer. DiagnosticDecorator Патерн Decorator для вимірювання часу виконання стратегії. ProductBuilder Патерн Builder для створення складних об'єктів Product. ReportGenerator Базовий клас для генерації звітів. Патерн Template Method. SecurityLogger Конкретний спостерігач — логер безпеки. SimpleCompatibilityStrategy Реалізація базової стратегії перевірки сумісності інгредієнтів. Патерн: Strategy. SimpleTextReport SkincareFacade Патерн Facade для керування складними операціями аналізу догляду. SkincareProvider Абстрактний клас \"Творець\" для фабричного методу. SystemSettings Глобальні налаштування системи. Реалізує патерн Singleton. Interfaces ICommand ICompatibilityStrategy Інтерфейс стратегії для перевірки сумісності продуктів. Патерн: Strategy. IObserver"
   },
   "docs/getting-started.html": {
     "href": "docs/getting-started.html",
-    "title": "Getting Started | SkincareArchitect Documentation",
+    "title": "Getting Started | SkincareArchitect Docs",
     "summary": "Getting Started"
   },
   "docs/introduction.html": {
     "href": "docs/introduction.html",
-    "title": "Introduction | SkincareArchitect Documentation",
+    "title": "Introduction | SkincareArchitect Docs",
     "summary": "Introduction"
-  },
-  "index.html": {
-    "href": "index.html",
-    "title": "This is the HOMEPAGE. | SkincareArchitect Documentation",
-    "summary": "This is the HOMEPAGE. Refer to Markdown for how to write markdown files. Quick Start Notes: Add images to the images folder if the file is referencing an image."
   }
 }
