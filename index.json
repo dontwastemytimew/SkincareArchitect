@@ -107,12 +107,12 @@
   "api/Backend.SharedResource.html": {
     "href": "api/Backend.SharedResource.html",
     "title": "Class SharedResource | SkincareArchitect Documentation",
-    "summary": "Class SharedResource Namespace Backend Assembly Backend.dll public class SharedResource Inheritance object SharedResource Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString()"
+    "summary": "Class SharedResource Namespace Backend Assembly Backend.dll Маркерний клас для локалізації. Використовується як спільний ресурс для доступу до рядків перекладу (SharedResource.resx) з будь-якої частини програми. public class SharedResource Inheritance object SharedResource Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Remarks Цей клас залишається порожнім, оскільки його назва використовується сервісом IStringLocalizer для пошуку відповідних .resx файлів."
   },
   "api/Backend.html": {
     "href": "api/Backend.html",
     "title": "Namespace Backend | SkincareArchitect Documentation",
-    "summary": "Namespace Backend Classes SharedResource"
+    "summary": "Namespace Backend Classes SharedResource Маркерний клас для локалізації. Використовується як спільний ресурс для доступу до рядків перекладу (SharedResource.resx) з будь-якої частини програми."
   },
   "docs/getting-started.html": {
     "href": "docs/getting-started.html",

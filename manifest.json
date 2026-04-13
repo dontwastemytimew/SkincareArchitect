@@ -316,7 +316,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.SharedResource",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Backend.SharedResource.yml\" sourcestartlinenumber=\"1\">Маркерний клас для локалізації.\nВикористовується як спільний ресурс для доступу до рядків перекладу\n(SharedResource.resx) з будь-якої частини програми.</p>\n"
     },
     {
       "type": "ManagedReference",
