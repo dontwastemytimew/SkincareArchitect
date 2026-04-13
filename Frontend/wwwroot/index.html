@@ -19,58 +19,53 @@
 </header>
 
 <nav class="top-nav">
-    <a href="#" class="active" onclick="showConstructor()">конструктор</a>
-    <a href="#" onclick="showMyShelf()">моя полиця</a>
-    <a href="#">каталог</a>
-    <a href="#" onclick="showAbout()">про нас</a>
-    <button class="auth-btn" onclick="login()">увійти</button>
+    <a href="#" class="active" data-i18n="NavConstructor" onclick="showConstructor()">конструктор</a>
+    <a href="#" data-i18n="NavShelf" onclick="showMyShelf()">моя полиця</a>
+    <a href="#" data-i18n="NavCatalog">каталог</a>
+    <a href="#" data-i18n="NavAbout" onclick="showAbout()">про нас</a>
+    <button class="auth-btn" data-i18n="AuthLogin" onclick="login()">увійти</button>
 </nav>
-
-<div id="settingsPanel" class="settings-panel" style="display:none;">
-    <h4>мова / language</h4>
-    <button class="lang-btn" onclick="changeLang('uk')">українська</button>
-    <button class="lang-btn" onclick="changeLang('en')">english</button>
-</div>
 
 <main class="main-container">
     <div id="constructorSection" class="grid-layout">
         <div class="card">
-            <h3>конструктор рутини</h3>
+            <h3 data-i18n="TitleConstructor">конструктор рутини</h3>
             <div class="source-toggle">
-                <button id="btnAll" class="toggle-btn active" onclick="setSource('all')">Вся база</button>
-                <button id="btnShelf" class="toggle-btn" onclick="setSource('shelf')">Моя поличка</button>
+                <button id="btnAll" class="toggle-btn active" data-i18n="SourceAll" onclick="setSource('all')">Вся база</button>
+                <button id="btnShelf" class="toggle-btn" data-i18n="SourceShelf" onclick="setSource('shelf')">Моя поличка</button>
             </div>
             <select id="prodSelect">
-                <option value="">— виберіть баночку —</option>
+                <option value="" data-i18n="SelectPlaceholder">— виберіть баночку —</option>
             </select>
-            <button class="btn-add" onclick="addProductToAnalysis()">додати до аналізу</button>
+            <button class="btn-add" data-i18n="BtnAddAnalysis" onclick="addProductToAnalysis()">додати до аналізу</button>
             <div id="queueList" class="shelf-grid"></div>
         </div>
 
         <div class="card">
-            <h3>діагностика</h3>
-            <button class="btn-scan" onclick="runAnalysis()">запустити аналіз</button>
+            <h3 data-i18n="TitleAnalysis">діагностика</h3>
+            <button class="btn-scan" data-i18n="BtnRunScan" onclick="runAnalysis()">запустити аналіз</button>
             <div id="reportArea" class="report-box" style="display:none;"></div>
         </div>
-    </div> <div id="shelfSection" style="display:none; width: 100%;">
-    <div class="card" style="width: 100%; max-width: 800px; margin: 0 auto;">
-        <h3><i class="fas fa-box-open"></i> моя поличка</h3>
-        <p id="shelfUserName" style="font-style: italic; color: var(--lapis-lazuli);"></p>
-        <div id="fullShelfDisplay" class="full-shelf-grid"></div>
-        <button class="btn-undo" onclick="showConstructor()" style="margin-top:20px;">повернутись до конструктора</button>
     </div>
-</div>
+
+    <div id="shelfSection" style="display:none; width: 100%;">
+        <div class="card shelf-card">
+            <h3 data-i18n="NavShelf"><i class="fas fa-box-open"></i> моя поличка</h3>
+            <p id="shelfUserName" style="font-style: italic; color: var(--lapis-lazuli);"></p>
+            <div id="fullShelfDisplay" class="full-shelf-grid"></div>
+            <button class="btn-undo" data-i18n="BtnBack" onclick="showConstructor()" style="margin-top:20px;">повернутись до конструктора</button>
+        </div>
+    </div>
+
     <div id="aboutSection" style="display:none; width: 100%;">
         <div class="card shelf-card" style="text-align: center;">
-            <h3>про skincare architect</h3>
+            <h3 data-i18n="NavAbout">про skincare architect</h3>
             <div class="about-decor"></div>
-            <p class="about-text">
-                <strong>Skincare Architect</strong> — це ваш інтелектуальний помічник у світі косметології. Ми створили цей сервіс, щоб ви могли легко перевіряти сумісність ваших улюблених засобів та будувати ідеальну рутину без ризику для шкіри.
-                <br><br>
-                Наша система використовує сучасні алгоритми аналізу інгредієнтів, щоб ви точно знали результат вашого догляду.
+            <p class="about-text" data-i18n="AboutDescription">
+                Skincare Architect — це ваш інтелектуальний помічник у світі косметології. Ми створили цей сервіс, щоб ви могли легко перевіряти сумісність ваших улюблених засобів та будувати ідеальну рутину без ризику для шкіри.
             </p>
             <div class="about-decor"></div>
-            <button class="btn-undo" onclick="showConstructor()">повернутись до конструктора</button>
+            <button class="btn-undo" data-i18n="BtnBack" onclick="showConstructor()">повернутись до конструктора</button>
         </div>
     </div>
 </main>

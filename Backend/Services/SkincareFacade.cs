@@ -1,7 +1,5 @@
 ﻿using Backend.Models;
 using Microsoft.Extensions.Localization;
-// using Backend.Resources;
-using Backend.Services;
 
 namespace Backend.Services;
 
@@ -12,13 +10,13 @@ public class SkincareFacade
 {
     private readonly ICompatibilityStrategy _strategy;
     private readonly ILogger<SkincareFacade> _logger;
-    private readonly IStringLocalizer<SkincareFacade> _localizer;
+    private readonly IStringLocalizer<SharedResource> _localizer;
     private readonly ILogger<DiagnosticDecorator> _diagnosticLogger;
 
     public SkincareFacade(
         ICompatibilityStrategy strategy, 
         ILogger<SkincareFacade> logger, 
-        IStringLocalizer<SkincareFacade> localizer,
+        IStringLocalizer<SharedResource> localizer,
         ILogger<DiagnosticDecorator> diagnosticLogger) 
     {
         _strategy = strategy;
@@ -48,4 +46,11 @@ public class SkincareFacade
         var report = new SimpleTextReport(_localizer);
         return report.CreateFullReport(resultKey);
     }
+    
+    /// <summary>
+    /// Отримує переклад за ключем із ресурсів.
+    /// </summary>
+    /// <param name="key">Ключ (наприклад, "NavConstructor")</param>
+    /// <returns>Перекладений рядок</returns>
+    public string GetTranslation(string key) => _localizer[key].Value;
 }

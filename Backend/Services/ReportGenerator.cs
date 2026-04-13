@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Localization;
 namespace Backend.Services;
-// using Backend.Resources;
 
 /// <summary>
 /// Базовий клас для генерації звітів.
@@ -29,10 +28,9 @@ public class SimpleTextReport : ReportGenerator
 {
     public SimpleTextReport(IStringLocalizer localizer) : base(localizer) { }
     
-    protected override string FormatHeader() => "--- РЕЗУЛЬТАТ АНАЛІЗУ ---";
+    protected override string FormatHeader() => _localizer["RoutineHeader"];
     
-    protected override string FormatBody(string contentKey) => 
-        contentKey == "Compatible" ? "Засоби сумісні! Можна наносити." : "КОНФЛІКТ: Ці засоби не можна вживати разом!";
+    protected override string FormatBody(string contentKey) => _localizer[contentKey];
         
-    protected override string FormatFooter() => "[SkincareArchitect 2026]";
+    protected override string FormatFooter() => _localizer["RoutineFooter"];
 }

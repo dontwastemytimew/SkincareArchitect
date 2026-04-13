@@ -18,4 +18,5 @@ Logs/
 _site/
 obj/
 api/
+_site/
 .manifest

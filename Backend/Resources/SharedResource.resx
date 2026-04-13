@@ -33,4 +33,55 @@
     <data name="RoutineFooter" xml:space="preserve">
         <value>[SkincareArchitect 2026 - Stay Glowing]</value>
     </data>
+    <data name="NavConstructor" xml:space="preserve">
+        <value>constructor</value>
+    </data>
+    <data name="NavShelf" xml:space="preserve">
+        <value>my shelf</value>
+    </data>
+    <data name="NavAbout" xml:space="preserve">
+        <value>about us</value>
+    </data>
+    <data name="AuthLogin" xml:space="preserve">
+        <value>login</value>
+    </data>
+    <data name="AuthWelcome" xml:space="preserve">
+        <value>Welcome</value>
+    </data>
+    <data name="BtnAddAnalysis" xml:space="preserve">
+        <value>add to analysis</value>
+    </data>
+    <data name="BtnRunScan" xml:space="preserve">
+        <value>run scanning</value>
+    </data>
+    <data name="SourceAll" xml:space="preserve">
+        <value>Global Base</value>
+    </data>
+    <data name="SourceShelf" xml:space="preserve">
+        <value>My Shelf</value>
+    </data>
+    <data name="MorningTitle" xml:space="preserve">
+        <value>MORNING</value>
+    </data>
+    <data name="EveningTitle" xml:space="preserve">
+        <value>EVENING</value>
+    </data>
+    <data name="NavCatalog" xml:space="preserve">
+        <value>catalog</value>
+    </data>
+    <data name="TitleConstructor" xml:space="preserve">
+        <value>routine architect</value>
+    </data>
+    <data name="SelectPlaceholder" xml:space="preserve">
+        <value>— select a product —</value>
+    </data>
+    <data name="TitleAnalysis" xml:space="preserve">
+        <value>diagnostics</value>
+    </data>
+    <data name="BtnBack" xml:space="preserve">
+        <value>back to constructor</value>
+    </data>
+    <data name="AboutDescription" xml:space="preserve">
+        <value>Skincare Architect is your intelligent assistant in the world of cosmetology. We created this service so you can easily check the compatibility of your favorite products and build the perfect routine without risking your skin.</value>
+    </data>
 </root>

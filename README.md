@@ -20,7 +20,10 @@ This project is an intelligent assistant designed to help users navigate the com
 
 ---
 
-> [!IMPORTANT]
-> **Project Goal:** > To prevent skin irritation caused by incompatible products and to simplify the daily routine for skincare enthusiasts.
+> [!NOTE]
+> You can view the full technical documentation and API here: [SkincareArchitect Docs](https://dontwastemytimew.github.io/SkincareArchitect/)
+
+> [!TIP]
+> **Project Goal:** To prevent skin irritation caused by incompatible products and to simplify the daily routine for skincare enthusiasts.
 
 *Developed as part of the Software Engineering curriculum, 2026.*

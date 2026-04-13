@@ -1,5 +1,6 @@
 using Serilog;
 using Backend.Services;
+using Backend;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,12 @@ Log.Logger = new LoggerConfiguration()
 builder.Host.UseSerilog();
 
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization(options => {
+        options.DataAnnotationLocalizerProvider = (type, factory) =>
+            factory.Create(typeof(SharedResource));
+    });
 
 builder.Services.AddScoped<ICompatibilityStrategy, SimpleCompatibilityStrategy>();
 builder.Services.AddScoped<SkincareFacade>();

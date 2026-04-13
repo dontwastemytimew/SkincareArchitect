@@ -98,4 +98,19 @@ public class SkincareController : ControllerBase
         public string Name { get; set; }
         public string Type { get; set; }
     }
+    
+    [HttpGet("translations")]
+    public IActionResult GetTranslations()
+    {
+        var keys = new[] { 
+            "NavConstructor", "NavShelf", "NavCatalog", "NavAbout", "AuthLogin", 
+            "SourceAll", "SourceShelf", "BtnAddAnalysis", "BtnRunScan", "BtnBack",
+            "HeaderOverlay", "TitleConstructor", "TitleAnalysis", "SelectPlaceholder",
+            "AboutDescription", "FooterText" 
+        };
+        
+        var translations = keys.ToDictionary(k => k, k => _facade.GetTranslation(k));
+    
+        return Ok(translations);
+    }
 }

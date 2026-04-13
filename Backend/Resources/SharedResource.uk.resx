@@ -33,4 +33,55 @@
     <data name="RoutineFooter" xml:space="preserve">
         <value>[SkincareArchitect 2026 - Сяйте]</value>
     </data>
+    <data name="NavConstructor" xml:space="preserve">
+        <value>конструктор</value>
+    </data>
+    <data name="NavShelf" xml:space="preserve">
+        <value>моя полиця</value>
+    </data>
+    <data name="NavAbout" xml:space="preserve">
+        <value>про нас</value>
+    </data>
+    <data name="AuthLogin" xml:space="preserve">
+        <value>увійти</value>
+    </data>
+    <data name="AuthWelcome" xml:space="preserve">
+        <value>Вітаємо</value>
+    </data>
+    <data name="BtnAddAnalysis" xml:space="preserve">
+        <value>додати до аналізу</value>
+    </data>
+    <data name="BtnRunScan" xml:space="preserve">
+        <value>запустити сканування</value>
+    </data>
+    <data name="SourceAll" xml:space="preserve">
+        <value>Вся база</value>
+    </data>
+    <data name="SourceShelf" xml:space="preserve">
+        <value>Моя поличка</value>
+    </data>
+    <data name="MorningTitle" xml:space="preserve">
+        <value>РАНОК</value>
+    </data>
+    <data name="EveningTitle" xml:space="preserve">
+        <value>ВЕЧІР</value>
+    </data>
+    <data name="TitleConstructor" xml:space="preserve">
+        <value>конструктор рутини</value>
+    </data>
+    <data name="SelectPlaceholder" xml:space="preserve">
+        <value>— виберіть баночку —</value>
+    </data>
+    <data name="NavCatalog" xml:space="preserve">
+        <value>каталог</value>
+    </data>
+    <data name="TitleAnalysis" xml:space="preserve">
+        <value>діагностика</value>
+    </data>
+    <data name="BtnBack" xml:space="preserve">
+        <value>повернутись до конструктора</value>
+    </data>
+    <data name="AboutDescription" xml:space="preserve">
+        <value>Skincare Architect — це ваш інтелектуальний помічник у світі косметології. Ми створили цей сервіс, щоб ви могли легко перевіряти сумісність ваших улюблених засобів та будувати ідеальну рутину без ризику для шкіри.</value>
+    </data>
 </root>
