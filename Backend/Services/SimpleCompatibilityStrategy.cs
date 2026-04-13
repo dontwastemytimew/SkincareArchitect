@@ -1,24 +1,34 @@
 ﻿using Backend.Models;
-using Microsoft.Extensions.Logging;
 
 namespace Backend.Services;
 
 /// <summary>
-/// Реалізація базової стратегії перевірки сумісності інгредієнтів.
-/// Патерн: Strategy.
+/// Реалізація конкретної стратегії перевірки сумісності.
+/// Реалізує патерн <c>Strategy</c>.
 /// </summary>
 public class SimpleCompatibilityStrategy : ICompatibilityStrategy
 {
+    /// <summary>Сервіс логування для відстеження процесу перевірки.</summary>
     private readonly ILogger<SimpleCompatibilityStrategy> _logger;
 
+    /// <summary>
+    /// Ініціалізує новий екземпляр стратегії з підтримкою логування.
+    /// </summary>
+    /// <param name="logger">Екземпляр логера.</param>
     public SimpleCompatibilityStrategy(ILogger<SimpleCompatibilityStrategy> logger)
     {
         _logger = logger;
     }
 
     /// <summary>
-    /// Перевіряє, чи немає конфлікту між активними компонентами.
+    /// Виконує алгоритм порівняння активних інгредієнтів двох продуктів.
     /// </summary>
+    /// <param name="p1">Перший косметичний продукт.</param>
+    /// <param name="p2">Другий косметичний продукт.</param>
+    /// <returns>
+    /// <c>true</c>, якщо продукти сумісні; 
+    /// <c>false</c>, якщо знайдено критичний конфлікт (наприклад, Ретиноїди + Кислоти).
+    /// </returns>
     public bool Check(Product p1, Product p2)
     {
         _logger.LogInformation("Аналіз сумісності: {P1} та {P2}", p1.Name, p2.Name);

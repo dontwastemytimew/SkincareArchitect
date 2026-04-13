@@ -1,11 +1,10 @@
-﻿using Backend.Models;
-using Backend.Services;
+﻿using Backend.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers;
 
 /// <summary>
-/// Контролер для керування аналізом косметичних засобів.
+/// API-контролер для обробки запитів, пов'язаних з аналізом косметики та локалізацією інтерфейсу.
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
@@ -14,30 +13,19 @@ public class SkincareController : ControllerBase
     private readonly SkincareFacade _facade;
 
     /// <summary>
-    /// Фасад всередині тримає логер, стратегію та локалізатор.
+    /// Конструктор контролера.
     /// </summary>
+    /// <param name="facade">Фасад, що об'єднує логіку перевірки сумісності та локалізації.</param>
     public SkincareController(SkincareFacade facade)
     {
         _facade = facade;
     }
-
-    /// <summary>
-    /// Тестовий метод.
-    /// </summary>
-    [HttpGet("test")]
-    public IActionResult GetTest()
-    {
-        var p1 = new Product { Name = "Product 1" };
-        var p2 = new Product { Name = "Product 2" };
-        
-        string message = _facade.SimpleCheck(p1, p2);
-
-        return Ok(new { 
-            status = "Active", 
-            message = message 
-        });
-    }
     
+    /// <summary>
+    /// Отримує системну інформацію про додаток (версія, час запуску).
+    /// Використовує патерн Singleton через SystemSettings.
+    /// </summary>
+    /// <returns>Дані про стан сервера.</returns>
     [HttpGet("info")]
     public IActionResult GetInfo()
     {
@@ -51,30 +39,11 @@ public class SkincareController : ControllerBase
         });
     }
     
-    [HttpGet("test-conflict")]
-    public IActionResult GetConflict()
-    {
-        var builder = new ProductBuilder();
-
-        // Створюємо сироватку з Ретинолом
-        var p1 = builder.Create("Retinol Serum")
-            .AddIngredient("Pure Retinol", "Retinoid")
-            .Build();
-
-        // Створюємо пілінг з Кислотами
-        var p2 = builder.Create("Acid Peel")
-            .AddIngredient("Glycolic Acid", "Acid")
-            .Build();
-
-        string result = _facade.SimpleCheck(p1, p2);
-
-        return Ok(new { 
-            product1 = p1.Name, 
-            product2 = p2.Name, 
-            analysis = result 
-        });
-    }
-    
+    /// <summary>
+    /// Основний метод аналізу списку засобів, отриманих з фронтенду.
+    /// </summary>
+    /// <param name="frontendProducts">Список спрощених моделей продуктів (JSON).</param>
+    /// <returns>Результат перевірки сумісності першої пари засобів.</returns>
     [HttpPost("analyze")]
     public IActionResult Analyze([FromBody] List<ProductViewModel> frontendProducts)
     {
@@ -94,11 +63,20 @@ public class SkincareController : ControllerBase
         return Ok(new { analysis = report });
     }
     
+    /// <summary>
+    /// Допоміжна модель (DTO) для отримання даних про продукт з фронтенду.
+    /// </summary>
     public class ProductViewModel {
+        /// <summary>Назва засобу</summary>
         public string Name { get; set; }
+        /// <summary>Тип активного інгредієнта (Retinoid, Acid, Moisturizer тощо)</summary>
         public string Type { get; set; }
     }
     
+    /// <summary>
+    /// Отримує словник перекладів для елементів інтерфейсу на основі заголовка Accept-Language.
+    /// </summary>
+    /// <returns>Словник ключ-значення для локалізації фронтенду.</returns>
     [HttpGet("translations")]
     public IActionResult GetTranslations()
     {

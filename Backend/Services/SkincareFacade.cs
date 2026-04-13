@@ -4,7 +4,8 @@ using Microsoft.Extensions.Localization;
 namespace Backend.Services;
 
 /// <summary>
-/// Патерн Facade для керування складними операціями аналізу догляду.
+/// Надає спрощений інтерфейс для взаємодії зі складною системою аналізу складу.
+/// Використовує патерн <c>Facade</c>.
 /// </summary>
 public class SkincareFacade
 {
@@ -13,6 +14,9 @@ public class SkincareFacade
     private readonly IStringLocalizer<SharedResource> _localizer;
     private readonly ILogger<DiagnosticDecorator> _diagnosticLogger;
 
+    /// <summary>
+    /// Конструктор фасаду, що впроваджує необхідні залежності через DI.
+    /// </summary>
     public SkincareFacade(
         ICompatibilityStrategy strategy, 
         ILogger<SkincareFacade> logger, 
@@ -25,6 +29,15 @@ public class SkincareFacade
         _diagnosticLogger = diagnosticLogger;
     }
 
+    /// <summary>
+    /// Виконує комплексну перевірку двох засобів, включаючи логування, проксі-захист та генерацію звіту.
+    /// </summary>
+    /// <remarks>
+    /// Метод задіює патерни: Proxy, Decorator, Observer та Template Method.
+    /// </remarks>
+    /// <param name="p1">Перший продукт для аналізу.</param>
+    /// <param name="p2">Другий продукт для аналізу.</param>
+    /// <returns>Локалізований текстовий звіт про сумісність.</returns>
     public string SimpleCheck(Product p1, Product p2)
     {
         _logger.LogInformation("Фасад аналізує сумісність...");
@@ -48,9 +61,10 @@ public class SkincareFacade
     }
     
     /// <summary>
-    /// Отримує переклад за ключем із ресурсів.
+    /// Отримує локалізований рядок за заданим ключем.
+    /// Використовується фронтендом для динамічної зміни мови інтерфейсу.
     /// </summary>
-    /// <param name="key">Ключ (наприклад, "NavConstructor")</param>
-    /// <returns>Перекладений рядок</returns>
+    /// <param name="key">Ключ ресурсу (наприклад, "BtnRunScan").</param>
+    /// <returns>Значення перекладу з поточного .resx файлу.</returns>
     public string GetTranslation(string key) => _localizer[key].Value;
 }

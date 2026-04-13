@@ -3,11 +3,16 @@
 namespace Backend.Services;
 
 /// <summary>
-/// Інтерфейс стратегії для перевірки сумісності продуктів.
-/// Патерн: Strategy.
+/// Інтерфейс, що визначає контракт для алгоритмів перевірки сумісності.
+/// Реалізує патерн <c>Strategy</c>.
 /// </summary>
 public interface ICompatibilityStrategy
 {
-    /// <summary> Перевіряє сумісність двох продуктів. </summary>
+    /// <summary>
+    /// Виконує перевірку сумісності між двома об'єктами продуктів.
+    /// </summary>
+    /// <param name="p1">Перший продукт для порівняння.</param>
+    /// <param name="p2">Другий продукт для порівняння.</param>
+    /// <returns>True, якщо продукти безпечно використовувати разом; інакше — false.</returns>
     bool Check(Product p1, Product p2);
 }

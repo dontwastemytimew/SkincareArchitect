@@ -3,18 +3,38 @@
 namespace Backend.Services;
 
 /// <summary>
-/// Патерн Proxy. Замісник для кешування результатів перевірки сумісності.
+/// Реалізація патерна Proxy (Замісник).
+/// Забезпечує шар кешування для важких операцій аналізу сумісності інгредієнтів.
 /// </summary>
 public class CompatibilityProxy : ICompatibilityStrategy
 {
+    /// <summary>
+    /// Посилання на реальну стратегію перевірки (Real Subject).
+    /// </summary>
     private readonly ICompatibilityStrategy _realStrategy;
+    
+    /// <summary>
+    /// Внутрішнє сховище для кешування результатів. 
+    /// Ключ — назви двох продуктів, значення — результат сумісності.
+    /// </summary>
     private readonly Dictionary<string, bool> _cache = new();
 
+    /// <summary>
+    /// Ініціалізує новий екземпляр класу <see cref="CompatibilityProxy"/>.
+    /// </summary>
+    /// <param name="realStrategy">Реальна стратегія, яку потрібно загорнути в проксі.</param>
     public CompatibilityProxy(ICompatibilityStrategy realStrategy)
     {
         _realStrategy = realStrategy;
     }
 
+    /// <summary>
+    /// Перевіряє сумісність двох продуктів.
+    /// Спочатку шукає результат у кеші, якщо не знайдено — викликає реальну стратегію.
+    /// </summary>
+    /// <param name="p1">Перший косметичний засіб.</param>
+    /// <param name="p2">Другий косметичний засіб.</param>
+    /// <returns>True, якщо засоби сумісні; інакше — false.</returns>
     public bool Check(Product p1, Product p2)
     {
         string key = $"{p1.Name}_{p2.Name}";
