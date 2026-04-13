@@ -96,17 +96,19 @@ Classes
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Models.Ingredient.html">Ingredient</a></dt>
-      <dd><p>Хімічний інгредієнт.</p>
+      <dd><p>Представляє хімічний інгредієнт, що входить до складу косметичного засобу.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-      <dd><p>Косметичний продукт, що містить інгредієнти.</p>
+      <dd><p>Представляє окремий косметичний продукт.
+Є &quot;листком&quot; у структурі патерна Composite.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Models.Routine.html">Routine</a></dt>
-      <dd><p>Патерн Composite. Набір засобів (рутина). Може містити як окремі продукти, так і інші набори.</p>
+      <dd><p>Представляє набір косметичних засобів (комплексну рутину).
+Виступає як &quot;Контейнер&quot; (Composite) у структурі патерна Composite.</p>
 </dd>
     </dl>
     <h3 id="interfaces">
@@ -114,7 +116,8 @@ Interfaces
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Models.ISkincareComponent.html">ISkincareComponent</a></dt>
-      <dd><p>Патерн Composite. Спільний інтерфейс для окремих продуктів та їх наборів.</p>
+      <dd><p>Інтерфейс компонента догляду за шкірою.
+Реалізує патерн Composite для об'єднання окремих продуктів у набори (рутини).</p>
 </dd>
     </dl>
 

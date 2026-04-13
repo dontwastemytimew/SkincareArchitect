@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class SystemSettings | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Глобальні налаштування системи. Реалізує патерн Singleton.">
+      <meta name="description" content="Глобальні налаштування системи. Реалізує патерн Singleton для забезпечення єдиної точки доступу до конфігурації.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Backend_Services_SystemSettings" data-uid="Backend.Services.SystemSettings" class="text-break">
-Class SystemSettings  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SystemSettings.cs/#L8"><i class="bi bi-code-slash"></i></a>
+Class SystemSettings  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SystemSettings.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class SystemSettings  <a class="header-action link-secondary" title="View source
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Глобальні налаштування системи. Реалізує патерн Singleton.</p>
+  <div class="markdown summary"><p>Глобальні налаштування системи.
+Реалізує патерн <code>Singleton</code> для забезпечення єдиної точки доступу до конфігурації.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -144,6 +145,10 @@ Class SystemSettings  <a class="header-action link-secondary" title="View source
 
 
 
+  <h2 id="Backend_Services_SystemSettings_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Клас є <code>sealed</code>, що запобігає успадкуванню, та використовує механізм
+<code>double-check locking</code> для потокобезпечної ініціалізації.</p>
+</div>
 
 
   <h2 class="section" id="properties">Properties
@@ -154,10 +159,10 @@ Class SystemSettings  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_SystemSettings_InitializedAt" data-uid="Backend.Services.SystemSettings.InitializedAt">
   InitializedAt
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SystemSettings.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SystemSettings.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Час ініціалізації налаштувань.</p>
+  <div class="markdown level1 summary"><p>Отримує дату та час ініціалізації налаштувань.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -186,10 +191,10 @@ Class SystemSettings  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_SystemSettings_Version" data-uid="Backend.Services.SystemSettings.Version">
   Version
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SystemSettings.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SystemSettings.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Версія застосунку.</p>
+  <div class="markdown level1 summary"><p>Отримує поточну версію застосунку.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -222,10 +227,10 @@ Class SystemSettings  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_SystemSettings_GetInstance_Microsoft_Extensions_Logging_ILogger_Backend_Services_SystemSettings__" data-uid="Backend.Services.SystemSettings.GetInstance(Microsoft.Extensions.Logging.ILogger{Backend.Services.SystemSettings})">
   GetInstance(ILogger&lt;SystemSettings&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SystemSettings.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SystemSettings.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Метод для отримання єдиного екземпляра класу.</p>
+  <div class="markdown level1 summary"><p>Повертає єдиний екземпляр класу <a class="xref" href="Backend.Services.SystemSettings.html">SystemSettings</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -236,13 +241,15 @@ Class SystemSettings  <a class="header-action link-secondary" title="View source
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>logger</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="Backend.Services.SystemSettings.html">SystemSettings</a>&gt;</dt>
-    <dd></dd>
+    <dd><p>Логер, що буде переданий у конструктор при першому зверненні.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Backend.Services.SystemSettings.html">SystemSettings</a></dt>
-    <dd></dd>
+    <dd><p>Існуючий або новостворений об'єкт налаштувань.</p>
+</dd>
   </dl>
 
 
@@ -251,6 +258,9 @@ Class SystemSettings  <a class="header-action link-secondary" title="View source
 
 
 
+  <h4 class="section" id="Backend_Services_SystemSettings_GetInstance_Microsoft_Extensions_Logging_ILogger_Backend_Services_SystemSettings___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Використовує блокування <code>lock</code>, що гарантує коректну роботу в багатопотоковому середовищі.</p>
+</div>
 
 
 
@@ -259,7 +269,7 @@ Class SystemSettings  <a class="header-action link-secondary" title="View source
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SystemSettings.cs/#L8" class="edit-link">Edit this page</a>
+          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SystemSettings.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

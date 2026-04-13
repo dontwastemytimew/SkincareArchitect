@@ -95,87 +95,76 @@
 Classes
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="Backend.Services.AddProductCommand.html">AddProductCommand</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Backend.Services.BasicProvider.html">BasicProvider</a></dt>
-      <dd><p>Конкретна фабрика для базового аналізу.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
       <dt><a class="xref" href="Backend.Services.CompatibilityProxy.html">CompatibilityProxy</a></dt>
-      <dd><p>Патерн Proxy. Замісник для кешування результатів перевірки сумісності.</p>
+      <dd><p>Реалізація патерна Proxy (Замісник).
+Забезпечує шар кешування для важких операцій аналізу сумісності інгредієнтів.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Services.ConflictNotifier.html">ConflictNotifier</a></dt>
-      <dd><p>Суб'єкт, який розсилає сповіщення.
-Патерн Observer.</p>
+      <dd><p>Суб'єкт, який керує списком спостерігачів та розсилає їм повідомлення.
+Патерн <code>Observer</code>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Services.DiagnosticDecorator.html">DiagnosticDecorator</a></dt>
-      <dd><p>Патерн Decorator для вимірювання часу виконання стратегії.</p>
+      <dd><p>Реалізація патерна Decorator для моніторингу продуктивності.
+Додає функціонал вимірювання часу виконання до будь-якої стратегії сумісності.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Services.ProductBuilder.html">ProductBuilder</a></dt>
-      <dd><p>Патерн Builder для створення складних об'єктів Product.</p>
+      <dd><p>Реалізація патерна Builder для покрокового створення об'єктів косметичних засобів (Product).</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Services.ReportGenerator.html">ReportGenerator</a></dt>
-      <dd><p>Базовий клас для генерації звітів.
-Патерн Template Method.</p>
+      <dd><p>Абстрактний базовий клас, що реалізує патерн Template Method для генерації звітів.
+Визначає скелет алгоритму формування звіту.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Services.SecurityLogger.html">SecurityLogger</a></dt>
-      <dd><p>Конкретний спостерігач — логер безпеки.</p>
+      <dd><p>Конкретна реалізація спостерігача, яка записує сповіщення у системний лог.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Services.SimpleCompatibilityStrategy.html">SimpleCompatibilityStrategy</a></dt>
-      <dd><p>Реалізація базової стратегії перевірки сумісності інгредієнтів.
-Патерн: Strategy.</p>
+      <dd><p>Реалізація конкретної стратегії перевірки сумісності.
+Реалізує патерн <code>Strategy</code>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Services.SimpleTextReport.html">SimpleTextReport</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Backend.Services.SkincareFacade.html">SkincareFacade</a></dt>
-      <dd><p>Патерн Facade для керування складними операціями аналізу догляду.</p>
+      <dd><p>Конкретна реалізація генератора звітів у текстовому форматі.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Backend.Services.SkincareProvider.html">SkincareProvider</a></dt>
-      <dd><p>Абстрактний клас &quot;Творець&quot; для фабричного методу.</p>
+      <dt><a class="xref" href="Backend.Services.SkincareFacade.html">SkincareFacade</a></dt>
+      <dd><p>Надає спрощений інтерфейс для взаємодії зі складною системою аналізу складу.
+Використовує патерн <code>Facade</code>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Services.SystemSettings.html">SystemSettings</a></dt>
-      <dd><p>Глобальні налаштування системи. Реалізує патерн Singleton.</p>
+      <dd><p>Глобальні налаштування системи.
+Реалізує патерн <code>Singleton</code> для забезпечення єдиної точки доступу до конфігурації.</p>
 </dd>
     </dl>
     <h3 id="interfaces">
 Interfaces
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="Backend.Services.ICommand.html">ICommand</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
       <dt><a class="xref" href="Backend.Services.ICompatibilityStrategy.html">ICompatibilityStrategy</a></dt>
-      <dd><p>Інтерфейс стратегії для перевірки сумісності продуктів.
-Патерн: Strategy.</p>
+      <dd><p>Інтерфейс, що визначає контракт для алгоритмів перевірки сумісності.
+Реалізує патерн <code>Strategy</code>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Backend.Services.IObserver.html">IObserver</a></dt>
-      <dd></dd>
+      <dd><p>Визначає інтерфейс для об'єктів, які мають отримувати сповіщення від суб'єкта.
+Компонент патерну <code>Observer</code>.</p>
+</dd>
     </dl>
 
 

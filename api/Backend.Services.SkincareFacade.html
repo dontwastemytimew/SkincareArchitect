@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class SkincareFacade | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Патерн Facade для керування складними операціями аналізу догляду.">
+      <meta name="description" content="Надає спрощений інтерфейс для взаємодії зі складною системою аналізу складу. Використовує патерн Facade.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Backend_Services_SkincareFacade" data-uid="Backend.Services.SkincareFacade" class="text-break">
-Class SkincareFacade  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SkincareFacade.cs/#L9"><i class="bi bi-code-slash"></i></a>
+Class SkincareFacade  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SkincareFacade.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class SkincareFacade  <a class="header-action link-secondary" title="View source
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Патерн Facade для керування складними операціями аналізу догляду.</p>
+  <div class="markdown summary"><p>Надає спрощений інтерфейс для взаємодії зі складною системою аналізу складу.
+Використовує патерн <code>Facade</code>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -157,10 +158,11 @@ Class SkincareFacade  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_SkincareFacade__ctor_Backend_Services_ICompatibilityStrategy_Microsoft_Extensions_Logging_ILogger_Backend_Services_SkincareFacade__Microsoft_Extensions_Localization_IStringLocalizer_Backend_SharedResource__Microsoft_Extensions_Logging_ILogger_Backend_Services_DiagnosticDecorator__" data-uid="Backend.Services.SkincareFacade.#ctor(Backend.Services.ICompatibilityStrategy,Microsoft.Extensions.Logging.ILogger{Backend.Services.SkincareFacade},Microsoft.Extensions.Localization.IStringLocalizer{Backend.SharedResource},Microsoft.Extensions.Logging.ILogger{Backend.Services.DiagnosticDecorator})">
   SkincareFacade(ICompatibilityStrategy, ILogger&lt;SkincareFacade&gt;, IStringLocalizer&lt;SharedResource&gt;, ILogger&lt;DiagnosticDecorator&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SkincareFacade.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SkincareFacade.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Конструктор фасаду, що впроваджує необхідні залежності через DI.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -198,10 +200,11 @@ Class SkincareFacade  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_SkincareFacade_GetTranslation_System_String_" data-uid="Backend.Services.SkincareFacade.GetTranslation(System.String)">
   GetTranslation(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SkincareFacade.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SkincareFacade.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Отримує переклад за ключем із ресурсів.</p>
+  <div class="markdown level1 summary"><p>Отримує локалізований рядок за заданим ключем.
+Використовується фронтендом для динамічної зміни мови інтерфейсу.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -212,14 +215,14 @@ Class SkincareFacade  <a class="header-action link-secondary" title="View source
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Ключ (наприклад, &quot;NavConstructor&quot;)</p>
+    <dd><p>Ключ ресурсу (наприклад, &quot;BtnRunScan&quot;).</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Перекладений рядок</p>
+    <dd><p>Значення перекладу з поточного .resx файлу.</p>
 </dd>
   </dl>
 
@@ -237,10 +240,11 @@ Class SkincareFacade  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_SkincareFacade_SimpleCheck_Backend_Models_Product_Backend_Models_Product_" data-uid="Backend.Services.SkincareFacade.SimpleCheck(Backend.Models.Product,Backend.Models.Product)">
   SimpleCheck(Product, Product)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SkincareFacade.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SkincareFacade.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Виконує комплексну перевірку двох засобів, включаючи логування, проксі-захист та генерацію звіту.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -250,15 +254,18 @@ Class SkincareFacade  <a class="header-action link-secondary" title="View source
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>p1</code> <a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-    <dd></dd>
+    <dd><p>Перший продукт для аналізу.</p>
+</dd>
     <dt><code>p2</code> <a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-    <dd></dd>
+    <dd><p>Другий продукт для аналізу.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Локалізований текстовий звіт про сумісність.</p>
+</dd>
   </dl>
 
 
@@ -267,6 +274,9 @@ Class SkincareFacade  <a class="header-action link-secondary" title="View source
 
 
 
+  <h4 class="section" id="Backend_Services_SkincareFacade_SimpleCheck_Backend_Models_Product_Backend_Models_Product__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Метод задіює патерни: Proxy, Decorator, Observer та Template Method.</p>
+</div>
 
 
 
@@ -275,7 +285,7 @@ Class SkincareFacade  <a class="header-action link-secondary" title="View source
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SkincareFacade.cs/#L9" class="edit-link">Edit this page</a>
+          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SkincareFacade.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

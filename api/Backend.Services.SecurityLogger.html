@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class SecurityLogger | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Конкретний спостерігач — логер безпеки.">
+      <meta name="description" content="Конкретна реалізація спостерігача, яка записує сповіщення у системний лог.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Backend_Services_SecurityLogger" data-uid="Backend.Services.SecurityLogger" class="text-break">
-Class SecurityLogger  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L28"><i class="bi bi-code-slash"></i></a>
+Class SecurityLogger  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,7 @@ Class SecurityLogger  <a class="header-action link-secondary" title="View source
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Конкретний спостерігач — логер безпеки.</p>
+  <div class="markdown summary"><p>Конкретна реалізація спостерігача, яка записує сповіщення у системний лог.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -163,10 +163,11 @@ Class SecurityLogger  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_SecurityLogger__ctor_Microsoft_Extensions_Logging_ILogger_" data-uid="Backend.Services.SecurityLogger.#ctor(Microsoft.Extensions.Logging.ILogger)">
   SecurityLogger(ILogger)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Ініціалізує новий екземпляр логера сповіщень.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -176,7 +177,8 @@ Class SecurityLogger  <a class="header-action link-secondary" title="View source
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>logger</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger">ILogger</a></dt>
-    <dd></dd>
+    <dd><p>Екземпляр системного логера.</p>
+</dd>
   </dl>
 
 
@@ -198,10 +200,11 @@ Class SecurityLogger  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_SecurityLogger_Update_System_String_" data-uid="Backend.Services.SecurityLogger.Update(System.String)">
   Update(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Реалізація методу Update, що записує попередження у лог.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -211,7 +214,8 @@ Class SecurityLogger  <a class="header-action link-secondary" title="View source
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Повідомлення про конфлікт складників.</p>
+</dd>
   </dl>
 
 
@@ -229,7 +233,7 @@ Class SecurityLogger  <a class="header-action link-secondary" title="View source
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L28" class="edit-link">Edit this page</a>
+          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L45" class="edit-link">Edit this page</a>
         </div>
 
 

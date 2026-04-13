@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface ISkincareComponent | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Патерн Composite. Спільний інтерфейс для окремих продуктів та їх наборів.">
+      <meta name="description" content="Інтерфейс компонента догляду за шкірою. Реалізує патерн Composite для об&#39;єднання окремих продуктів у набори (рутини).">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Backend_Models_ISkincareComponent" data-uid="Backend.Models.ISkincareComponent" class="text-break">
-Interface ISkincareComponent  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/ISkincareComponent.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Interface ISkincareComponent  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/ISkincareComponent.cs/#L7"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Interface ISkincareComponent  <a class="header-action link-secondary" title="Vie
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Патерн Composite. Спільний інтерфейс для окремих продуктів та їх наборів.</p>
+  <div class="markdown summary"><p>Інтерфейс компонента догляду за шкірою.
+Реалізує патерн Composite для об'єднання окремих продуктів у набори (рутини).</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -132,10 +133,11 @@ Interface ISkincareComponent  <a class="header-action link-secondary" title="Vie
 
   <h3 id="Backend_Models_ISkincareComponent_GetAllIngredients" data-uid="Backend.Models.ISkincareComponent.GetAllIngredients">
   GetAllIngredients()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/ISkincareComponent.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/ISkincareComponent.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Повертає повний список інгредієнтів усіх вкладених засобів.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -146,7 +148,8 @@ Interface ISkincareComponent  <a class="header-action link-secondary" title="Vie
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Backend.Models.Ingredient.html">Ingredient</a>&gt;</dt>
-    <dd></dd>
+    <dd><p>Список об'єктів Ingredient.</p>
+</dd>
   </dl>
 
 
@@ -163,10 +166,11 @@ Interface ISkincareComponent  <a class="header-action link-secondary" title="Vie
 
   <h3 id="Backend_Models_ISkincareComponent_GetName" data-uid="Backend.Models.ISkincareComponent.GetName">
   GetName()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/ISkincareComponent.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/ISkincareComponent.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Повертає назву компонента або назву всієї рутини.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -177,7 +181,8 @@ Interface ISkincareComponent  <a class="header-action link-secondary" title="Vie
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Рядок з назвою.</p>
+</dd>
   </dl>
 
 
@@ -194,7 +199,7 @@ Interface ISkincareComponent  <a class="header-action link-secondary" title="Vie
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/ISkincareComponent.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/ISkincareComponent.cs/#L7" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -54,19 +54,6 @@ references:
   isSpec: "True"
   fullName: Backend.Controllers.SkincareController.Analyze
   nameWithType: SkincareController.Analyze
-- uid: Backend.Controllers.SkincareController.GetConflict
-  name: GetConflict()
-  href: api/Backend.Controllers.SkincareController.html#Backend_Controllers_SkincareController_GetConflict
-  commentId: M:Backend.Controllers.SkincareController.GetConflict
-  fullName: Backend.Controllers.SkincareController.GetConflict()
-  nameWithType: SkincareController.GetConflict()
-- uid: Backend.Controllers.SkincareController.GetConflict*
-  name: GetConflict
-  href: api/Backend.Controllers.SkincareController.html#Backend_Controllers_SkincareController_GetConflict_
-  commentId: Overload:Backend.Controllers.SkincareController.GetConflict
-  isSpec: "True"
-  fullName: Backend.Controllers.SkincareController.GetConflict
-  nameWithType: SkincareController.GetConflict
 - uid: Backend.Controllers.SkincareController.GetInfo
   name: GetInfo()
   href: api/Backend.Controllers.SkincareController.html#Backend_Controllers_SkincareController_GetInfo
@@ -80,19 +67,6 @@ references:
   isSpec: "True"
   fullName: Backend.Controllers.SkincareController.GetInfo
   nameWithType: SkincareController.GetInfo
-- uid: Backend.Controllers.SkincareController.GetTest
-  name: GetTest()
-  href: api/Backend.Controllers.SkincareController.html#Backend_Controllers_SkincareController_GetTest
-  commentId: M:Backend.Controllers.SkincareController.GetTest
-  fullName: Backend.Controllers.SkincareController.GetTest()
-  nameWithType: SkincareController.GetTest()
-- uid: Backend.Controllers.SkincareController.GetTest*
-  name: GetTest
-  href: api/Backend.Controllers.SkincareController.html#Backend_Controllers_SkincareController_GetTest_
-  commentId: Overload:Backend.Controllers.SkincareController.GetTest
-  isSpec: "True"
-  fullName: Backend.Controllers.SkincareController.GetTest
-  nameWithType: SkincareController.GetTest
 - uid: Backend.Controllers.SkincareController.GetTranslations
   name: GetTranslations()
   href: api/Backend.Controllers.SkincareController.html#Backend_Controllers_SkincareController_GetTranslations
@@ -388,95 +362,6 @@ references:
   commentId: N:Backend.Services
   fullName: Backend.Services
   nameWithType: Backend.Services
-- uid: Backend.Services.AddProductCommand
-  name: AddProductCommand
-  href: api/Backend.Services.AddProductCommand.html
-  commentId: T:Backend.Services.AddProductCommand
-  fullName: Backend.Services.AddProductCommand
-  nameWithType: AddProductCommand
-- uid: Backend.Services.AddProductCommand.#ctor(System.Collections.Generic.List{Backend.Models.Product},Backend.Models.Product)
-  name: AddProductCommand(List<Product>, Product)
-  href: api/Backend.Services.AddProductCommand.html#Backend_Services_AddProductCommand__ctor_System_Collections_Generic_List_Backend_Models_Product__Backend_Models_Product_
-  commentId: M:Backend.Services.AddProductCommand.#ctor(System.Collections.Generic.List{Backend.Models.Product},Backend.Models.Product)
-  name.vb: New(List(Of Product), Product)
-  fullName: Backend.Services.AddProductCommand.AddProductCommand(System.Collections.Generic.List<Backend.Models.Product>, Backend.Models.Product)
-  fullName.vb: Backend.Services.AddProductCommand.New(System.Collections.Generic.List(Of Backend.Models.Product), Backend.Models.Product)
-  nameWithType: AddProductCommand.AddProductCommand(List<Product>, Product)
-  nameWithType.vb: AddProductCommand.New(List(Of Product), Product)
-- uid: Backend.Services.AddProductCommand.#ctor*
-  name: AddProductCommand
-  href: api/Backend.Services.AddProductCommand.html#Backend_Services_AddProductCommand__ctor_
-  commentId: Overload:Backend.Services.AddProductCommand.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: Backend.Services.AddProductCommand.AddProductCommand
-  fullName.vb: Backend.Services.AddProductCommand.New
-  nameWithType: AddProductCommand.AddProductCommand
-  nameWithType.vb: AddProductCommand.New
-- uid: Backend.Services.AddProductCommand.Execute
-  name: Execute()
-  href: api/Backend.Services.AddProductCommand.html#Backend_Services_AddProductCommand_Execute
-  commentId: M:Backend.Services.AddProductCommand.Execute
-  fullName: Backend.Services.AddProductCommand.Execute()
-  nameWithType: AddProductCommand.Execute()
-- uid: Backend.Services.AddProductCommand.Execute*
-  name: Execute
-  href: api/Backend.Services.AddProductCommand.html#Backend_Services_AddProductCommand_Execute_
-  commentId: Overload:Backend.Services.AddProductCommand.Execute
-  isSpec: "True"
-  fullName: Backend.Services.AddProductCommand.Execute
-  nameWithType: AddProductCommand.Execute
-- uid: Backend.Services.AddProductCommand.Undo
-  name: Undo()
-  href: api/Backend.Services.AddProductCommand.html#Backend_Services_AddProductCommand_Undo
-  commentId: M:Backend.Services.AddProductCommand.Undo
-  fullName: Backend.Services.AddProductCommand.Undo()
-  nameWithType: AddProductCommand.Undo()
-- uid: Backend.Services.AddProductCommand.Undo*
-  name: Undo
-  href: api/Backend.Services.AddProductCommand.html#Backend_Services_AddProductCommand_Undo_
-  commentId: Overload:Backend.Services.AddProductCommand.Undo
-  isSpec: "True"
-  fullName: Backend.Services.AddProductCommand.Undo
-  nameWithType: AddProductCommand.Undo
-- uid: Backend.Services.BasicProvider
-  name: BasicProvider
-  href: api/Backend.Services.BasicProvider.html
-  commentId: T:Backend.Services.BasicProvider
-  fullName: Backend.Services.BasicProvider
-  nameWithType: BasicProvider
-- uid: Backend.Services.BasicProvider.#ctor(Microsoft.Extensions.Logging.ILogger{Backend.Services.SimpleCompatibilityStrategy})
-  name: BasicProvider(ILogger<SimpleCompatibilityStrategy>)
-  href: api/Backend.Services.BasicProvider.html#Backend_Services_BasicProvider__ctor_Microsoft_Extensions_Logging_ILogger_Backend_Services_SimpleCompatibilityStrategy__
-  commentId: M:Backend.Services.BasicProvider.#ctor(Microsoft.Extensions.Logging.ILogger{Backend.Services.SimpleCompatibilityStrategy})
-  name.vb: New(ILogger(Of SimpleCompatibilityStrategy))
-  fullName: Backend.Services.BasicProvider.BasicProvider(Microsoft.Extensions.Logging.ILogger<Backend.Services.SimpleCompatibilityStrategy>)
-  fullName.vb: Backend.Services.BasicProvider.New(Microsoft.Extensions.Logging.ILogger(Of Backend.Services.SimpleCompatibilityStrategy))
-  nameWithType: BasicProvider.BasicProvider(ILogger<SimpleCompatibilityStrategy>)
-  nameWithType.vb: BasicProvider.New(ILogger(Of SimpleCompatibilityStrategy))
-- uid: Backend.Services.BasicProvider.#ctor*
-  name: BasicProvider
-  href: api/Backend.Services.BasicProvider.html#Backend_Services_BasicProvider__ctor_
-  commentId: Overload:Backend.Services.BasicProvider.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: Backend.Services.BasicProvider.BasicProvider
-  fullName.vb: Backend.Services.BasicProvider.New
-  nameWithType: BasicProvider.BasicProvider
-  nameWithType.vb: BasicProvider.New
-- uid: Backend.Services.BasicProvider.CreateStrategy
-  name: CreateStrategy()
-  href: api/Backend.Services.BasicProvider.html#Backend_Services_BasicProvider_CreateStrategy
-  commentId: M:Backend.Services.BasicProvider.CreateStrategy
-  fullName: Backend.Services.BasicProvider.CreateStrategy()
-  nameWithType: BasicProvider.CreateStrategy()
-- uid: Backend.Services.BasicProvider.CreateStrategy*
-  name: CreateStrategy
-  href: api/Backend.Services.BasicProvider.html#Backend_Services_BasicProvider_CreateStrategy_
-  commentId: Overload:Backend.Services.BasicProvider.CreateStrategy
-  isSpec: "True"
-  fullName: Backend.Services.BasicProvider.CreateStrategy
-  nameWithType: BasicProvider.CreateStrategy
 - uid: Backend.Services.CompatibilityProxy
   name: CompatibilityProxy
   href: api/Backend.Services.CompatibilityProxy.html
@@ -588,38 +473,6 @@ references:
   isSpec: "True"
   fullName: Backend.Services.DiagnosticDecorator.Check
   nameWithType: DiagnosticDecorator.Check
-- uid: Backend.Services.ICommand
-  name: ICommand
-  href: api/Backend.Services.ICommand.html
-  commentId: T:Backend.Services.ICommand
-  fullName: Backend.Services.ICommand
-  nameWithType: ICommand
-- uid: Backend.Services.ICommand.Execute
-  name: Execute()
-  href: api/Backend.Services.ICommand.html#Backend_Services_ICommand_Execute
-  commentId: M:Backend.Services.ICommand.Execute
-  fullName: Backend.Services.ICommand.Execute()
-  nameWithType: ICommand.Execute()
-- uid: Backend.Services.ICommand.Execute*
-  name: Execute
-  href: api/Backend.Services.ICommand.html#Backend_Services_ICommand_Execute_
-  commentId: Overload:Backend.Services.ICommand.Execute
-  isSpec: "True"
-  fullName: Backend.Services.ICommand.Execute
-  nameWithType: ICommand.Execute
-- uid: Backend.Services.ICommand.Undo
-  name: Undo()
-  href: api/Backend.Services.ICommand.html#Backend_Services_ICommand_Undo
-  commentId: M:Backend.Services.ICommand.Undo
-  fullName: Backend.Services.ICommand.Undo()
-  nameWithType: ICommand.Undo()
-- uid: Backend.Services.ICommand.Undo*
-  name: Undo
-  href: api/Backend.Services.ICommand.html#Backend_Services_ICommand_Undo_
-  commentId: Overload:Backend.Services.ICommand.Undo
-  isSpec: "True"
-  fullName: Backend.Services.ICommand.Undo
-  nameWithType: ICommand.Undo
 - uid: Backend.Services.ICompatibilityStrategy
   name: ICompatibilityStrategy
   href: api/Backend.Services.ICompatibilityStrategy.html
@@ -1001,38 +854,6 @@ references:
   isSpec: "True"
   fullName: Backend.Services.SkincareFacade.SimpleCheck
   nameWithType: SkincareFacade.SimpleCheck
-- uid: Backend.Services.SkincareProvider
-  name: SkincareProvider
-  href: api/Backend.Services.SkincareProvider.html
-  commentId: T:Backend.Services.SkincareProvider
-  fullName: Backend.Services.SkincareProvider
-  nameWithType: SkincareProvider
-- uid: Backend.Services.SkincareProvider.CreateStrategy
-  name: CreateStrategy()
-  href: api/Backend.Services.SkincareProvider.html#Backend_Services_SkincareProvider_CreateStrategy
-  commentId: M:Backend.Services.SkincareProvider.CreateStrategy
-  fullName: Backend.Services.SkincareProvider.CreateStrategy()
-  nameWithType: SkincareProvider.CreateStrategy()
-- uid: Backend.Services.SkincareProvider.CreateStrategy*
-  name: CreateStrategy
-  href: api/Backend.Services.SkincareProvider.html#Backend_Services_SkincareProvider_CreateStrategy_
-  commentId: Overload:Backend.Services.SkincareProvider.CreateStrategy
-  isSpec: "True"
-  fullName: Backend.Services.SkincareProvider.CreateStrategy
-  nameWithType: SkincareProvider.CreateStrategy
-- uid: Backend.Services.SkincareProvider.PerformCheck(Backend.Models.Product,Backend.Models.Product)
-  name: PerformCheck(Product, Product)
-  href: api/Backend.Services.SkincareProvider.html#Backend_Services_SkincareProvider_PerformCheck_Backend_Models_Product_Backend_Models_Product_
-  commentId: M:Backend.Services.SkincareProvider.PerformCheck(Backend.Models.Product,Backend.Models.Product)
-  fullName: Backend.Services.SkincareProvider.PerformCheck(Backend.Models.Product, Backend.Models.Product)
-  nameWithType: SkincareProvider.PerformCheck(Product, Product)
-- uid: Backend.Services.SkincareProvider.PerformCheck*
-  name: PerformCheck
-  href: api/Backend.Services.SkincareProvider.html#Backend_Services_SkincareProvider_PerformCheck_
-  commentId: Overload:Backend.Services.SkincareProvider.PerformCheck
-  isSpec: "True"
-  fullName: Backend.Services.SkincareProvider.PerformCheck
-  nameWithType: SkincareProvider.PerformCheck
 - uid: Backend.Services.SystemSettings
   name: SystemSettings
   href: api/Backend.Services.SystemSettings.html

@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface ICompatibilityStrategy | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Інтерфейс стратегії для перевірки сумісності продуктів. Патерн: Strategy.">
+      <meta name="description" content="Інтерфейс, що визначає контракт для алгоритмів перевірки сумісності. Реалізує патерн Strategy.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,8 +97,8 @@ Interface ICompatibilityStrategy  <a class="header-action link-secondary" title=
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Інтерфейс стратегії для перевірки сумісності продуктів.
-Патерн: Strategy.</p>
+  <div class="markdown summary"><p>Інтерфейс, що визначає контракт для алгоритмів перевірки сумісності.
+Реалізує патерн <code>Strategy</code>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -126,10 +126,10 @@ Interface ICompatibilityStrategy  <a class="header-action link-secondary" title=
 
   <h3 id="Backend_Services_ICompatibilityStrategy_Check_Backend_Models_Product_Backend_Models_Product_" data-uid="Backend.Services.ICompatibilityStrategy.Check(Backend.Models.Product,Backend.Models.Product)">
   Check(Product, Product)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ICompatibilityStrategy.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ICompatibilityStrategy.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Перевіряє сумісність двох продуктів.</p>
+  <div class="markdown level1 summary"><p>Виконує перевірку сумісності між двома об'єктами продуктів.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -140,15 +140,18 @@ Interface ICompatibilityStrategy  <a class="header-action link-secondary" title=
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>p1</code> <a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-    <dd></dd>
+    <dd><p>Перший продукт для порівняння.</p>
+</dd>
     <dt><code>p2</code> <a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-    <dd></dd>
+    <dd><p>Другий продукт для порівняння.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>True, якщо продукти безпечно використовувати разом; інакше — false.</p>
+</dd>
   </dl>
 
 

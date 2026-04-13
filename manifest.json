@@ -22,7 +22,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Controllers.SkincareController.ProductViewModel",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Backend.Controllers.SkincareController.ProductViewModel.yml\" sourcestartlinenumber=\"1\">Допоміжна модель (DTO) для отримання даних про продукт з фронтенду.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -36,7 +36,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Controllers.SkincareController",
-      "Summary": "<p sourcefile=\"api/Backend.Controllers.SkincareController.yml\" sourcestartlinenumber=\"1\">Контролер для керування аналізом косметичних засобів.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Controllers.SkincareController.yml\" sourcestartlinenumber=\"1\">API-контролер для обробки запитів, пов'язаних з аналізом косметики та локалізацією інтерфейсу.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -64,7 +64,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Models.ISkincareComponent",
-      "Summary": "<p sourcefile=\"api/Backend.Models.ISkincareComponent.yml\" sourcestartlinenumber=\"1\">Патерн Composite. Спільний інтерфейс для окремих продуктів та їх наборів.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Models.ISkincareComponent.yml\" sourcestartlinenumber=\"1\">Інтерфейс компонента догляду за шкірою.\nРеалізує патерн Composite для об'єднання окремих продуктів у набори (рутини).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -78,7 +78,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Models.Ingredient",
-      "Summary": "<p sourcefile=\"api/Backend.Models.Ingredient.yml\" sourcestartlinenumber=\"1\">Хімічний інгредієнт.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Models.Ingredient.yml\" sourcestartlinenumber=\"1\">Представляє хімічний інгредієнт, що входить до складу косметичного засобу.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -92,7 +92,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Models.Product",
-      "Summary": "<p sourcefile=\"api/Backend.Models.Product.yml\" sourcestartlinenumber=\"1\">Косметичний продукт, що містить інгредієнти.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Models.Product.yml\" sourcestartlinenumber=\"1\">Представляє окремий косметичний продукт.\nЄ &quot;листком&quot; у структурі патерна Composite.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -106,7 +106,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Models.Routine",
-      "Summary": "<p sourcefile=\"api/Backend.Models.Routine.yml\" sourcestartlinenumber=\"1\">Патерн Composite. Набір засобів (рутина). Може містити як окремі продукти, так і інші набори.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Models.Routine.yml\" sourcestartlinenumber=\"1\">Представляє набір косметичних засобів (комплексну рутину).\nВиступає як &quot;Контейнер&quot; (Composite) у структурі патерна Composite.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -124,34 +124,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Backend.Services.AddProductCommand.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Backend.Services.AddProductCommand.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Backend.Services.AddProductCommand",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Backend.Services.BasicProvider.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Backend.Services.BasicProvider.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Backend.Services.BasicProvider",
-      "Summary": "<p sourcefile=\"api/Backend.Services.BasicProvider.yml\" sourcestartlinenumber=\"1\">Конкретна фабрика для базового аналізу.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Backend.Services.CompatibilityProxy.yml",
       "output": {
         ".html": {
@@ -162,7 +134,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.CompatibilityProxy",
-      "Summary": "<p sourcefile=\"api/Backend.Services.CompatibilityProxy.yml\" sourcestartlinenumber=\"1\">Патерн Proxy. Замісник для кешування результатів перевірки сумісності.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Services.CompatibilityProxy.yml\" sourcestartlinenumber=\"1\">Реалізація патерна Proxy (Замісник).\nЗабезпечує шар кешування для важких операцій аналізу сумісності інгредієнтів.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -176,7 +148,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.ConflictNotifier",
-      "Summary": "<p sourcefile=\"api/Backend.Services.ConflictNotifier.yml\" sourcestartlinenumber=\"1\">Суб'єкт, який розсилає сповіщення.\nПатерн Observer.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Services.ConflictNotifier.yml\" sourcestartlinenumber=\"1\">Суб'єкт, який керує списком спостерігачів та розсилає їм повідомлення.\nПатерн <code>Observer</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -190,21 +162,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.DiagnosticDecorator",
-      "Summary": "<p sourcefile=\"api/Backend.Services.DiagnosticDecorator.yml\" sourcestartlinenumber=\"1\">Патерн Decorator для вимірювання часу виконання стратегії.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Backend.Services.ICommand.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Backend.Services.ICommand.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Backend.Services.ICommand",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Backend.Services.DiagnosticDecorator.yml\" sourcestartlinenumber=\"1\">Реалізація патерна Decorator для моніторингу продуктивності.\nДодає функціонал вимірювання часу виконання до будь-якої стратегії сумісності.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -218,7 +176,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.ICompatibilityStrategy",
-      "Summary": "<p sourcefile=\"api/Backend.Services.ICompatibilityStrategy.yml\" sourcestartlinenumber=\"1\">Інтерфейс стратегії для перевірки сумісності продуктів.\nПатерн: Strategy.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Services.ICompatibilityStrategy.yml\" sourcestartlinenumber=\"1\">Інтерфейс, що визначає контракт для алгоритмів перевірки сумісності.\nРеалізує патерн <code>Strategy</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -232,7 +190,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.IObserver",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Backend.Services.IObserver.yml\" sourcestartlinenumber=\"1\">Визначає інтерфейс для об'єктів, які мають отримувати сповіщення від суб'єкта.\nКомпонент патерну <code>Observer</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -246,7 +204,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.ProductBuilder",
-      "Summary": "<p sourcefile=\"api/Backend.Services.ProductBuilder.yml\" sourcestartlinenumber=\"1\">Патерн Builder для створення складних об'єктів Product.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Services.ProductBuilder.yml\" sourcestartlinenumber=\"1\">Реалізація патерна Builder для покрокового створення об'єктів косметичних засобів (Product).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -260,7 +218,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.ReportGenerator",
-      "Summary": "<p sourcefile=\"api/Backend.Services.ReportGenerator.yml\" sourcestartlinenumber=\"1\">Базовий клас для генерації звітів.\nПатерн Template Method.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Services.ReportGenerator.yml\" sourcestartlinenumber=\"1\">Абстрактний базовий клас, що реалізує патерн Template Method для генерації звітів.\nВизначає скелет алгоритму формування звіту.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -274,7 +232,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.SecurityLogger",
-      "Summary": "<p sourcefile=\"api/Backend.Services.SecurityLogger.yml\" sourcestartlinenumber=\"1\">Конкретний спостерігач — логер безпеки.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Services.SecurityLogger.yml\" sourcestartlinenumber=\"1\">Конкретна реалізація спостерігача, яка записує сповіщення у системний лог.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -288,7 +246,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.SimpleCompatibilityStrategy",
-      "Summary": "<p sourcefile=\"api/Backend.Services.SimpleCompatibilityStrategy.yml\" sourcestartlinenumber=\"1\">Реалізація базової стратегії перевірки сумісності інгредієнтів.\nПатерн: Strategy.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Services.SimpleCompatibilityStrategy.yml\" sourcestartlinenumber=\"1\">Реалізація конкретної стратегії перевірки сумісності.\nРеалізує патерн <code>Strategy</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -302,7 +260,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.SimpleTextReport",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Backend.Services.SimpleTextReport.yml\" sourcestartlinenumber=\"1\">Конкретна реалізація генератора звітів у текстовому форматі.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -316,21 +274,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.SkincareFacade",
-      "Summary": "<p sourcefile=\"api/Backend.Services.SkincareFacade.yml\" sourcestartlinenumber=\"1\">Патерн Facade для керування складними операціями аналізу догляду.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Backend.Services.SkincareProvider.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Backend.Services.SkincareProvider.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Backend.Services.SkincareProvider",
-      "Summary": "<p sourcefile=\"api/Backend.Services.SkincareProvider.yml\" sourcestartlinenumber=\"1\">Абстрактний клас &quot;Творець&quot; для фабричного методу.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Services.SkincareFacade.yml\" sourcestartlinenumber=\"1\">Надає спрощений інтерфейс для взаємодії зі складною системою аналізу складу.\nВикористовує патерн <code>Facade</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -344,7 +288,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Backend.Services.SystemSettings",
-      "Summary": "<p sourcefile=\"api/Backend.Services.SystemSettings.yml\" sourcestartlinenumber=\"1\">Глобальні налаштування системи. Реалізує патерн Singleton.</p>\n"
+      "Summary": "<p sourcefile=\"api/Backend.Services.SystemSettings.yml\" sourcestartlinenumber=\"1\">Глобальні налаштування системи.\nРеалізує патерн <code>Singleton</code> для забезпечення єдиної точки доступу до конфігурації.</p>\n"
     },
     {
       "type": "ManagedReference",

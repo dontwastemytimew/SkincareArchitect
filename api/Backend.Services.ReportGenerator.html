@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ReportGenerator | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Базовий клас для генерації звітів. Патерн Template Method.">
+      <meta name="description" content="Абстрактний базовий клас, що реалізує патерн Template Method для генерації звітів. Визначає скелет алгоритму формування звіту.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,8 +97,8 @@ Class ReportGenerator  <a class="header-action link-secondary" title="View sourc
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Базовий клас для генерації звітів.
-Патерн Template Method.</p>
+  <div class="markdown summary"><p>Абстрактний базовий клас, що реалізує патерн Template Method для генерації звітів.
+Визначає скелет алгоритму формування звіту.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -164,10 +164,11 @@ Class ReportGenerator  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="Backend_Services_ReportGenerator__ctor_Microsoft_Extensions_Localization_IStringLocalizer_" data-uid="Backend.Services.ReportGenerator.#ctor(Microsoft.Extensions.Localization.IStringLocalizer)">
   ReportGenerator(IStringLocalizer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Конструктор класу ReportGenerator.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -177,7 +178,8 @@ Class ReportGenerator  <a class="header-action link-secondary" title="View sourc
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>localizer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.localization.istringlocalizer">IStringLocalizer</a></dt>
-    <dd></dd>
+    <dd><p>Сервіс локалізації рядків.</p>
+</dd>
   </dl>
 
 
@@ -198,10 +200,11 @@ Class ReportGenerator  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="Backend_Services_ReportGenerator__localizer" data-uid="Backend.Services.ReportGenerator._localizer">
   _localizer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Локалізатор для підтримки багатомовності у звітах.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -233,10 +236,11 @@ Class ReportGenerator  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="Backend_Services_ReportGenerator_CreateFullReport_System_String_" data-uid="Backend.Services.ReportGenerator.CreateFullReport(System.String)">
   CreateFullReport(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Основний Template Method, який визначає послідовність кроків формування повного звіту.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -246,13 +250,15 @@ Class ReportGenerator  <a class="header-action link-secondary" title="View sourc
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>contentKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Ключ локалізації для основного тексту звіту.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Готовий текстовий звіт.</p>
+</dd>
   </dl>
 
 
@@ -269,10 +275,11 @@ Class ReportGenerator  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="Backend_Services_ReportGenerator_FormatBody_System_String_" data-uid="Backend.Services.ReportGenerator.FormatBody(System.String)">
   FormatBody(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Абстрактний метод для формування тіла звіту на основі ключа вмісту.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -305,10 +312,11 @@ Class ReportGenerator  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="Backend_Services_ReportGenerator_FormatFooter" data-uid="Backend.Services.ReportGenerator.FormatFooter">
   FormatFooter()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Абстрактний метод для формування завершальної частини (футера) звіту.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -336,10 +344,11 @@ Class ReportGenerator  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="Backend_Services_ReportGenerator_FormatHeader" data-uid="Backend.Services.ReportGenerator.FormatHeader">
   FormatHeader()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ReportGenerator.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Абстрактний метод для формування заголовка звіту. Реалізується в конкретних підкласах.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">

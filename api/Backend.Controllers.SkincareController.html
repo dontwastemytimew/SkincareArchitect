@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class SkincareController | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Контролер для керування аналізом косметичних засобів.">
+      <meta name="description" content="API-контролер для обробки запитів, пов&#39;язаних з аналізом косметики та локалізацією інтерфейсу.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Backend_Controllers_SkincareController" data-uid="Backend.Controllers.SkincareController" class="text-break">
-Class SkincareController  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L10"><i class="bi bi-code-slash"></i></a>
+Class SkincareController  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,7 @@ Class SkincareController  <a class="header-action link-secondary" title="View so
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Контролер для керування аналізом косметичних засобів.</p>
+  <div class="markdown summary"><p>API-контролер для обробки запитів, пов'язаних з аналізом косметики та локалізацією інтерфейсу.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -688,7 +688,7 @@ public class SkincareController : ControllerBase</code></pre>
   <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Фасад всередині тримає логер, стратегію та локалізатор.</p>
+  <div class="markdown level1 summary"><p>Конструктор контролера.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -699,7 +699,8 @@ public class SkincareController : ControllerBase</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>facade</code> <a class="xref" href="Backend.Services.SkincareFacade.html">SkincareFacade</a></dt>
-    <dd></dd>
+    <dd><p>Фасад, що об'єднує логіку перевірки сумісності та локалізації.</p>
+</dd>
   </dl>
 
 
@@ -721,10 +722,11 @@ public class SkincareController : ControllerBase</code></pre>
 
   <h3 id="Backend_Controllers_SkincareController_Analyze_System_Collections_Generic_List_Backend_Controllers_SkincareController_ProductViewModel__" data-uid="Backend.Controllers.SkincareController.Analyze(System.Collections.Generic.List{Backend.Controllers.SkincareController.ProductViewModel})">
   Analyze(List&lt;ProductViewModel&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Основний метод аналізу списку засобів, отриманих з фронтенду.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -735,45 +737,15 @@ public IActionResult Analyze(List&lt;SkincareController.ProductViewModel&gt; fro
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>frontendProducts</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Backend.Controllers.SkincareController.html">SkincareController</a>.<a class="xref" href="Backend.Controllers.SkincareController.ProductViewModel.html">ProductViewModel</a>&gt;</dt>
-    <dd></dd>
+    <dd><p>Список спрощених моделей продуктів (JSON).</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Backend_Controllers_SkincareController_GetConflict_" data-uid="Backend.Controllers.SkincareController.GetConflict*"></a>
-
-  <h3 id="Backend_Controllers_SkincareController_GetConflict" data-uid="Backend.Controllers.SkincareController.GetConflict">
-  GetConflict()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L54"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HttpGet(&quot;test-conflict&quot;)]
-public IActionResult GetConflict()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a></dt>
-    <dd></dd>
+    <dd><p>Результат перевірки сумісності першої пари засобів.</p>
+</dd>
   </dl>
 
 
@@ -790,10 +762,12 @@ public IActionResult GetConflict()</code></pre>
 
   <h3 id="Backend_Controllers_SkincareController_GetInfo" data-uid="Backend.Controllers.SkincareController.GetInfo">
   GetInfo()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Отримує системну інформацію про додаток (версія, час запуску).
+Використовує патерн Singleton через SystemSettings.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -805,40 +779,8 @@ public IActionResult GetInfo()</code></pre>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Backend_Controllers_SkincareController_GetTest_" data-uid="Backend.Controllers.SkincareController.GetTest*"></a>
-
-  <h3 id="Backend_Controllers_SkincareController_GetTest" data-uid="Backend.Controllers.SkincareController.GetTest">
-  GetTest()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L27"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Тестовий метод.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HttpGet(&quot;test&quot;)]
-public IActionResult GetTest()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a></dt>
-    <dd></dd>
+    <dd><p>Дані про стан сервера.</p>
+</dd>
   </dl>
 
 
@@ -855,10 +797,11 @@ public IActionResult GetTest()</code></pre>
 
   <h3 id="Backend_Controllers_SkincareController_GetTranslations" data-uid="Backend.Controllers.SkincareController.GetTranslations">
   GetTranslations()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L80"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Отримує словник перекладів для елементів інтерфейсу на основі заголовка Accept-Language.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -870,7 +813,8 @@ public IActionResult GetTranslations()</code></pre>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a></dt>
-    <dd></dd>
+    <dd><p>Словник ключ-значення для локалізації фронтенду.</p>
+</dd>
   </dl>
 
 
@@ -887,7 +831,7 @@ public IActionResult GetTranslations()</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Controllers/SkincareController.cs/#L9" class="edit-link">Edit this page</a>
         </div>
 
 

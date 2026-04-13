@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class DiagnosticDecorator | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Патерн Decorator для вимірювання часу виконання стратегії.">
+      <meta name="description" content="Реалізація патерна Decorator для моніторингу продуктивності. Додає функціонал вимірювання часу виконання до будь-якої стратегії сумісності.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Backend_Services_DiagnosticDecorator" data-uid="Backend.Services.DiagnosticDecorator" class="text-break">
-Class DiagnosticDecorator  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L9"><i class="bi bi-code-slash"></i></a>
+Class DiagnosticDecorator  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class DiagnosticDecorator  <a class="header-action link-secondary" title="View s
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Патерн Decorator для вимірювання часу виконання стратегії.</p>
+  <div class="markdown summary"><p>Реалізація патерна Decorator для моніторингу продуктивності.
+Додає функціонал вимірювання часу виконання до будь-якої стратегії сумісності.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -163,10 +164,11 @@ Class DiagnosticDecorator  <a class="header-action link-secondary" title="View s
 
   <h3 id="Backend_Services_DiagnosticDecorator__ctor_Backend_Services_ICompatibilityStrategy_Microsoft_Extensions_Logging_ILogger_Backend_Services_DiagnosticDecorator__" data-uid="Backend.Services.DiagnosticDecorator.#ctor(Backend.Services.ICompatibilityStrategy,Microsoft.Extensions.Logging.ILogger{Backend.Services.DiagnosticDecorator})">
   DiagnosticDecorator(ICompatibilityStrategy, ILogger&lt;DiagnosticDecorator&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Ініціалізує новий екземпляр класу <a class="xref" href="Backend.Services.DiagnosticDecorator.html">DiagnosticDecorator</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -176,9 +178,11 @@ Class DiagnosticDecorator  <a class="header-action link-secondary" title="View s
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>innerStrategy</code> <a class="xref" href="Backend.Services.ICompatibilityStrategy.html">ICompatibilityStrategy</a></dt>
-    <dd></dd>
+    <dd><p>Об'єкт стратегії, який потрібно задекорувати.</p>
+</dd>
     <dt><code>logger</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="Backend.Services.DiagnosticDecorator.html">DiagnosticDecorator</a>&gt;</dt>
-    <dd></dd>
+    <dd><p>Сервіс логування.</p>
+</dd>
   </dl>
 
 
@@ -200,10 +204,10 @@ Class DiagnosticDecorator  <a class="header-action link-secondary" title="View s
 
   <h3 id="Backend_Services_DiagnosticDecorator_Check_Backend_Models_Product_Backend_Models_Product_" data-uid="Backend.Services.DiagnosticDecorator.Check(Backend.Models.Product,Backend.Models.Product)">
   Check(Product, Product)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Перевіряє сумісність двох продуктів.</p>
+  <div class="markdown level1 summary"><p>Перевіряє сумісність продуктів, вимірюючи швидкість роботи вкладеної стратегії.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -214,15 +218,18 @@ Class DiagnosticDecorator  <a class="header-action link-secondary" title="View s
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>p1</code> <a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-    <dd></dd>
+    <dd><p>Перший косметичний засіб.</p>
+</dd>
     <dt><code>p2</code> <a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-    <dd></dd>
+    <dd><p>Другий косметичний засіб.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>True, якщо засоби сумісні; інакше — false.</p>
+</dd>
   </dl>
 
 
@@ -239,7 +246,7 @@ Class DiagnosticDecorator  <a class="header-action link-secondary" title="View s
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L9" class="edit-link">Edit this page</a>
+          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

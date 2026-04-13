@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class SimpleCompatibilityStrategy | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Реалізація базової стратегії перевірки сумісності інгредієнтів. Патерн: Strategy.">
+      <meta name="description" content="Реалізація конкретної стратегії перевірки сумісності. Реалізує патерн Strategy.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Backend_Services_SimpleCompatibilityStrategy" data-uid="Backend.Services.SimpleCompatibilityStrategy" class="text-break">
-Class SimpleCompatibilityStrategy  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SimpleCompatibilityStrategy.cs/#L10"><i class="bi bi-code-slash"></i></a>
+Class SimpleCompatibilityStrategy  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SimpleCompatibilityStrategy.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,8 +97,8 @@ Class SimpleCompatibilityStrategy  <a class="header-action link-secondary" title
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Реалізація базової стратегії перевірки сумісності інгредієнтів.
-Патерн: Strategy.</p>
+  <div class="markdown summary"><p>Реалізація конкретної стратегії перевірки сумісності.
+Реалізує патерн <code>Strategy</code>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -164,10 +164,11 @@ Class SimpleCompatibilityStrategy  <a class="header-action link-secondary" title
 
   <h3 id="Backend_Services_SimpleCompatibilityStrategy__ctor_Microsoft_Extensions_Logging_ILogger_Backend_Services_SimpleCompatibilityStrategy__" data-uid="Backend.Services.SimpleCompatibilityStrategy.#ctor(Microsoft.Extensions.Logging.ILogger{Backend.Services.SimpleCompatibilityStrategy})">
   SimpleCompatibilityStrategy(ILogger&lt;SimpleCompatibilityStrategy&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SimpleCompatibilityStrategy.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SimpleCompatibilityStrategy.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Ініціалізує новий екземпляр стратегії з підтримкою логування.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -177,7 +178,8 @@ Class SimpleCompatibilityStrategy  <a class="header-action link-secondary" title
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>logger</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="Backend.Services.SimpleCompatibilityStrategy.html">SimpleCompatibilityStrategy</a>&gt;</dt>
-    <dd></dd>
+    <dd><p>Екземпляр логера.</p>
+</dd>
   </dl>
 
 
@@ -199,10 +201,10 @@ Class SimpleCompatibilityStrategy  <a class="header-action link-secondary" title
 
   <h3 id="Backend_Services_SimpleCompatibilityStrategy_Check_Backend_Models_Product_Backend_Models_Product_" data-uid="Backend.Services.SimpleCompatibilityStrategy.Check(Backend.Models.Product,Backend.Models.Product)">
   Check(Product, Product)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SimpleCompatibilityStrategy.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SimpleCompatibilityStrategy.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Перевіряє, чи немає конфлікту між активними компонентами.</p>
+  <div class="markdown level1 summary"><p>Виконує алгоритм порівняння активних інгредієнтів двох продуктів.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -213,15 +215,19 @@ Class SimpleCompatibilityStrategy  <a class="header-action link-secondary" title
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>p1</code> <a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-    <dd></dd>
+    <dd><p>Перший косметичний продукт.</p>
+</dd>
     <dt><code>p2</code> <a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-    <dd></dd>
+    <dd><p>Другий косметичний продукт.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p><code>true</code>, якщо продукти сумісні;
+<code>false</code>, якщо знайдено критичний конфлікт (наприклад, Ретиноїди + Кислоти).</p>
+</dd>
   </dl>
 
 
@@ -238,7 +244,7 @@ Class SimpleCompatibilityStrategy  <a class="header-action link-secondary" title
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SimpleCompatibilityStrategy.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/SimpleCompatibilityStrategy.cs/#L9" class="edit-link">Edit this page</a>
         </div>
 
 

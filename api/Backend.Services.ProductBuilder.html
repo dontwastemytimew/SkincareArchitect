@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ProductBuilder | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Патерн Builder для створення складних об&#39;єктів Product.">
+      <meta name="description" content="Реалізація патерна Builder для покрокового створення об&#39;єктів косметичних засобів (Product).">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,7 @@ Class ProductBuilder  <a class="header-action link-secondary" title="View source
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Патерн Builder для створення складних об'єктів Product.</p>
+  <div class="markdown summary"><p>Реалізація патерна Builder для покрокового створення об'єктів косметичних засобів (Product).</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -157,10 +157,11 @@ Class ProductBuilder  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_ProductBuilder_AddIngredient_System_String_System_String_" data-uid="Backend.Services.ProductBuilder.AddIngredient(System.String,System.String)">
   AddIngredient(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ProductBuilder.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ProductBuilder.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Додає активний інгредієнт до продукту.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -170,15 +171,18 @@ Class ProductBuilder  <a class="header-action link-secondary" title="View source
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Назва інгредієнта (наприклад, &quot;Retinol&quot;).</p>
+</dd>
     <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Тип активної речовини (наприклад, &quot;Retinoid&quot;).</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Backend.Services.ProductBuilder.html">ProductBuilder</a></dt>
-    <dd></dd>
+    <dd><p>Поточний екземпляр ProductBuilder.</p>
+</dd>
   </dl>
 
 
@@ -195,10 +199,11 @@ Class ProductBuilder  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_ProductBuilder_Build" data-uid="Backend.Services.ProductBuilder.Build">
   Build()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ProductBuilder.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ProductBuilder.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Повертає повністю сформований об'єкт Product.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -209,7 +214,8 @@ Class ProductBuilder  <a class="header-action link-secondary" title="View source
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-    <dd></dd>
+    <dd><p>Сконструйований екземпляр класу Product.</p>
+</dd>
   </dl>
 
 
@@ -226,10 +232,11 @@ Class ProductBuilder  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_ProductBuilder_Create_System_String_" data-uid="Backend.Services.ProductBuilder.Create(System.String)">
   Create(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ProductBuilder.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ProductBuilder.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Ініціалізує новий процес побудови продукту з вказаною назвою.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -239,13 +246,15 @@ Class ProductBuilder  <a class="header-action link-secondary" title="View source
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Назва косметичного засобу.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Backend.Services.ProductBuilder.html">ProductBuilder</a></dt>
-    <dd></dd>
+    <dd><p>Поточний екземпляр ProductBuilder для ланцюжкового виклику.</p>
+</dd>
   </dl>
 
 

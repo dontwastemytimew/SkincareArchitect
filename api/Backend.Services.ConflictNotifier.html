@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ConflictNotifier | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Суб&#39;єкт, який розсилає сповіщення. Патерн Observer.">
+      <meta name="description" content="Суб&#39;єкт, який керує списком спостерігачів та розсилає їм повідомлення. Патерн Observer.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Backend_Services_ConflictNotifier" data-uid="Backend.Services.ConflictNotifier" class="text-break">
-Class ConflictNotifier  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L12"><i class="bi bi-code-slash"></i></a>
+Class ConflictNotifier  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,8 +97,8 @@ Class ConflictNotifier  <a class="header-action link-secondary" title="View sour
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Суб'єкт, який розсилає сповіщення.
-Патерн Observer.</p>
+  <div class="markdown summary"><p>Суб'єкт, який керує списком спостерігачів та розсилає їм повідомлення.
+Патерн <code>Observer</code>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -158,10 +158,11 @@ Class ConflictNotifier  <a class="header-action link-secondary" title="View sour
 
   <h3 id="Backend_Services_ConflictNotifier_Attach_Backend_Services_IObserver_" data-uid="Backend.Services.ConflictNotifier.Attach(Backend.Services.IObserver)">
   Attach(IObserver)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Додає нового спостерігача до списку розсилки.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -171,7 +172,8 @@ Class ConflictNotifier  <a class="header-action link-secondary" title="View sour
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>observer</code> <a class="xref" href="Backend.Services.IObserver.html">IObserver</a></dt>
-    <dd></dd>
+    <dd><p>Об'єкт спостерігача.</p>
+</dd>
   </dl>
 
 
@@ -189,10 +191,11 @@ Class ConflictNotifier  <a class="header-action link-secondary" title="View sour
 
   <h3 id="Backend_Services_ConflictNotifier_Notify_System_String_" data-uid="Backend.Services.ConflictNotifier.Notify(System.String)">
   Notify(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Сповіщає всіх підписаних спостерігачів про подію.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -202,7 +205,8 @@ Class ConflictNotifier  <a class="header-action link-secondary" title="View sour
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Повідомлення, яке буде передано всім спостерігачам.</p>
+</dd>
   </dl>
 
 
@@ -220,7 +224,7 @@ Class ConflictNotifier  <a class="header-action link-secondary" title="View sour
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/NotificationService.cs/#L20" class="edit-link">Edit this page</a>
         </div>
 
 
