@@ -1,29 +1,52 @@
 # Skincare Architect
 
-Welcome to the official documentation for **SkincareArchitect**.
-This project is an intelligent assistant designed to help users navigate the complex world of cosmetic ingredients and build safe, effective skincare routines.
+**Skincare Architect** — це інтелектуальний асистент для аналізу косметичних інгредієнтів. Проєкт допомагає користувачам будувати безпечну рутину, уникаючи конфліктів активних речовин (наприклад, ретинолу та кислот) та автоматично розраховуючи послідовність нанесення засобів.
 
 ---
 
-### Key Features
+## Key Features
 
-* **Compatibility Diagnostic**: A core engine that analyzes your products and warns you about potential conflicts between active ingredients (e.g., Retinoids vs. Acids).
-* **Routine Builder**: Automatically organizes your selected products into a logical morning and evening sequence based on their texture and purpose.
-* **Virtual Shelf**: A personal digital space where users can store and manage their current skincare collection.
-* **Multi-language Support**: A localized interface designed to be accessible in both Ukrainian and English.
-
-### Technical Overview
-
-* **Architecture**: Modern decoupled structure with a **.NET Web API** backend and a lightweight, responsive **Web Frontend**.
-* **Clean Code**: Built with a focus on structured architecture, providing a scalable foundation for future skincare databases.
-* **API First**: All analysis logic is handled through RESTful endpoints, ensuring fast and reliable ingredient checks.
+* **Compatibility Diagnostic**: Ядро системи, що аналізує склад засобів на предмет критичних конфліктів.
+* **Routine Builder**: Автоматичне сортування засобів на ранок/вечір.
+* **Virtual Shelf**: Особистий кабінет користувача для менеджменту власної колекції.
+* **Global Catalog**: Можливість пошуку та додавання засобів із загальної бази даних.
 
 ---
 
-> [!NOTE]
-> You can view the full technical documentation and API here: [SkincareArchitect Docs](https://dontwastemytimew.github.io/SkincareArchitect/)
+## Tech Stack
 
-> [!TIP]
-> **Project Goal:** To prevent skin irritation caused by incompatible products and to simplify the daily routine for skincare enthusiasts.
+* **Зовнішні бібліотеки та фреймворки**:
+    * **Serilog**: Логування подій у консоль та файли.
+    * **Moq**: Використання мок-об'єктів для ізольованого тестування логіки.
+    * **NUnit**: Фреймворк для написання та запуску Unit-тестів.
+    * **FontAwesome**: Веб-фреймворк для іконографії інтерфейсу.
+* **Unit Testing**: Покриття бізнес-логіки тестами.
+* **i18n (Internationalization)**: Підтримка української та англійської мов.
+* **Документація**: Автоматично згенерована документація коду.
+Переглянути можна тут: [SkincareArchitect Docs](https://dontwastemytimew.github.io/SkincareArchitect/)
+* **Logging**: Детальне відстеження роботи системи.
+
+---
+
+## Архітектура та Лабораторна робота №2
+
+У ході розробки проєкту було впроваджено **10 патернів проєктування**, що забезпечують гнучкість та масштабованість системи.
+
+### Використані патерни:
+1.  **Creational**: Singleton, Builder.
+2.  **Structural**: Facade, Proxy, Decorator, Composite.
+3.  **Behavioral**: Strategy, Observer, Template Method, Iterator.
+
+**[Читати повний звіт про використання патернів](https://1drv.ms/w/c/1903c158639ca285/IQDJXoBYvuomTZhtkjEL3qcHAcznWp9m_fO7BGQ0JD-sCwc?e=noGBkS)**
+
+---
+
+## Демонстрація проєкту
+
+Для швидкого ознайомлення з функціоналом перегляньте відео-демку:
+
+**[Відео-демонстрація Skincare Architect](https://drive.google.com/file/d/1FLEsFJW88Mtj3uX-TEs2UEaDZQ9gXdDw/view?usp=sharing)**
+
+---
 
 *Developed as part of the Software Engineering curriculum, 2026.*

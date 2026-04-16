@@ -25,10 +25,7 @@ async function changeLang(lang) {
 async function applyTranslations() {
     try {
         const response = await fetch(`http://localhost:5016/api/skincare/translations?v=${Date.now()}`, {
-            headers: {
-                'Accept-Language': currentLang,
-                'Cache-Control': 'no-cache'
-            }
+            headers: { 'Accept-Language': currentLang }
         });
         const translations = await response.json();
 
@@ -37,6 +34,11 @@ async function applyTranslations() {
             const phKey = el.getAttribute('data-i18n-placeholder');
 
             if (key && translations[key]) {
+                if (key === 'AuthLogin' && isLogged) {
+                    el.innerHTML = `<i class="fas fa-user"></i> ${userName}`;
+                    return;
+                }
+
                 if (el.tagName === 'SELECT') {
                     if (el.options.length > 0) el.options[0].text = translations[key];
                 } else {
