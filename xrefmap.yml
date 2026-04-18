@@ -86,6 +86,19 @@ references:
   commentId: T:Backend.Controllers.SkincareController.ProductViewModel
   fullName: Backend.Controllers.SkincareController.ProductViewModel
   nameWithType: SkincareController.ProductViewModel
+- uid: Backend.Controllers.SkincareController.ProductViewModel.Concentration
+  name: Concentration
+  href: api/Backend.Controllers.SkincareController.ProductViewModel.html#Backend_Controllers_SkincareController_ProductViewModel_Concentration
+  commentId: P:Backend.Controllers.SkincareController.ProductViewModel.Concentration
+  fullName: Backend.Controllers.SkincareController.ProductViewModel.Concentration
+  nameWithType: SkincareController.ProductViewModel.Concentration
+- uid: Backend.Controllers.SkincareController.ProductViewModel.Concentration*
+  name: Concentration
+  href: api/Backend.Controllers.SkincareController.ProductViewModel.html#Backend_Controllers_SkincareController_ProductViewModel_Concentration_
+  commentId: Overload:Backend.Controllers.SkincareController.ProductViewModel.Concentration
+  isSpec: "True"
+  fullName: Backend.Controllers.SkincareController.ProductViewModel.Concentration
+  nameWithType: SkincareController.ProductViewModel.Concentration
 - uid: Backend.Controllers.SkincareController.ProductViewModel.Name
   name: Name
   href: api/Backend.Controllers.SkincareController.ProductViewModel.html#Backend_Controllers_SkincareController_ProductViewModel_Name
@@ -99,6 +112,19 @@ references:
   isSpec: "True"
   fullName: Backend.Controllers.SkincareController.ProductViewModel.Name
   nameWithType: SkincareController.ProductViewModel.Name
+- uid: Backend.Controllers.SkincareController.ProductViewModel.PH
+  name: PH
+  href: api/Backend.Controllers.SkincareController.ProductViewModel.html#Backend_Controllers_SkincareController_ProductViewModel_PH
+  commentId: P:Backend.Controllers.SkincareController.ProductViewModel.PH
+  fullName: Backend.Controllers.SkincareController.ProductViewModel.PH
+  nameWithType: SkincareController.ProductViewModel.PH
+- uid: Backend.Controllers.SkincareController.ProductViewModel.PH*
+  name: PH
+  href: api/Backend.Controllers.SkincareController.ProductViewModel.html#Backend_Controllers_SkincareController_ProductViewModel_PH_
+  commentId: Overload:Backend.Controllers.SkincareController.ProductViewModel.PH
+  isSpec: "True"
+  fullName: Backend.Controllers.SkincareController.ProductViewModel.PH
+  nameWithType: SkincareController.ProductViewModel.PH
 - uid: Backend.Controllers.SkincareController.ProductViewModel.Type
   name: Type
   href: api/Backend.Controllers.SkincareController.ProductViewModel.html#Backend_Controllers_SkincareController_ProductViewModel_Type
@@ -169,6 +195,19 @@ references:
   isSpec: "True"
   fullName: Backend.Models.Ingredient.ActiveType
   nameWithType: Ingredient.ActiveType
+- uid: Backend.Models.Ingredient.Concentration
+  name: Concentration
+  href: api/Backend.Models.Ingredient.html#Backend_Models_Ingredient_Concentration
+  commentId: P:Backend.Models.Ingredient.Concentration
+  fullName: Backend.Models.Ingredient.Concentration
+  nameWithType: Ingredient.Concentration
+- uid: Backend.Models.Ingredient.Concentration*
+  name: Concentration
+  href: api/Backend.Models.Ingredient.html#Backend_Models_Ingredient_Concentration_
+  commentId: Overload:Backend.Models.Ingredient.Concentration
+  isSpec: "True"
+  fullName: Backend.Models.Ingredient.Concentration
+  nameWithType: Ingredient.Concentration
 - uid: Backend.Models.Ingredient.Description
   name: Description
   href: api/Backend.Models.Ingredient.html#Backend_Models_Ingredient_Description
@@ -208,6 +247,19 @@ references:
   isSpec: "True"
   fullName: Backend.Models.Ingredient.Name
   nameWithType: Ingredient.Name
+- uid: Backend.Models.Ingredient.PHLevel
+  name: PHLevel
+  href: api/Backend.Models.Ingredient.html#Backend_Models_Ingredient_PHLevel
+  commentId: P:Backend.Models.Ingredient.PHLevel
+  fullName: Backend.Models.Ingredient.PHLevel
+  nameWithType: Ingredient.PHLevel
+- uid: Backend.Models.Ingredient.PHLevel*
+  name: PHLevel
+  href: api/Backend.Models.Ingredient.html#Backend_Models_Ingredient_PHLevel_
+  commentId: Overload:Backend.Models.Ingredient.PHLevel
+  isSpec: "True"
+  fullName: Backend.Models.Ingredient.PHLevel
+  nameWithType: Ingredient.PHLevel
 - uid: Backend.Models.Product
   name: Product
   href: api/Backend.Models.Product.html
@@ -520,15 +572,15 @@ references:
   commentId: T:Backend.Services.ProductBuilder
   fullName: Backend.Services.ProductBuilder
   nameWithType: ProductBuilder
-- uid: Backend.Services.ProductBuilder.AddIngredient(System.String,System.String)
-  name: AddIngredient(string, string)
-  href: api/Backend.Services.ProductBuilder.html#Backend_Services_ProductBuilder_AddIngredient_System_String_System_String_
-  commentId: M:Backend.Services.ProductBuilder.AddIngredient(System.String,System.String)
-  name.vb: AddIngredient(String, String)
-  fullName: Backend.Services.ProductBuilder.AddIngredient(string, string)
-  fullName.vb: Backend.Services.ProductBuilder.AddIngredient(String, String)
-  nameWithType: ProductBuilder.AddIngredient(string, string)
-  nameWithType.vb: ProductBuilder.AddIngredient(String, String)
+- uid: Backend.Services.ProductBuilder.AddIngredient(System.String,System.String,System.Double,System.Double)
+  name: AddIngredient(string, string, double, double)
+  href: api/Backend.Services.ProductBuilder.html#Backend_Services_ProductBuilder_AddIngredient_System_String_System_String_System_Double_System_Double_
+  commentId: M:Backend.Services.ProductBuilder.AddIngredient(System.String,System.String,System.Double,System.Double)
+  name.vb: AddIngredient(String, String, Double, Double)
+  fullName: Backend.Services.ProductBuilder.AddIngredient(string, string, double, double)
+  fullName.vb: Backend.Services.ProductBuilder.AddIngredient(String, String, Double, Double)
+  nameWithType: ProductBuilder.AddIngredient(string, string, double, double)
+  nameWithType.vb: ProductBuilder.AddIngredient(String, String, Double, Double)
 - uid: Backend.Services.ProductBuilder.AddIngredient*
   name: AddIngredient
   href: api/Backend.Services.ProductBuilder.html#Backend_Services_ProductBuilder_AddIngredient_
@@ -841,12 +893,12 @@ references:
   isSpec: "True"
   fullName: Backend.Services.SkincareFacade.GetTranslation
   nameWithType: SkincareFacade.GetTranslation
-- uid: Backend.Services.SkincareFacade.SimpleCheck(Backend.Models.Product,Backend.Models.Product)
-  name: SimpleCheck(Product, Product)
-  href: api/Backend.Services.SkincareFacade.html#Backend_Services_SkincareFacade_SimpleCheck_Backend_Models_Product_Backend_Models_Product_
-  commentId: M:Backend.Services.SkincareFacade.SimpleCheck(Backend.Models.Product,Backend.Models.Product)
-  fullName: Backend.Services.SkincareFacade.SimpleCheck(Backend.Models.Product, Backend.Models.Product)
-  nameWithType: SkincareFacade.SimpleCheck(Product, Product)
+- uid: Backend.Services.SkincareFacade.SimpleCheck(Backend.Models.ISkincareComponent)
+  name: SimpleCheck(ISkincareComponent)
+  href: api/Backend.Services.SkincareFacade.html#Backend_Services_SkincareFacade_SimpleCheck_Backend_Models_ISkincareComponent_
+  commentId: M:Backend.Services.SkincareFacade.SimpleCheck(Backend.Models.ISkincareComponent)
+  fullName: Backend.Services.SkincareFacade.SimpleCheck(Backend.Models.ISkincareComponent)
+  nameWithType: SkincareFacade.SimpleCheck(ISkincareComponent)
 - uid: Backend.Services.SkincareFacade.SimpleCheck*
   name: SimpleCheck
   href: api/Backend.Services.SkincareFacade.html#Backend_Services_SkincareFacade_SimpleCheck_
@@ -860,6 +912,19 @@ references:
   commentId: T:Backend.Services.SystemSettings
   fullName: Backend.Services.SystemSettings
   nameWithType: SystemSettings
+- uid: Backend.Services.SystemSettings.CriticalPHThreshold
+  name: CriticalPHThreshold
+  href: api/Backend.Services.SystemSettings.html#Backend_Services_SystemSettings_CriticalPHThreshold
+  commentId: P:Backend.Services.SystemSettings.CriticalPHThreshold
+  fullName: Backend.Services.SystemSettings.CriticalPHThreshold
+  nameWithType: SystemSettings.CriticalPHThreshold
+- uid: Backend.Services.SystemSettings.CriticalPHThreshold*
+  name: CriticalPHThreshold
+  href: api/Backend.Services.SystemSettings.html#Backend_Services_SystemSettings_CriticalPHThreshold_
+  commentId: Overload:Backend.Services.SystemSettings.CriticalPHThreshold
+  isSpec: "True"
+  fullName: Backend.Services.SystemSettings.CriticalPHThreshold
+  nameWithType: SystemSettings.CriticalPHThreshold
 - uid: Backend.Services.SystemSettings.GetInstance(Microsoft.Extensions.Logging.ILogger{Backend.Services.SystemSettings})
   name: GetInstance(ILogger<SystemSettings>)
   href: api/Backend.Services.SystemSettings.html#Backend_Services_SystemSettings_GetInstance_Microsoft_Extensions_Logging_ILogger_Backend_Services_SystemSettings__
@@ -889,6 +954,19 @@ references:
   isSpec: "True"
   fullName: Backend.Services.SystemSettings.InitializedAt
   nameWithType: SystemSettings.InitializedAt
+- uid: Backend.Services.SystemSettings.MaxSafeConcentration
+  name: MaxSafeConcentration
+  href: api/Backend.Services.SystemSettings.html#Backend_Services_SystemSettings_MaxSafeConcentration
+  commentId: P:Backend.Services.SystemSettings.MaxSafeConcentration
+  fullName: Backend.Services.SystemSettings.MaxSafeConcentration
+  nameWithType: SystemSettings.MaxSafeConcentration
+- uid: Backend.Services.SystemSettings.MaxSafeConcentration*
+  name: MaxSafeConcentration
+  href: api/Backend.Services.SystemSettings.html#Backend_Services_SystemSettings_MaxSafeConcentration_
+  commentId: Overload:Backend.Services.SystemSettings.MaxSafeConcentration
+  isSpec: "True"
+  fullName: Backend.Services.SystemSettings.MaxSafeConcentration
+  nameWithType: SystemSettings.MaxSafeConcentration
 - uid: Backend.Services.SystemSettings.Version
   name: Version
   href: api/Backend.Services.SystemSettings.html#Backend_Services_SystemSettings_Version

@@ -155,9 +155,9 @@ Class ProductBuilder  <a class="header-action link-secondary" title="View source
 
   <a id="Backend_Services_ProductBuilder_AddIngredient_" data-uid="Backend.Services.ProductBuilder.AddIngredient*"></a>
 
-  <h3 id="Backend_Services_ProductBuilder_AddIngredient_System_String_System_String_" data-uid="Backend.Services.ProductBuilder.AddIngredient(System.String,System.String)">
-  AddIngredient(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ProductBuilder.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Backend_Services_ProductBuilder_AddIngredient_System_String_System_String_System_Double_System_Double_" data-uid="Backend.Services.ProductBuilder.AddIngredient(System.String,System.String,System.Double,System.Double)">
+  AddIngredient(string, string, double, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ProductBuilder.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Додає активний інгредієнт до продукту.</p>
@@ -165,7 +165,7 @@ Class ProductBuilder  <a class="header-action link-secondary" title="View source
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ProductBuilder AddIngredient(string name, string type)</code></pre>
+    <pre><code class="lang-csharp hljs">public ProductBuilder AddIngredient(string name, string type, double ph = 5.5, double conc = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -175,6 +175,12 @@ Class ProductBuilder  <a class="header-action link-secondary" title="View source
 </dd>
     <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>Тип активної речовини (наприклад, &quot;Retinoid&quot;).</p>
+</dd>
+    <dt><code>ph</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Рівень pH (за замовчуванням 5.5).</p>
+</dd>
+    <dt><code>conc</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Концентрація активної речовини у %.</p>
 </dd>
   </dl>
 
@@ -199,7 +205,7 @@ Class ProductBuilder  <a class="header-action link-secondary" title="View source
 
   <h3 id="Backend_Services_ProductBuilder_Build" data-uid="Backend.Services.ProductBuilder.Build">
   Build()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ProductBuilder.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/ProductBuilder.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Повертає повністю сформований об'єкт Product.</p>
