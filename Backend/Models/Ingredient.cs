@@ -16,4 +16,10 @@ public class Ingredient
     
     /// <summary> Тип активної речовини (Acid, Retinoid, VitaminC тощо) для перевірки сумісності. </summary>
     public string ActiveType { get; set; } = string.Empty;
+    
+    /// <summary> Рівень кислотності інгредієнта. </summary>
+    public double PHLevel { get; set; } = 5.5; 
+    
+    /// <summary> Концентрація активної речовини у відсотках. </summary>
+    public double Concentration { get; set; } = 0.0;
 }

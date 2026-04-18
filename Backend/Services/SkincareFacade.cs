@@ -30,32 +30,44 @@ public class SkincareFacade
     }
 
     /// <summary>
-    /// Виконує комплексну перевірку двох засобів, включаючи логування, проксі-захист та генерацію звіту.
+    /// Виконує комплексну перевірку сумісності компонентів догляду.
     /// </summary>
-    /// <remarks>
-    /// Метод задіює патерни: Proxy, Decorator, Observer та Template Method.
-    /// </remarks>
-    /// <param name="p1">Перший продукт для аналізу.</param>
-    /// <param name="p2">Другий продукт для аналізу.</param>
-    /// <returns>Локалізований текстовий звіт про сумісність.</returns>
-    public string SimpleCheck(Product p1, Product p2)
+    /// <param name="component">Компонент догляду (окремий продукт або ціла рутина - Composite).</param>
+    /// <returns>Локалізований текстовий звіт.</returns>
+    public string SimpleCheck(ISkincareComponent routine)
     {
-        _logger.LogInformation("Фасад аналізує сумісність...");
-        
+        // Отримуємо всі інгредієнти одним списком завдяки Composite!
+        var allIngredients = routine.GetAllIngredients();
+    
         var proxy = new CompatibilityProxy(_strategy);
         var decorated = new DiagnosticDecorator(proxy, _diagnosticLogger);
 
-        bool isCompatible = decorated.Check(p1, p2);
-        
+        bool isCompatible = true;
+        for (int i = 0; i < allIngredients.Count; i++)
+        {
+            for (int j = i + 1; j < allIngredients.Count; j++)
+            {
+                var tempP1 = new Product { Name = "Active 1", Ingredients = new List<Ingredient> { allIngredients[i] } };
+                var tempP2 = new Product { Name = "Active 2", Ingredients = new List<Ingredient> { allIngredients[j] } };
+
+                if (!decorated.Check(tempP1, tempP2)) 
+                { 
+                    isCompatible = false; 
+                    break; 
+                }
+            }
+            if (!isCompatible) break;
+        }
+
         string resultKey = isCompatible ? "Compatible" : "Conflict";
 
         if (!isCompatible)
         {
             var notifier = new ConflictNotifier();
             notifier.Attach(new SecurityLogger(_logger));
-            notifier.Notify($"Конфлікт: {p1.Name} + {p2.Name}");
+            notifier.Notify($"Виявлено несумісність у наборі: {routine.GetName()}");
         }
-        
+    
         var report = new SimpleTextReport(_localizer);
         return report.CreateFullReport(resultKey);
     }

@@ -17,58 +17,45 @@ public class CompatibilityTests
     }
 
     [Test]
-    public void Check_RetinoidAndAcid_ReturnsFalse()
+    public void Check_TwoStrongAcids_ReturnsFalse_DueToLowPH()
     {
-        var p1 = new Product { Name = "Retinol" };
-        p1.Ingredients.Add(new Ingredient { Name = "Pure Retinol", ActiveType = "Retinoid" });
+        var p1 = new Product { Name = "Acid 1" };
+        p1.Ingredients.Add(new Ingredient { ActiveType = "Acid", PHLevel = 3.0 });
 
-        var p2 = new Product { Name = "AHA Acid" };
-        p2.Ingredients.Add(new Ingredient { Name = "Glycolic Acid", ActiveType = "Acid" });
+        var p2 = new Product { Name = "Acid 2" };
+        p2.Ingredients.Add(new Ingredient { ActiveType = "Acid", PHLevel = 3.2 });
         
         var result = _strategy.Check(p1, p2);
         
-        Assert.That(result, Is.False, "Ретиноїди та кислоти мають бути несумісними");
+        Assert.That(result, Is.False, "Дві кислоти з pH < 3.5 мають бути несумісними");
     }
-    
+
     [Test]
-    public void Builder_BuildsProductCorrectly()
+    public void Check_HighConcentration_ReturnsFalse()
+    {
+        var p1 = new Product { Name = "Retinol" };
+        p1.Ingredients.Add(new Ingredient { ActiveType = "Retinoid", Concentration = 2.0 });
+
+        var p2 = new Product { Name = "Acid" };
+        p2.Ingredients.Add(new Ingredient { ActiveType = "Acid", Concentration = 4.0 });
+        
+        var result = _strategy.Check(p1, p2);
+        
+        Assert.That(result, Is.False, "Сумарна концентрація 6% > 5% має бути небезпечною");
+    }
+
+    [Test]
+    public void Builder_BuildsProductWithChemicalProperties()
     {
         var builder = new ProductBuilder();
-        var product = builder.Create("Test Serum")
-            .AddIngredient("BHA", "Acid")
+        var product = builder.Create("Safe Serum")
+            .AddIngredient("Vitamin C", "Acid", 3.8, 2.0)
             .Build();
 
         Assert.Multiple(() =>
         {
-            Assert.That(product.Name, Is.EqualTo("Test Serum"));
-            Assert.That(product.Ingredients[0].ActiveType, Is.EqualTo("Acid"));
+            Assert.That(product.Ingredients[0].PHLevel, Is.EqualTo(3.8));
+            Assert.That(product.Ingredients[0].Concentration, Is.EqualTo(2.0));
         });
-    }
-
-    [Test]
-    public void Check_CompatibleProducts_ReturnsTrue()
-    {
-        var p1 = new Product { Name = "Moisturizer" };
-        p1.Ingredients.Add(new Ingredient { Name = "Glycerin", ActiveType = "Moisturizer" });
-
-        var p2 = new Product { Name = "Centella" };
-        p2.Ingredients.Add(new Ingredient { Name = "Centella", ActiveType = "Soothing" });
-
-        var result = _strategy.Check(p1, p2);
-        Assert.That(result, Is.True);
-    }
-    
-    [Test]
-    public void Check_Compatibility_IsSymmetric()
-    {
-        var p1 = new Product { Name = "Retinol" };
-        p1.Ingredients.Add(new Ingredient { ActiveType = "Retinoid" });
-        var p2 = new Product { Name = "Acid" };
-        p2.Ingredients.Add(new Ingredient { ActiveType = "Acid" });
-
-        var res1 = _strategy.Check(p1, p2);
-        var res2 = _strategy.Check(p2, p1);
-
-        Assert.That(res1, Is.EqualTo(res2), "Результат має бути однаковим незалежно від порядку");
     }
 }

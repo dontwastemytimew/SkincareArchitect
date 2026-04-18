@@ -1,9 +1,9 @@
 ﻿const mockProducts = [
-    { id: 1, name: "The Ordinary Retinol 0.5%", type: "Retinoid", texture: "oil", time: "evening" },
-    { id: 2, name: "CeraVe Hydrating Cleanser", type: "Moisturizer", texture: "gel", time: "both" },
-    { id: 3, name: "The Ordinary Glycolic Acid 7%", type: "Acid", texture: "liquid", time: "evening" },
-    { id: 4, name: "La Roche-Posay SPF 50", type: "SPF", texture: "cream", time: "morning" },
-    { id: 5, name: "Skin1004 Centella Ampoule", type: "Soothing", texture: "liquid", time: "both" }
+    { id: 1, name: "The Ordinary Retinol 0.5%", type: "Retinoid", ph: 5.5, concentration: 0.5, texture: "oil", time: "evening" },
+    { id: 2, name: "CeraVe Hydrating Cleanser", type: "Moisturizer", ph: 5.5, concentration: 0.0, texture: "gel", time: "both" },
+    { id: 3, name: "The Ordinary Glycolic Acid 7%", type: "Acid", ph: 3.2, concentration: 7.0, texture: "liquid", time: "evening" },
+    { id: 4, name: "La Roche-Posay SPF 50", type: "SPF", ph: 6.0, concentration: 0.0, texture: "cream", time: "morning" },
+    { id: 5, name: "Skin1004 Centella Ampoule", type: "Soothing", ph: 5.8, concentration: 0.0, texture: "liquid", time: "both" }
 ];
 
 let currentLang = localStorage.getItem('selectedLang') || 'uk';
@@ -104,12 +104,6 @@ function showAbout() {
     hideAllSections();
     document.getElementById('aboutSection').style.display = 'block';
     updateNavActive(3);
-}
-
-function hideAllSections() {
-    document.getElementById('constructorSection').style.display = 'none';
-    document.getElementById('shelfSection').style.display = 'none';
-    document.getElementById('aboutSection').style.display = 'none';
 }
 
 function updateNavActive(index) {
@@ -245,17 +239,6 @@ function getRoutineSuggestion() {
     const order = {"liquid": 1, "gel": 2, "oil": 3, "cream": 4};
     const sortByTexture = (a, b) => (order[a.texture] || 99) - (order[b.texture] || 99);
     return { morning: morning.sort(sortByTexture), evening: evening.sort(sortByTexture) };
-}
-
-// Auth & Init
-function login() {
-    userName = prompt(currentLang === 'uk' ? "Як вас звати?" : "What is your name?", "Марина");
-    if (userName) {
-        isLogged = true;
-        const btn = document.querySelector('.auth-btn');
-        btn.innerHTML = `<i class="fas fa-user"></i> ${userName}`;
-        btn.onclick = null;
-    }
 }
 
 window.onload = async () => {

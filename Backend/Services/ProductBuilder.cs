@@ -28,10 +28,17 @@ public class ProductBuilder
     /// </summary>
     /// <param name="name">Назва інгредієнта (наприклад, "Retinol").</param>
     /// <param name="type">Тип активної речовини (наприклад, "Retinoid").</param>
+    /// <param name="ph">Рівень pH (за замовчуванням 5.5).</param>
+    /// <param name="conc">Концентрація активної речовини у %.</param>
     /// <returns>Поточний екземпляр ProductBuilder.</returns>
-    public ProductBuilder AddIngredient(string name, string type)
+    public ProductBuilder AddIngredient(string name, string type, double ph = 5.5, double conc = 0.0)
     {
-        _product.Ingredients.Add(new Ingredient { Name = name, ActiveType = type });
+        _product.Ingredients.Add(new Ingredient { 
+            Name = name, 
+            ActiveType = type, 
+            PHLevel = ph, 
+            Concentration = conc 
+        });
         return this;
     }
 

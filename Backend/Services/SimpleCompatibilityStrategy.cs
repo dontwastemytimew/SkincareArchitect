@@ -31,17 +31,30 @@ public class SimpleCompatibilityStrategy : ICompatibilityStrategy
     /// </returns>
     public bool Check(Product p1, Product p2)
     {
-        _logger.LogInformation("Аналіз сумісності: {P1} та {P2}", p1.Name, p2.Name);
+        var settings = SystemSettings.GetInstance(new Microsoft.Extensions.Logging.Abstractions.NullLogger<SystemSettings>());
 
         foreach (var ing1 in p1.Ingredients)
         {
             foreach (var ing2 in p2.Ingredients)
             {
-                if ((ing1.ActiveType == "Retinoid" && ing2.ActiveType == "Acid") ||
-                    (ing1.ActiveType == "Acid" && ing2.ActiveType == "Retinoid"))
+                if (ing1.ActiveType == "Acid" && ing2.ActiveType == "Acid")
                 {
-                    _logger.LogWarning("Знайдено конфлікт: {I1} та {I2}!", ing1.Name, ing2.Name);
-                    return false;
+                    if (ing1.PHLevel < settings.CriticalPHThreshold && ing2.PHLevel < settings.CriticalPHThreshold)
+                    {
+                        _logger.LogWarning("Критично низький pH у парі: {P1} + {P2}", p1.Name, p2.Name);
+                        return false;
+                    }
+                }
+                
+                if ((ing1.ActiveType == "Retinoid" || ing1.ActiveType == "Acid") && 
+                    (ing2.ActiveType == "Retinoid" || ing2.ActiveType == "Acid"))
+                {
+                    double totalConc = ing1.Concentration + ing2.Concentration;
+                    if (totalConc > settings.MaxSafeConcentration)
+                    {
+                        _logger.LogWarning("Агресивна концентрація: {Sum}%", totalConc);
+                        return false;
+                    }
                 }
             }
         }

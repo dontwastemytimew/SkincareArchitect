@@ -1,4 +1,5 @@
 ﻿using Backend.Services;
+using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers;
@@ -47,19 +48,24 @@ public class SkincareController : ControllerBase
     [HttpPost("analyze")]
     public IActionResult Analyze([FromBody] List<ProductViewModel> frontendProducts)
     {
-        
         if (frontendProducts == null || frontendProducts.Count < 2) 
             return BadRequest("Додайте хоча б два засоби");
-        
+
         var builder = new ProductBuilder();
-        var products = frontendProducts.Select(fp => 
-            builder.Create(fp.Name)
-                .AddIngredient(fp.Name, fp.Type)
-                .Build()
-        ).ToList();
         
-        string report = _facade.SimpleCheck(products[0], products[1]);
-    
+        var routine = new Routine("User Analysis Routine");
+        
+        foreach (var fp in frontendProducts)
+        {
+            var product = builder.Create(fp.Name)
+                .AddIngredient(fp.Name, fp.Type, fp.PH, fp.Concentration)
+                .AddIngredient("Aqua", "Base", 7.0, 0.0) 
+                .Build();
+            routine.Add(product);
+        }
+        
+        string report = _facade.SimpleCheck(routine); 
+
         return Ok(new { analysis = report });
     }
     
@@ -69,8 +75,15 @@ public class SkincareController : ControllerBase
     public class ProductViewModel {
         /// <summary>Назва засобу</summary>
         public string Name { get; set; }
+        
         /// <summary>Тип активного інгредієнта (Retinoid, Acid, Moisturizer тощо)</summary>
         public string Type { get; set; }
+        
+        /// <summary>Рівень кислотності (PH)</summary>
+        public double PH { get; set; } = 5.5; 
+        
+        /// <summary>Концентрація активної речовини</summary>
+        public double Concentration { get; set; } = 0.0;
     }
     
     /// <summary>

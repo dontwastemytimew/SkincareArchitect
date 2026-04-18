@@ -57,4 +57,14 @@ public sealed class SystemSettings
         }
         return _instance;
     }
+    
+    /// <summary>
+    /// Максимально допустима сумарна концентрація активів для безпечного домашнього догляду.
+    /// </summary>
+    public double MaxSafeConcentration { get; } = 5.0;
+
+    /// <summary>
+    /// Мінімальний поріг pH, нижче якого засоби вважаються агресивними.
+    /// </summary>
+    public double CriticalPHThreshold { get; } = 3.5;
 }
