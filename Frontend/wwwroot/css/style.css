@@ -121,11 +121,12 @@ h3 {
     background-color: var(--silver-blue);
     color: var(--white);
     border: none;
-    padding: 12px;
     border-radius: 10px;
     cursor: pointer;
+    display: block;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 15px;
+    padding: 10px 25px;
 }
 
 .btn-scan {
@@ -192,9 +193,11 @@ input, select {
     padding: 15px 0;
     border-bottom: 1px solid var(--cherry-pink);
     gap: 30px;
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .top-nav a {
@@ -280,8 +283,6 @@ footer {
 }
 
 .auth-btn {
-    position: absolute;
-    right: 30px;
     background: var(--burgundy);
     color: var(--misty-rose);
     border: none;
@@ -402,10 +403,11 @@ footer {
 
 .auth-wrapper {
     position: absolute;
-    right: 30px;
+    right: 20px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    margin-left: 0;
 }
 
 .logout-icon {
@@ -416,6 +418,7 @@ footer {
     font-size: 1.2rem;
     padding: 5px;
     transition: 0.3s;
+    margin-right: 0 !important;
 }
 
 .logout-icon:hover {
@@ -545,6 +548,7 @@ footer {
 
 .constructor-search-input {
     width: 100%;
+    box-sizing: border-box;
     padding: 12px 20px;
     border: 1px solid var(--misty-rose);
     border-radius: 10px;
@@ -579,4 +583,18 @@ footer {
 
 .constructor-result-item:hover {
     background: rgba(108, 8, 32, 0.05);
+}
+
+#loginName {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+}
+
+#catalogSection .btn-undo,
+#shelfSection .btn-undo {
+    width: max-content;
+    margin: 20px auto 0;
+    padding: 10px 25px;
 }

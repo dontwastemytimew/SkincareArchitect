@@ -113,16 +113,23 @@ function setSource(source) {
     const btnShelf = document.getElementById('btnShelf');
     if(btnAll) btnAll.classList.toggle('active', source === 'all');
     if(btnShelf) btnShelf.classList.toggle('active', source === 'shelf');
-    
+
     const searchInput = document.getElementById('constructorSearch');
     if (searchInput) {
-        searchInput.value = '';
-        document.getElementById('constructorSearchResults').innerHTML = '';
+        searchInput.value = ''; // Очищаємо поле при перемиканні
     }
 
-    if (source === 'shelf' && (!isLogged || myShelf.length === 0)) {
-        showAlert(currentLang === 'uk' ? "Ваша поличка порожня!" : "Your shelf is empty!");
-        setSource('all');
+    if (source === 'shelf') {
+        if (!isLogged || myShelf.length === 0) {
+            showAlert(currentLang === 'uk' ? "Ваша поличка порожня!" : "Your shelf is empty!");
+            setSource('all');
+            return;
+        }
+        // Якщо перейшли на поличку і там щось є — відразу малюємо її!
+        renderConstructorSearch();
+    } else {
+        // Якщо перейшли на всю базу — ховаємо список
+        document.getElementById('constructorSearchResults').innerHTML = '';
     }
 }
 
@@ -451,10 +458,15 @@ function renderConstructorSearch() {
     const sourceArray = selectedSource === 'all' ? mockProducts : myShelf;
     
     if (term.length === 0) {
-        container.innerHTML = '';
-        return;
+        if (selectedSource === 'all') {
+            container.innerHTML = '';
+            return;
+        } else {
+            renderListToConstructor(myShelf, container);
+            return;
+        }
     }
-
+    
     const filtered = sourceArray.filter(p =>
         p.name.toLowerCase().includes(term) ||
         (p.brand && p.brand.toLowerCase().includes(term))
@@ -465,7 +477,23 @@ function renderConstructorSearch() {
         return;
     }
     
-    container.innerHTML = filtered.slice(0, 10).map(p => `
+    const displayLimit = selectedSource === 'all' ? filtered.slice(0, 10) : filtered;
+    renderListToConstructor(displayLimit, container);
+}
+
+// Керування панеллю адміністратора
+function openAdminPanel() {
+    document.getElementById('adminModal').style.display = 'flex';
+}
+
+function closeAdminPanel() {
+    document.getElementById('adminModal').style.display = 'none';
+    document.getElementById('benchmarkResults').style.display = 'none';
+    document.getElementById('benchmarkResults').innerHTML = '';
+}
+
+function renderListToConstructor(list, container) {
+    container.innerHTML = list.map(p => `
         <div class="constructor-result-item" onclick="addProductToAnalysis('${p.id}')">
             <div>
                 <strong style="color:var(--burgundy); font-size:0.9rem;">${p.name}</strong><br>
