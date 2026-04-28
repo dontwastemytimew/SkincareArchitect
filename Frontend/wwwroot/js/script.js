@@ -16,6 +16,7 @@ async function changeLang(lang) {
     if (panel) panel.style.display = 'none';
 }
 
+// Завантажує переклади з бекенду та замінює текст у всіх елементах
 async function applyTranslations() {
     try {
         const response = await fetch(`http://localhost:5016/api/skincare/translations?v=${Date.now()}`, {
@@ -100,13 +101,14 @@ function showAbout() {
     updateNavActive(3);
 }
 
+// Оновлює візуальне підсвічування активного пункту в меню
 function updateNavActive(index) {
     const navLinks = document.querySelectorAll('.top-nav a');
     navLinks.forEach(link => link.classList.remove('active'));
     if(navLinks[index]) navLinks[index].classList.add('active');
 }
 
-// Логіка продуктів
+// Перемикає джерело пошуку в конструкторі
 function setSource(source) {
     selectedSource = source;
     const btnAll = document.getElementById('btnAll');
@@ -125,14 +127,13 @@ function setSource(source) {
             setSource('all');
             return;
         }
-        // Якщо перейшли на поличку і там щось є — відразу малюємо її!
         renderConstructorSearch();
     } else {
-        // Якщо перейшли на всю базу — ховаємо список
         document.getElementById('constructorSearchResults').innerHTML = '';
     }
 }
 
+// Додає обраний продукт у чергу на аналіз
 function addProductToAnalysis(id) {
     const sourceArray = selectedSource === 'all' ? mockProducts : myShelf;
     const product = sourceArray.find(p => p.id == id || p.id === parseInt(id)); // parseInt на випадок, якщо id число
@@ -150,6 +151,7 @@ function addProductToAnalysis(id) {
     }
 }
 
+// Оновлює візуальний список обраних продуктів у конструкторі
 function updateAnalysisUI() {
     const container = document.getElementById('queueList');
     container.innerHTML = analysisQueue.map((p, index) => `
@@ -163,12 +165,13 @@ function updateAnalysisUI() {
     `).join('');
 }
 
+// Видаляє продукт із черги на аналіз по кліку
 function removeFromAnalysis(index) {
     analysisQueue.splice(index, 1);
     updateAnalysisUI();
 }
 
-// Аналіз
+// Відправляє зібрану рутину на бекенд для перевірки сумісності
 async function runAnalysis() {
     if (analysisQueue.length < 2) {
         const msg = currentLang === 'uk' ? "додайте хоча б два засоби" : "add at least two products";
@@ -221,12 +224,17 @@ async function runAnalysis() {
     }
 }
 
+// Сортує засоби з черги за текстурою та часом використання (Ранок/Вечір)
 function getRoutineSuggestion() {
     const morning = analysisQueue.filter(p => p.time === 'morning' || p.time === 'both');
     const evening = analysisQueue.filter(p => p.time === 'evening' || p.time === 'both');
-    const order = {"liquid": 1, "gel": 2, "oil": 3, "cream": 4};
-    const sortByTexture = (a, b) => (order[a.texture] || 99) - (order[b.texture] || 99);
-    return { morning: morning.sort(sortByTexture), evening: evening.sort(sortByTexture) };
+    
+    const sortByStep = (a, b) => (a.order || 3) - (b.order || 3);
+
+    return {
+        morning: morning.sort(sortByStep),
+        evening: evening.sort(sortByStep)
+    };
 }
 
 window.onload = async () => {
@@ -265,6 +273,7 @@ function closeLogin() {
     document.getElementById('loginModal').style.display = 'none';
 }
 
+// Зберігає ім'я користувача та оновлює шапку
 function confirmLogin() {
     const nameInput = document.getElementById('loginName');
     if (nameInput.value.trim()) {
@@ -312,7 +321,7 @@ function logout() {
 function showCatalog() {
     hideAllSections();
     document.getElementById('catalogSection').style.display = 'block';
-    updateNavActive(2); // Індекс 2 для каталогу
+    updateNavActive(2);
     renderCatalog();
 }
 
@@ -423,6 +432,7 @@ function removeFromShelf(index) {
     }
 }
 
+// Запускає паралельний та послідовний аналіз бази на бекенді (вимірювання швидкості)
 async function runBenchmark() {
     const btn = document.getElementById('btnBenchmark');
     const resultsDiv = document.getElementById('benchmarkResults');

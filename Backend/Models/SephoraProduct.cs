@@ -28,6 +28,20 @@ public class SephoraProduct
     public string Ingredients { get; set; } = string.Empty;
     
     /// <summary> 
+    /// Рекомендований час використання (morning, evening, both).
+    /// Обчислюється динамічно під час парсингу.
+    /// </summary>
+    [Ignore]
+    public string PreferredTime { get; set; } = "both";
+    
+    /// <summary> 
+    /// Порядковий номер нанесення (1 - тонік, 2 - сироватка, 3 - крем, 4 - SPF).
+    /// Визначається за назвою продукту.
+    /// </summary>
+    [Ignore]
+    public int ApplicationOrder { get; set; } = 3;
+    
+    /// <summary> 
     /// Список структурованих об'єктів Ingredient, отриманих після обробки.
     /// Атрибут [Ignore] вказує парсеру CsvHelper пропустити це поле при читанні файлу.
     /// </summary>

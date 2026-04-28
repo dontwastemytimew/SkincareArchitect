@@ -83,33 +83,76 @@ public class SephoraDataService
     /// </summary>
     /// <param name="product">Продукт, чиї інгредієнти потрібно розібрати.</param>
     private void ProcessSingleProduct(SephoraProduct product)
-    {
-        if (string.IsNullOrEmpty(product.Ingredients)) return;
-        
-        string[] rawIngredients = product.Ingredients.Split(new[] { ',', '.', ';' }, StringSplitOptions.RemoveEmptyEntries);
+{
+    if (string.IsNullOrEmpty(product.Ingredients)) return;
+    
+    string[] rawIngredients = product.Ingredients.Split(new[] { ',', '.', ';' }, StringSplitOptions.RemoveEmptyEntries);
 
-        foreach (var raw in rawIngredients)
+    foreach (var raw in rawIngredients)
+    {
+        string cleanName = raw.Trim().ToLower();
+        
+        // Пошук активних ретиноїдів
+        if (Regex.IsMatch(cleanName, @"\bretin[oa]l\b|\bretinoid\b|\badapalene\b"))
         {
-            string cleanName = raw.Trim().ToLower();
-            
-            if (Regex.IsMatch(cleanName, @"\bretin[oa]l\b|\bretinoid\b"))
-            {
-                product.ParsedIngredients.Add(new Ingredient { 
-                    Name = raw.Trim(), 
-                    ActiveType = "Retinoid", 
-                    Concentration = ExtractConcentration(cleanName) 
-                });
-            }
-            else if (Regex.IsMatch(cleanName, @"\bacid\b"))
-            {
-                product.ParsedIngredients.Add(new Ingredient { 
-                    Name = raw.Trim(), 
-                    ActiveType = "Acid", 
-                    PHLevel = 3.2 
-                });
-            }
+            product.ParsedIngredients.Add(new Ingredient { 
+                Name = raw.Trim(), 
+                ActiveType = "Retinoid", 
+                Concentration = ExtractConcentration(cleanName) 
+            });
+        }
+        // Пошук активних кислот
+        else if (Regex.IsMatch(cleanName, @"\b(glycolic|salicylic|lactic|mandelic|tartaric)\b.*\bacid\b"))
+        {
+            product.ParsedIngredients.Add(new Ingredient { 
+                Name = raw.Trim(), 
+                ActiveType = "Acid", 
+                PHLevel = 3.2
+            });
         }
     }
+
+    // Визначення рекомендованого часу
+    if (product.ParsedIngredients.Any(i => i.ActiveType == "Retinoid") || 
+        product.ProductName.Contains("Night", StringComparison.OrdinalIgnoreCase))
+    {
+        product.PreferredTime = "evening";
+    }
+    else if (product.ProductName.Contains("SPF", StringComparison.OrdinalIgnoreCase) || 
+             product.ProductName.Contains("Sunscreen", StringComparison.OrdinalIgnoreCase) ||
+             product.ProductName.Contains("Day", StringComparison.OrdinalIgnoreCase))
+    {
+        product.PreferredTime = "morning";
+    }
+    else 
+    {
+        product.PreferredTime = "both";
+    }
+
+    // Визначення черговості нанесення за текстурою
+    string lowerName = product.ProductName.ToLower();
+
+    if (lowerName.Contains("toner") || lowerName.Contains("essence") || lowerName.Contains("liquid"))
+    {
+        product.ApplicationOrder = 1; // Найрідші (тоніки)
+    }
+    else if (lowerName.Contains("serum") || lowerName.Contains("ampoule") || lowerName.Contains("gel"))
+    {
+        product.ApplicationOrder = 2; // Сироватки
+    }
+    else if (lowerName.Contains("cream") || lowerName.Contains("moisturizer") || lowerName.Contains("lotion"))
+    {
+        product.ApplicationOrder = 3; // Креми
+    }
+    else if (lowerName.Contains("spf") || lowerName.Contains("sunscreen"))
+    {
+        product.ApplicationOrder = 4; // Заключний шар
+    }
+    else
+    {
+        product.ApplicationOrder = 3; // За замовчуванням вважаємо кремовою текстурою
+    }
+}
 
     /// <summary>
     /// Допоміжний метод для витягування відсотка концентрації з тексту.

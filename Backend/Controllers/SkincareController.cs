@@ -114,25 +114,25 @@ public class SkincareController : ControllerBase
     public IActionResult GetProducts()
     {
         var dataService = new SephoraDataService("Data/product_info.csv"); 
-    
+
         var rawProducts = dataService.LoadProducts();
         
         var filteredProducts = rawProducts
             .AsParallel()
             .Where(p => dataService.IsValidSkincare(p)) 
             .ToList();
-
+        
         dataService.ParseParallel(filteredProducts);
 
         var result = filteredProducts.Take(300).Select(p => new {
             id = p.ProductId,
             name = p.ProductName,
             brand = p.BrandName,
-            type = p.ParsedIngredients.FirstOrDefault()?.ActiveType ?? "Treatment",
+            type = p.ParsedIngredients.FirstOrDefault()?.ActiveType ?? "Basic",
             ph = p.ParsedIngredients.FirstOrDefault()?.PHLevel ?? 5.5,
             concentration = p.ParsedIngredients.FirstOrDefault()?.Concentration ?? 0.0,
-            texture = "cream",
-            time = "both"
+            order = p.ApplicationOrder,
+            time = p.PreferredTime
         });
 
         return Ok(result);
