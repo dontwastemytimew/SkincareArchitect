@@ -13,6 +13,44 @@ references:
   commentId: N:Backend.Controllers
   fullName: Backend.Controllers
   nameWithType: Backend.Controllers
+- uid: Backend.Controllers.BenchmarkController
+  name: BenchmarkController
+  href: api/Backend.Controllers.BenchmarkController.html
+  commentId: T:Backend.Controllers.BenchmarkController
+  fullName: Backend.Controllers.BenchmarkController
+  nameWithType: BenchmarkController
+- uid: Backend.Controllers.BenchmarkController.#ctor
+  name: BenchmarkController()
+  href: api/Backend.Controllers.BenchmarkController.html#Backend_Controllers_BenchmarkController__ctor
+  commentId: M:Backend.Controllers.BenchmarkController.#ctor
+  name.vb: New()
+  fullName: Backend.Controllers.BenchmarkController.BenchmarkController()
+  fullName.vb: Backend.Controllers.BenchmarkController.New()
+  nameWithType: BenchmarkController.BenchmarkController()
+  nameWithType.vb: BenchmarkController.New()
+- uid: Backend.Controllers.BenchmarkController.#ctor*
+  name: BenchmarkController
+  href: api/Backend.Controllers.BenchmarkController.html#Backend_Controllers_BenchmarkController__ctor_
+  commentId: Overload:Backend.Controllers.BenchmarkController.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Backend.Controllers.BenchmarkController.BenchmarkController
+  fullName.vb: Backend.Controllers.BenchmarkController.New
+  nameWithType: BenchmarkController.BenchmarkController
+  nameWithType.vb: BenchmarkController.New
+- uid: Backend.Controllers.BenchmarkController.RunBenchmark
+  name: RunBenchmark()
+  href: api/Backend.Controllers.BenchmarkController.html#Backend_Controllers_BenchmarkController_RunBenchmark
+  commentId: M:Backend.Controllers.BenchmarkController.RunBenchmark
+  fullName: Backend.Controllers.BenchmarkController.RunBenchmark()
+  nameWithType: BenchmarkController.RunBenchmark()
+- uid: Backend.Controllers.BenchmarkController.RunBenchmark*
+  name: RunBenchmark
+  href: api/Backend.Controllers.BenchmarkController.html#Backend_Controllers_BenchmarkController_RunBenchmark_
+  commentId: Overload:Backend.Controllers.BenchmarkController.RunBenchmark
+  isSpec: "True"
+  fullName: Backend.Controllers.BenchmarkController.RunBenchmark
+  nameWithType: BenchmarkController.RunBenchmark
 - uid: Backend.Controllers.SkincareController
   name: SkincareController
   href: api/Backend.Controllers.SkincareController.html
@@ -408,6 +446,77 @@ references:
   isSpec: "True"
   fullName: Backend.Models.Routine.GetName
   nameWithType: Routine.GetName
+- uid: Backend.Models.SephoraProduct
+  name: SephoraProduct
+  href: api/Backend.Models.SephoraProduct.html
+  commentId: T:Backend.Models.SephoraProduct
+  fullName: Backend.Models.SephoraProduct
+  nameWithType: SephoraProduct
+- uid: Backend.Models.SephoraProduct.BrandName
+  name: BrandName
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_BrandName
+  commentId: P:Backend.Models.SephoraProduct.BrandName
+  fullName: Backend.Models.SephoraProduct.BrandName
+  nameWithType: SephoraProduct.BrandName
+- uid: Backend.Models.SephoraProduct.BrandName*
+  name: BrandName
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_BrandName_
+  commentId: Overload:Backend.Models.SephoraProduct.BrandName
+  isSpec: "True"
+  fullName: Backend.Models.SephoraProduct.BrandName
+  nameWithType: SephoraProduct.BrandName
+- uid: Backend.Models.SephoraProduct.Ingredients
+  name: Ingredients
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_Ingredients
+  commentId: P:Backend.Models.SephoraProduct.Ingredients
+  fullName: Backend.Models.SephoraProduct.Ingredients
+  nameWithType: SephoraProduct.Ingredients
+- uid: Backend.Models.SephoraProduct.Ingredients*
+  name: Ingredients
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_Ingredients_
+  commentId: Overload:Backend.Models.SephoraProduct.Ingredients
+  isSpec: "True"
+  fullName: Backend.Models.SephoraProduct.Ingredients
+  nameWithType: SephoraProduct.Ingredients
+- uid: Backend.Models.SephoraProduct.ParsedIngredients
+  name: ParsedIngredients
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_ParsedIngredients
+  commentId: P:Backend.Models.SephoraProduct.ParsedIngredients
+  fullName: Backend.Models.SephoraProduct.ParsedIngredients
+  nameWithType: SephoraProduct.ParsedIngredients
+- uid: Backend.Models.SephoraProduct.ParsedIngredients*
+  name: ParsedIngredients
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_ParsedIngredients_
+  commentId: Overload:Backend.Models.SephoraProduct.ParsedIngredients
+  isSpec: "True"
+  fullName: Backend.Models.SephoraProduct.ParsedIngredients
+  nameWithType: SephoraProduct.ParsedIngredients
+- uid: Backend.Models.SephoraProduct.ProductId
+  name: ProductId
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_ProductId
+  commentId: P:Backend.Models.SephoraProduct.ProductId
+  fullName: Backend.Models.SephoraProduct.ProductId
+  nameWithType: SephoraProduct.ProductId
+- uid: Backend.Models.SephoraProduct.ProductId*
+  name: ProductId
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_ProductId_
+  commentId: Overload:Backend.Models.SephoraProduct.ProductId
+  isSpec: "True"
+  fullName: Backend.Models.SephoraProduct.ProductId
+  nameWithType: SephoraProduct.ProductId
+- uid: Backend.Models.SephoraProduct.ProductName
+  name: ProductName
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_ProductName
+  commentId: P:Backend.Models.SephoraProduct.ProductName
+  fullName: Backend.Models.SephoraProduct.ProductName
+  nameWithType: SephoraProduct.ProductName
+- uid: Backend.Models.SephoraProduct.ProductName*
+  name: ProductName
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_ProductName_
+  commentId: Overload:Backend.Models.SephoraProduct.ProductName
+  isSpec: "True"
+  fullName: Backend.Models.SephoraProduct.ProductName
+  nameWithType: SephoraProduct.ProductName
 - uid: Backend.Services
   name: Backend.Services
   href: api/Backend.Services.html
@@ -747,6 +856,76 @@ references:
   isSpec: "True"
   fullName: Backend.Services.SecurityLogger.Update
   nameWithType: SecurityLogger.Update
+- uid: Backend.Services.SephoraDataService
+  name: SephoraDataService
+  href: api/Backend.Services.SephoraDataService.html
+  commentId: T:Backend.Services.SephoraDataService
+  fullName: Backend.Services.SephoraDataService
+  nameWithType: SephoraDataService
+- uid: Backend.Services.SephoraDataService.#ctor(System.String)
+  name: SephoraDataService(string)
+  href: api/Backend.Services.SephoraDataService.html#Backend_Services_SephoraDataService__ctor_System_String_
+  commentId: M:Backend.Services.SephoraDataService.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Backend.Services.SephoraDataService.SephoraDataService(string)
+  fullName.vb: Backend.Services.SephoraDataService.New(String)
+  nameWithType: SephoraDataService.SephoraDataService(string)
+  nameWithType.vb: SephoraDataService.New(String)
+- uid: Backend.Services.SephoraDataService.#ctor*
+  name: SephoraDataService
+  href: api/Backend.Services.SephoraDataService.html#Backend_Services_SephoraDataService__ctor_
+  commentId: Overload:Backend.Services.SephoraDataService.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Backend.Services.SephoraDataService.SephoraDataService
+  fullName.vb: Backend.Services.SephoraDataService.New
+  nameWithType: SephoraDataService.SephoraDataService
+  nameWithType.vb: SephoraDataService.New
+- uid: Backend.Services.SephoraDataService.LoadProducts
+  name: LoadProducts()
+  href: api/Backend.Services.SephoraDataService.html#Backend_Services_SephoraDataService_LoadProducts
+  commentId: M:Backend.Services.SephoraDataService.LoadProducts
+  fullName: Backend.Services.SephoraDataService.LoadProducts()
+  nameWithType: SephoraDataService.LoadProducts()
+- uid: Backend.Services.SephoraDataService.LoadProducts*
+  name: LoadProducts
+  href: api/Backend.Services.SephoraDataService.html#Backend_Services_SephoraDataService_LoadProducts_
+  commentId: Overload:Backend.Services.SephoraDataService.LoadProducts
+  isSpec: "True"
+  fullName: Backend.Services.SephoraDataService.LoadProducts
+  nameWithType: SephoraDataService.LoadProducts
+- uid: Backend.Services.SephoraDataService.ParseParallel(System.Collections.Generic.List{Backend.Models.SephoraProduct})
+  name: ParseParallel(List<SephoraProduct>)
+  href: api/Backend.Services.SephoraDataService.html#Backend_Services_SephoraDataService_ParseParallel_System_Collections_Generic_List_Backend_Models_SephoraProduct__
+  commentId: M:Backend.Services.SephoraDataService.ParseParallel(System.Collections.Generic.List{Backend.Models.SephoraProduct})
+  name.vb: ParseParallel(List(Of SephoraProduct))
+  fullName: Backend.Services.SephoraDataService.ParseParallel(System.Collections.Generic.List<Backend.Models.SephoraProduct>)
+  fullName.vb: Backend.Services.SephoraDataService.ParseParallel(System.Collections.Generic.List(Of Backend.Models.SephoraProduct))
+  nameWithType: SephoraDataService.ParseParallel(List<SephoraProduct>)
+  nameWithType.vb: SephoraDataService.ParseParallel(List(Of SephoraProduct))
+- uid: Backend.Services.SephoraDataService.ParseParallel*
+  name: ParseParallel
+  href: api/Backend.Services.SephoraDataService.html#Backend_Services_SephoraDataService_ParseParallel_
+  commentId: Overload:Backend.Services.SephoraDataService.ParseParallel
+  isSpec: "True"
+  fullName: Backend.Services.SephoraDataService.ParseParallel
+  nameWithType: SephoraDataService.ParseParallel
+- uid: Backend.Services.SephoraDataService.ParseSequential(System.Collections.Generic.List{Backend.Models.SephoraProduct})
+  name: ParseSequential(List<SephoraProduct>)
+  href: api/Backend.Services.SephoraDataService.html#Backend_Services_SephoraDataService_ParseSequential_System_Collections_Generic_List_Backend_Models_SephoraProduct__
+  commentId: M:Backend.Services.SephoraDataService.ParseSequential(System.Collections.Generic.List{Backend.Models.SephoraProduct})
+  name.vb: ParseSequential(List(Of SephoraProduct))
+  fullName: Backend.Services.SephoraDataService.ParseSequential(System.Collections.Generic.List<Backend.Models.SephoraProduct>)
+  fullName.vb: Backend.Services.SephoraDataService.ParseSequential(System.Collections.Generic.List(Of Backend.Models.SephoraProduct))
+  nameWithType: SephoraDataService.ParseSequential(List<SephoraProduct>)
+  nameWithType.vb: SephoraDataService.ParseSequential(List(Of SephoraProduct))
+- uid: Backend.Services.SephoraDataService.ParseSequential*
+  name: ParseSequential
+  href: api/Backend.Services.SephoraDataService.html#Backend_Services_SephoraDataService_ParseSequential_
+  commentId: Overload:Backend.Services.SephoraDataService.ParseSequential
+  isSpec: "True"
+  fullName: Backend.Services.SephoraDataService.ParseSequential
+  nameWithType: SephoraDataService.ParseSequential
 - uid: Backend.Services.SimpleCompatibilityStrategy
   name: SimpleCompatibilityStrategy
   href: api/Backend.Services.SimpleCompatibilityStrategy.html
