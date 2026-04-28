@@ -390,3 +390,32 @@ function removeFromShelf(index) {
         renderCatalog();
     }
 }
+
+async function runBenchmark() {
+    const btn = document.getElementById('btnBenchmark');
+    const resultsDiv = document.getElementById('benchmarkResults');
+
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Аналізуємо...';
+    btn.disabled = true;
+    resultsDiv.style.display = 'none';
+
+    try {
+        const response = await fetch('http://localhost:5016/api/benchmark/run');
+        const data = await response.json();
+        
+        resultsDiv.innerHTML = `
+            <strong>Оброблено продуктів:</strong> ${data.totalProducts} шт.<br>
+            <strong>Послідовно (1 потік):</strong> ${data.sequentialTimeMs} мс<br>
+            <strong>Паралельно (${data.coresUsed} ядер):</strong> ${data.parallelTimeMs} мс<br>
+            <strong style="color: #27ae60; font-size: 1.1rem;">Прискорення: ${data.speedUp}</strong>
+        `;
+        resultsDiv.style.display = 'block';
+    } catch (error) {
+        console.error("Помилка бенчмарку:", error);
+        resultsDiv.innerHTML = '<span style="color: red;">Помилка підключення до сервера</span>';
+        resultsDiv.style.display = 'block';
+    } finally {
+        btn.innerHTML = 'Запустити аналіз бази';
+        btn.disabled = false;
+    }
+}
