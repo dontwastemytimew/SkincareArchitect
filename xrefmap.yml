@@ -465,6 +465,19 @@ references:
   commentId: T:Backend.Models.SephoraProduct
   fullName: Backend.Models.SephoraProduct
   nameWithType: SephoraProduct
+- uid: Backend.Models.SephoraProduct.ApplicationOrder
+  name: ApplicationOrder
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_ApplicationOrder
+  commentId: P:Backend.Models.SephoraProduct.ApplicationOrder
+  fullName: Backend.Models.SephoraProduct.ApplicationOrder
+  nameWithType: SephoraProduct.ApplicationOrder
+- uid: Backend.Models.SephoraProduct.ApplicationOrder*
+  name: ApplicationOrder
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_ApplicationOrder_
+  commentId: Overload:Backend.Models.SephoraProduct.ApplicationOrder
+  isSpec: "True"
+  fullName: Backend.Models.SephoraProduct.ApplicationOrder
+  nameWithType: SephoraProduct.ApplicationOrder
 - uid: Backend.Models.SephoraProduct.BrandName
   name: BrandName
   href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_BrandName
@@ -504,6 +517,19 @@ references:
   isSpec: "True"
   fullName: Backend.Models.SephoraProduct.ParsedIngredients
   nameWithType: SephoraProduct.ParsedIngredients
+- uid: Backend.Models.SephoraProduct.PreferredTime
+  name: PreferredTime
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_PreferredTime
+  commentId: P:Backend.Models.SephoraProduct.PreferredTime
+  fullName: Backend.Models.SephoraProduct.PreferredTime
+  nameWithType: SephoraProduct.PreferredTime
+- uid: Backend.Models.SephoraProduct.PreferredTime*
+  name: PreferredTime
+  href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_PreferredTime_
+  commentId: Overload:Backend.Models.SephoraProduct.PreferredTime
+  isSpec: "True"
+  fullName: Backend.Models.SephoraProduct.PreferredTime
+  nameWithType: SephoraProduct.PreferredTime
 - uid: Backend.Models.SephoraProduct.ProductId
   name: ProductId
   href: api/Backend.Models.SephoraProduct.html#Backend_Models_SephoraProduct_ProductId
