@@ -123,4 +123,29 @@ public class SephoraDataService
             return val;
         return 0.0;
     }
+    
+    /// <summary>
+    /// Перевіряє, чи належить продукт до догляду за обличчям.
+    /// </summary>
+    public bool IsValidSkincare(SephoraProduct product)
+    {
+        if (string.IsNullOrEmpty(product.ProductName)) return false;
+
+        string lowerName = product.ProductName.ToLower();
+    
+        // Список слів-маркерів, які ми НЕ хочемо бачити
+        var stopWords = new[] { 
+            "hair", "shampoo", "conditioner", "scalp", "mousse", "styler",
+            "makeup", "foundation", "concealer", "lipstick", "mascara", "eyeshadow", "palette", "blush", "balm", "gloss", "highlighter", "eye shadow",
+            "body", "hand", "foot", "nail", "perfume", "fragrance", "cologne", "deodorant", "parfum", "spray",
+            "candle", "diffuser", "butter", "set", "kit", "bronzer", "contouring", "brow", "iron", "pomade", "lip", "contour", "pencil", "roller"
+        };
+
+        foreach (var word in stopWords)
+        {
+            if (lowerName.Contains(word)) return false;
+        }
+        
+        return true;
+    }
 }

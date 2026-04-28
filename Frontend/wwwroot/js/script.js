@@ -1,10 +1,4 @@
-﻿const mockProducts = [
-    { id: 1, name: "The Ordinary Retinol 0.5%", type: "Retinoid", ph: 5.5, concentration: 0.5, texture: "oil", time: "evening" },
-    { id: 2, name: "CeraVe Hydrating Cleanser", type: "Moisturizer", ph: 5.5, concentration: 0.0, texture: "gel", time: "both" },
-    { id: 3, name: "The Ordinary Glycolic Acid 7%", type: "Acid", ph: 3.2, concentration: 7.0, texture: "liquid", time: "evening" },
-    { id: 4, name: "La Roche-Posay SPF 50", type: "SPF", ph: 6.0, concentration: 0.0, texture: "cream", time: "morning" },
-    { id: 5, name: "Skin1004 Centella Ampoule", type: "Soothing", ph: 5.8, concentration: 0.0, texture: "liquid", time: "both" }
-];
+﻿let mockProducts = [];
 
 let currentLang = localStorage.getItem('selectedLang') || 'uk';
 let isLogged = false;
@@ -119,46 +113,33 @@ function setSource(source) {
     const btnShelf = document.getElementById('btnShelf');
     if(btnAll) btnAll.classList.toggle('active', source === 'all');
     if(btnShelf) btnShelf.classList.toggle('active', source === 'shelf');
-
-    const select = document.getElementById('prodSelect');
-    if (!select) return;
-
-    select.innerHTML = '<option value="" data-i18n="SelectPlaceholder">— виберіть баночку —</option>';
-
-    if (source === 'shelf') {
-        if (!isLogged || myShelf.length === 0) {
-            showAlert(currentLang === 'uk' ? "Ваша поличка порожня!" : "Your shelf is empty!");
-            setSource('all');
-            return;
-        }
-        myShelf.forEach(p => {
-            let opt = document.createElement('option');
-            opt.value = p.id;
-            opt.innerHTML = p.name;
-            select.appendChild(opt);
-        });
-    } else {
-        mockProducts.forEach(p => {
-            let opt = document.createElement('option');
-            opt.value = p.id;
-            opt.innerHTML = p.name;
-            select.appendChild(opt);
-        });
+    
+    const searchInput = document.getElementById('constructorSearch');
+    if (searchInput) {
+        searchInput.value = '';
+        document.getElementById('constructorSearchResults').innerHTML = '';
     }
-    applyTranslations();
+
+    if (source === 'shelf' && (!isLogged || myShelf.length === 0)) {
+        showAlert(currentLang === 'uk' ? "Ваша поличка порожня!" : "Your shelf is empty!");
+        setSource('all');
+    }
 }
 
-function addProductToAnalysis() {
-    const select = document.getElementById('prodSelect');
-    const id = select.value;
-    if (!id) return;
-
+function addProductToAnalysis(id) {
     const sourceArray = selectedSource === 'all' ? mockProducts : myShelf;
-    const product = sourceArray.find(p => p.id == id);
+    const product = sourceArray.find(p => p.id == id || p.id === parseInt(id)); // parseInt на випадок, якщо id число
 
-    if (product && !analysisQueue.some(p => p.id === product.id)) {
-        analysisQueue.push(product);
-        updateAnalysisUI();
+    if (product) {
+        if (!analysisQueue.some(p => p.id === product.id)) {
+            analysisQueue.push(product);
+            updateAnalysisUI();
+            
+            document.getElementById('constructorSearch').value = '';
+            document.getElementById('constructorSearchResults').innerHTML = '';
+        } else {
+            showAlert(currentLang === 'uk' ? "Цей засіб вже у черзі!" : "Already in queue!");
+        }
     }
 }
 
@@ -243,7 +224,19 @@ function getRoutineSuggestion() {
 
 window.onload = async () => {
     await applyTranslations();
-    setSource('all');
+    
+    try {
+        const response = await fetch('http://localhost:5016/api/skincare/products');
+        const data = await response.json();
+        
+        mockProducts = data;
+        
+        setSource('all');
+
+        console.log(`Завантажено ${mockProducts.length} реальних продуктів з бази Sephora`);
+    } catch (e) {
+        console.error("Помилка завантаження бази продуктів:", e);
+    }
 };
 
 function showAlert(message, title = "Skincare Architect") {
@@ -326,10 +319,42 @@ function hideAllSections() {
 function renderCatalog() {
     const container = document.getElementById('catalogGrid');
     if (!container) return;
+    
+    const searchTerm = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
     const btnText = currentLang === 'uk' ? "на поличку" : "to shelf";
     const addedText = currentLang === 'uk' ? "Додано" : "Added";
+    
+    if (searchTerm.length === 0) {
+        container.style.display = 'block';
+        container.innerHTML = `
+            <div style="text-align: center; padding: 40px; color: var(--lapis-lazuli);">
+                <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 15px;"></i>
+                <p>${currentLang === 'uk' ? 'Введіть назву бренду або засобу для пошуку...' : 'Type a brand or product name to search...'}</p>
+            </div>`;
+        return;
+    }
+    
+    container.style.display = 'grid';
+    
+    let filteredProducts = mockProducts.filter(p =>
+        p.name.toLowerCase().includes(searchTerm) ||
+        (p.brand && p.brand.toLowerCase().includes(searchTerm)) ||
+        p.type.toLowerCase().includes(searchTerm)
+    );
+    
+    if (filteredProducts.length === 0) {
+        container.style.display = 'block';
+        container.innerHTML = `
+            <div style="text-align: center; padding: 40px; color: var(--lapis-lazuli);">
+                <i class="fas fa-box-open" style="font-size: 3rem; color: #ccc; margin-bottom: 15px;"></i>
+                <p>${currentLang === 'uk' ? 'Нічого не знайдено за запитом' : 'Nothing found for'} "<strong>${searchTerm}</strong>"</p>
+            </div>`;
+        return;
+    }
+    
+    const displayProducts = filteredProducts.slice(0, 50);
 
-    container.innerHTML = mockProducts.map(p => {
+    container.innerHTML = displayProducts.map(p => {
         const alreadyInShelf = myShelf.some(item => item.id === p.id);
         const btnClass = alreadyInShelf ? "btn-catalog-add btn-catalog-added" : "btn-catalog-add";
         const label = alreadyInShelf ? addedText : btnText;
@@ -339,8 +364,8 @@ function renderCatalog() {
         <div class="catalog-card">
             <div class="catalog-img"><i class="fas fa-pump-soap"></i></div>
             <h4>${p.name}</h4>
-            <small>${p.type}</small>
-            <button class="${btnClass}" onclick="addToShelf(${p.id}, this)">
+            <small>${p.brand || 'Skincare'} • ${p.type}</small>
+            <button class="${btnClass}" onclick="addToShelf('${p.id}', this)">
                 <i class="fas ${icon}"></i> ${label}
             </button>
         </div>`;
@@ -418,4 +443,35 @@ async function runBenchmark() {
         btn.innerHTML = 'Запустити аналіз бази';
         btn.disabled = false;
     }
+}
+
+function renderConstructorSearch() {
+    const container = document.getElementById('constructorSearchResults');
+    const term = document.getElementById('constructorSearch').value.toLowerCase().trim();
+    const sourceArray = selectedSource === 'all' ? mockProducts : myShelf;
+    
+    if (term.length === 0) {
+        container.innerHTML = '';
+        return;
+    }
+
+    const filtered = sourceArray.filter(p =>
+        p.name.toLowerCase().includes(term) ||
+        (p.brand && p.brand.toLowerCase().includes(term))
+    );
+
+    if (filtered.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding: 10px; font-size: 0.9rem; color: var(--lapis-lazuli);">${currentLang === 'uk' ? 'Не знайдено' : 'Not found'}</div>`;
+        return;
+    }
+    
+    container.innerHTML = filtered.slice(0, 10).map(p => `
+        <div class="constructor-result-item" onclick="addProductToAnalysis('${p.id}')">
+            <div>
+                <strong style="color:var(--burgundy); font-size:0.9rem;">${p.name}</strong><br>
+                <small style="color:var(--lapis-lazuli);">${p.brand || 'Skincare'} • ${p.type}</small>
+            </div>
+            <i class="fas fa-plus" style="color:var(--burgundy);"></i>
+        </div>
+    `).join('');
 }

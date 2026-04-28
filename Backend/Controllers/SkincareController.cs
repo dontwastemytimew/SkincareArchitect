@@ -105,4 +105,36 @@ public class SkincareController : ControllerBase
     
         return Ok(translations);
     }
+    
+    /// <summary>
+    /// Отримує відфільтрований та оброблений список косметичних продуктів для каталогу.
+    /// </summary>
+    /// <returns>JSON-масив з об'єктами продуктів для відображення на фронтенді.</returns>
+    [HttpGet("products")]
+    public IActionResult GetProducts()
+    {
+        var dataService = new SephoraDataService("Data/product_info.csv"); 
+    
+        var rawProducts = dataService.LoadProducts();
+        
+        var filteredProducts = rawProducts
+            .AsParallel()
+            .Where(p => dataService.IsValidSkincare(p)) 
+            .ToList();
+
+        dataService.ParseParallel(filteredProducts);
+
+        var result = filteredProducts.Take(300).Select(p => new {
+            id = p.ProductId,
+            name = p.ProductName,
+            brand = p.BrandName,
+            type = p.ParsedIngredients.FirstOrDefault()?.ActiveType ?? "Treatment",
+            ph = p.ParsedIngredients.FirstOrDefault()?.PHLevel ?? 5.5,
+            concentration = p.ParsedIngredients.FirstOrDefault()?.Concentration ?? 0.0,
+            texture = "cream",
+            time = "both"
+        });
+
+        return Ok(result);
+    }
 }
