@@ -105,6 +105,19 @@ references:
   isSpec: "True"
   fullName: Backend.Controllers.SkincareController.GetInfo
   nameWithType: SkincareController.GetInfo
+- uid: Backend.Controllers.SkincareController.GetProducts
+  name: GetProducts()
+  href: api/Backend.Controllers.SkincareController.html#Backend_Controllers_SkincareController_GetProducts
+  commentId: M:Backend.Controllers.SkincareController.GetProducts
+  fullName: Backend.Controllers.SkincareController.GetProducts()
+  nameWithType: SkincareController.GetProducts()
+- uid: Backend.Controllers.SkincareController.GetProducts*
+  name: GetProducts
+  href: api/Backend.Controllers.SkincareController.html#Backend_Controllers_SkincareController_GetProducts_
+  commentId: Overload:Backend.Controllers.SkincareController.GetProducts
+  isSpec: "True"
+  fullName: Backend.Controllers.SkincareController.GetProducts
+  nameWithType: SkincareController.GetProducts
 - uid: Backend.Controllers.SkincareController.GetTranslations
   name: GetTranslations()
   href: api/Backend.Controllers.SkincareController.html#Backend_Controllers_SkincareController_GetTranslations
@@ -881,6 +894,19 @@ references:
   fullName.vb: Backend.Services.SephoraDataService.New
   nameWithType: SephoraDataService.SephoraDataService
   nameWithType.vb: SephoraDataService.New
+- uid: Backend.Services.SephoraDataService.IsValidSkincare(Backend.Models.SephoraProduct)
+  name: IsValidSkincare(SephoraProduct)
+  href: api/Backend.Services.SephoraDataService.html#Backend_Services_SephoraDataService_IsValidSkincare_Backend_Models_SephoraProduct_
+  commentId: M:Backend.Services.SephoraDataService.IsValidSkincare(Backend.Models.SephoraProduct)
+  fullName: Backend.Services.SephoraDataService.IsValidSkincare(Backend.Models.SephoraProduct)
+  nameWithType: SephoraDataService.IsValidSkincare(SephoraProduct)
+- uid: Backend.Services.SephoraDataService.IsValidSkincare*
+  name: IsValidSkincare
+  href: api/Backend.Services.SephoraDataService.html#Backend_Services_SephoraDataService_IsValidSkincare_
+  commentId: Overload:Backend.Services.SephoraDataService.IsValidSkincare
+  isSpec: "True"
+  fullName: Backend.Services.SephoraDataService.IsValidSkincare
+  nameWithType: SephoraDataService.IsValidSkincare
 - uid: Backend.Services.SephoraDataService.LoadProducts
   name: LoadProducts()
   href: api/Backend.Services.SephoraDataService.html#Backend_Services_SephoraDataService_LoadProducts
