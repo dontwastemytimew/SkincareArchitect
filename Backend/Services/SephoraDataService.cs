@@ -68,7 +68,6 @@ public class SephoraDataService
     public long ParseParallel(List<SephoraProduct> products)
     {
         var sw = Stopwatch.StartNew();
-        // Parallel.ForEach автоматично розбиває список на частини і віддає різним ядрам
         Parallel.ForEach(products, product =>
         {
             ProcessSingleProduct(product);
@@ -95,19 +94,26 @@ public class SephoraDataService
         // Пошук активних ретиноїдів
         if (Regex.IsMatch(cleanName, @"\bretin[oa]l\b|\bretinoid\b|\badapalene\b"))
         {
+            double conc = ExtractConcentration(cleanName);
+            if (conc == 0) conc = ExtractConcentration(product.ProductName.ToLower());
+
             product.ParsedIngredients.Add(new Ingredient { 
                 Name = raw.Trim(), 
                 ActiveType = "Retinoid", 
-                Concentration = ExtractConcentration(cleanName) 
+                Concentration = conc 
             });
         }
         // Пошук активних кислот
         else if (Regex.IsMatch(cleanName, @"\b(glycolic|salicylic|lactic|mandelic|tartaric)\b.*\bacid\b"))
         {
+            double conc = ExtractConcentration(cleanName);
+            if (conc == 0) conc = ExtractConcentration(product.ProductName.ToLower());
+
             product.ParsedIngredients.Add(new Ingredient { 
                 Name = raw.Trim(), 
                 ActiveType = "Acid", 
-                PHLevel = 3.2
+                PHLevel = 3.2,
+                Concentration = conc
             });
         }
     }
@@ -178,12 +184,12 @@ public class SephoraDataService
     
         // Список слів-маркерів, які ми НЕ хочемо бачити
         var stopWords = new[] { 
-            "hair", "shampoo", "conditioner", "scalp", "mousse", "styler",
+            "hair", "shampoo", "conditioner", "scalp", "mousse", "styler", "liner", "sharpener", "scissors", "brush", "lashes", "tweezers", "waver",
             "makeup", "foundation", "concealer", "lipstick", "mascara", "eyeshadow", "palette", "blush", "balm", "gloss", "highlighter", "eye shadow",
-            "body", "hand", "foot", "nail", "perfume", "fragrance", "cologne", "deodorant", "parfum", "spray",
-            "candle", "diffuser", "butter", "set", "kit", "bronzer", "contouring", "brow", "iron", "pomade", "lip", "contour", "pencil", "roller"
+            "body", "hand", "foot", "nail", "perfume", "fragrance", "cologne", "deodorant", "parfum", "spray", "mist", "waterproof", "haircare", "oil",
+            "candle", "diffuser", "butter", "set", "kit", "bronzer", "contouring", "brow", "iron", "pomade", "lip", "contour", "pencil", "roller", "Tangier", 
+            "Conditioning", "curl", "aerin"
         };
-
         foreach (var word in stopWords)
         {
             if (lowerName.Contains(word)) return false;

@@ -13,6 +13,6 @@ public interface ICompatibilityStrategy
     /// </summary>
     /// <param name="p1">Перший продукт для порівняння.</param>
     /// <param name="p2">Другий продукт для порівняння.</param>
-    /// <returns>True, якщо продукти безпечно використовувати разом; інакше — false.</returns>
-    bool Check(Product p1, Product p2);
+    /// <returns>Об'єкт CompatibilityResult, що містить загальний статус безпеки та детальні попередження.</returns>
+    CompatibilityResult Check(Product p1, Product p2);
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Localization;
+using Backend.Models;
 namespace Backend.Services;
 
 /// <summary>
@@ -24,11 +25,11 @@ public abstract class ReportGenerator
     /// <summary>
     /// Основний Template Method, який визначає послідовність кроків формування повного звіту.
     /// </summary>
-    /// <param name="contentKey">Ключ локалізації для основного тексту звіту.</param>
+    /// <param name="analysisResult">Об'єкт результату аналізу, що містить статус та попередження.</param>
     /// <returns>Готовий текстовий звіт.</returns>
-    public string CreateFullReport(string contentKey)
+    public string CreateFullReport(CompatibilityResult analysisResult)
     {
-        return $"{FormatHeader()}\n{FormatBody(contentKey)}\n{FormatFooter()}";
+        return $"{FormatHeader()}\n\n{FormatBody(analysisResult)}\n\n{FormatFooter()}";
     }
 
     /// <summary>
@@ -37,9 +38,9 @@ public abstract class ReportGenerator
     protected abstract string FormatHeader();
     
     /// <summary>
-    /// Абстрактний метод для формування тіла звіту на основі ключа вмісту.
+    /// Абстрактний метод для формування тіла звіту.
     /// </summary>
-    protected abstract string FormatBody(string contentKey);
+    protected abstract string FormatBody(CompatibilityResult analysisResult);
     
     /// <summary>
     /// Абстрактний метод для формування завершальної частини (футера) звіту.
@@ -64,9 +65,33 @@ public class SimpleTextReport : ReportGenerator
     protected override string FormatHeader() => _localizer["RoutineHeader"];
     
     /// <summary>
-    /// Повертає локалізований основний вміст звіту за вказаним ключем.
+    /// Повертає локалізований основний вміст звіту.
     /// </summary>
-    protected override string FormatBody(string contentKey) => _localizer[contentKey];
+    protected override string FormatBody(CompatibilityResult analysisResult)
+    {
+        if (analysisResult.IsSafe && analysisResult.Warnings.Count == 0)
+        {
+            return _localizer["AllGood"] ?? "Ваша рутина ідеальна! Конфліктів не знайдено.";
+        }
+
+        string body = "";
+        
+        if (!analysisResult.IsSafe)
+        {
+            body += "ЗНАЙДЕНО КРИТИЧНІ КОНФЛІКТИ:\n";
+        }
+        else
+        {
+            body += "РЕКОМЕНДАЦІЇ ТА ПОПЕРЕДЖЕННЯ:\n";
+        }
+
+        foreach (var warning in analysisResult.Warnings)
+        {
+            body += $"- {warning}\n";
+        }
+
+        return body;
+    }
     
     /// <summary>
     /// Повертає локалізований футер звіту.

@@ -35,12 +35,12 @@ public class DiagnosticDecorator : ICompatibilityStrategy
     /// </summary>
     /// <param name="p1">Перший косметичний засіб.</param>
     /// <param name="p2">Другий косметичний засіб.</param>
-    /// <returns>True, якщо засоби сумісні; інакше — false.</returns>
-    public bool Check(Product p1, Product p2)
+    /// <returns>CompatibilityResult.</returns>
+    public CompatibilityResult Check(Product p1, Product p2)
     {
         var sw = Stopwatch.StartNew();
         
-        bool result = _innerStrategy.Check(p1, p2);
+        CompatibilityResult result = _innerStrategy.Check(p1, p2);
         
         sw.Stop();
         _logger.LogInformation("Діагностика: час перевірки склав {MS} мс", sw.Elapsed.TotalMilliseconds);

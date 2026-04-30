@@ -15,9 +15,8 @@ public class CompatibilityProxy : ICompatibilityStrategy
     
     /// <summary>
     /// Внутрішнє сховище для кешування результатів. 
-    /// Ключ — назви двох продуктів, значення — результат сумісності.
     /// </summary>
-    private readonly Dictionary<string, bool> _cache = new();
+    private readonly Dictionary<string, CompatibilityResult> _cache = new();
 
     /// <summary>
     /// Ініціалізує новий екземпляр класу <see cref="CompatibilityProxy"/>.
@@ -34,8 +33,8 @@ public class CompatibilityProxy : ICompatibilityStrategy
     /// </summary>
     /// <param name="p1">Перший косметичний засіб.</param>
     /// <param name="p2">Другий косметичний засіб.</param>
-    /// <returns>True, якщо засоби сумісні; інакше — false.</returns>
-    public bool Check(Product p1, Product p2)
+    /// <returns>CompatibilityResult.</returns>
+    public CompatibilityResult Check(Product p1, Product p2)
     {
         string key = $"{p1.Name}_{p2.Name}";
 
@@ -44,7 +43,7 @@ public class CompatibilityProxy : ICompatibilityStrategy
             return _cache[key];
         }
 
-        bool result = _realStrategy.Check(p1, p2);
+        CompatibilityResult result = _realStrategy.Check(p1, p2);
         _cache[key] = result;
         return result;
     }

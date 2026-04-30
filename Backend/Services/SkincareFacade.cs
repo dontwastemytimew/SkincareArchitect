@@ -32,36 +32,50 @@ public class SkincareFacade
     /// <summary>
     /// Виконує комплексну перевірку сумісності компонентів догляду.
     /// </summary>
-    /// <param name="component">Компонент догляду (окремий продукт або ціла рутина - Composite).</param>
+    /// <param name="routine">Компонент догляду (окремий продукт або ціла рутина - Composite).</param>
     /// <returns>Локалізований текстовий звіт.</returns>
     public string SimpleCheck(ISkincareComponent routine)
     {
-        // Отримуємо всі інгредієнти одним списком завдяки Composite!
         var allIngredients = routine.GetAllIngredients();
     
         var proxy = new CompatibilityProxy(_strategy);
         var decorated = new DiagnosticDecorator(proxy, _diagnosticLogger);
 
-        bool isCompatible = true;
-        for (int i = 0; i < allIngredients.Count; i++)
+        var finalResult = new CompatibilityResult();
+        
+        if (allIngredients != null && allIngredients.Count > 1)
         {
-            for (int j = i + 1; j < allIngredients.Count; j++)
+            for (int i = 0; i < allIngredients.Count; i++)
             {
-                var tempP1 = new Product { Name = "Active 1", Ingredients = new List<Ingredient> { allIngredients[i] } };
-                var tempP2 = new Product { Name = "Active 2", Ingredients = new List<Ingredient> { allIngredients[j] } };
+                for (int j = i + 1; j < allIngredients.Count; j++)
+                {
+                    var tempP1 = new Product 
+                    { 
+                        Name = allIngredients[i].Name,
+                        Ingredients = new List<Ingredient> { allIngredients[i] } 
+                    };
+                    
+                    var tempP2 = new Product 
+                    { 
+                        Name = allIngredients[j].Name, 
+                        Ingredients = new List<Ingredient> { allIngredients[j] } 
+                    };
 
-                if (!decorated.Check(tempP1, tempP2)) 
-                { 
-                    isCompatible = false; 
-                    break; 
+                    var pairResult = decorated.Check(tempP1, tempP2);
+
+                    if (!pairResult.IsSafe) 
+                    { 
+                        finalResult.IsSafe = false; 
+                    }
+                    
+                    finalResult.Warnings.AddRange(pairResult.Warnings);
                 }
             }
-            if (!isCompatible) break;
         }
+        
+        finalResult.Warnings = finalResult.Warnings.Distinct().ToList();
 
-        string resultKey = isCompatible ? "Compatible" : "Conflict";
-
-        if (!isCompatible)
+        if (!finalResult.IsSafe)
         {
             var notifier = new ConflictNotifier();
             notifier.Attach(new SecurityLogger(_logger));
@@ -69,7 +83,7 @@ public class SkincareFacade
         }
     
         var report = new SimpleTextReport(_localizer);
-        return report.CreateFullReport(resultKey);
+        return report.CreateFullReport(finalResult);
     }
     
     /// <summary>
