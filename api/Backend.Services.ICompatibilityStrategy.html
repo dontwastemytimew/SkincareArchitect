@@ -134,7 +134,7 @@ Interface ICompatibilityStrategy  <a class="header-action link-secondary" title=
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool Check(Product p1, Product p2)</code></pre>
+    <pre><code class="lang-csharp hljs">CompatibilityResult Check(Product p1, Product p2)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -149,8 +149,8 @@ Interface ICompatibilityStrategy  <a class="header-action link-secondary" title=
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>True, якщо продукти безпечно використовувати разом; інакше — false.</p>
+    <dt><a class="xref" href="Backend.Models.CompatibilityResult.html">CompatibilityResult</a></dt>
+    <dd><p>Об'єкт CompatibilityResult, що містить загальний статус безпеки та детальні попередження.</p>
 </dd>
   </dl>
 

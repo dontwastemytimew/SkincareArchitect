@@ -195,6 +195,38 @@ references:
   commentId: N:Backend.Models
   fullName: Backend.Models
   nameWithType: Backend.Models
+- uid: Backend.Models.CompatibilityResult
+  name: CompatibilityResult
+  href: api/Backend.Models.CompatibilityResult.html
+  commentId: T:Backend.Models.CompatibilityResult
+  fullName: Backend.Models.CompatibilityResult
+  nameWithType: CompatibilityResult
+- uid: Backend.Models.CompatibilityResult.IsSafe
+  name: IsSafe
+  href: api/Backend.Models.CompatibilityResult.html#Backend_Models_CompatibilityResult_IsSafe
+  commentId: P:Backend.Models.CompatibilityResult.IsSafe
+  fullName: Backend.Models.CompatibilityResult.IsSafe
+  nameWithType: CompatibilityResult.IsSafe
+- uid: Backend.Models.CompatibilityResult.IsSafe*
+  name: IsSafe
+  href: api/Backend.Models.CompatibilityResult.html#Backend_Models_CompatibilityResult_IsSafe_
+  commentId: Overload:Backend.Models.CompatibilityResult.IsSafe
+  isSpec: "True"
+  fullName: Backend.Models.CompatibilityResult.IsSafe
+  nameWithType: CompatibilityResult.IsSafe
+- uid: Backend.Models.CompatibilityResult.Warnings
+  name: Warnings
+  href: api/Backend.Models.CompatibilityResult.html#Backend_Models_CompatibilityResult_Warnings
+  commentId: P:Backend.Models.CompatibilityResult.Warnings
+  fullName: Backend.Models.CompatibilityResult.Warnings
+  nameWithType: CompatibilityResult.Warnings
+- uid: Backend.Models.CompatibilityResult.Warnings*
+  name: Warnings
+  href: api/Backend.Models.CompatibilityResult.html#Backend_Models_CompatibilityResult_Warnings_
+  commentId: Overload:Backend.Models.CompatibilityResult.Warnings
+  isSpec: "True"
+  fullName: Backend.Models.CompatibilityResult.Warnings
+  nameWithType: CompatibilityResult.Warnings
 - uid: Backend.Models.ISkincareComponent
   name: ISkincareComponent
   href: api/Backend.Models.ISkincareComponent.html
@@ -790,15 +822,12 @@ references:
   fullName.vb: Backend.Services.ReportGenerator.New
   nameWithType: ReportGenerator.ReportGenerator
   nameWithType.vb: ReportGenerator.New
-- uid: Backend.Services.ReportGenerator.CreateFullReport(System.String)
-  name: CreateFullReport(string)
-  href: api/Backend.Services.ReportGenerator.html#Backend_Services_ReportGenerator_CreateFullReport_System_String_
-  commentId: M:Backend.Services.ReportGenerator.CreateFullReport(System.String)
-  name.vb: CreateFullReport(String)
-  fullName: Backend.Services.ReportGenerator.CreateFullReport(string)
-  fullName.vb: Backend.Services.ReportGenerator.CreateFullReport(String)
-  nameWithType: ReportGenerator.CreateFullReport(string)
-  nameWithType.vb: ReportGenerator.CreateFullReport(String)
+- uid: Backend.Services.ReportGenerator.CreateFullReport(Backend.Models.CompatibilityResult)
+  name: CreateFullReport(CompatibilityResult)
+  href: api/Backend.Services.ReportGenerator.html#Backend_Services_ReportGenerator_CreateFullReport_Backend_Models_CompatibilityResult_
+  commentId: M:Backend.Services.ReportGenerator.CreateFullReport(Backend.Models.CompatibilityResult)
+  fullName: Backend.Services.ReportGenerator.CreateFullReport(Backend.Models.CompatibilityResult)
+  nameWithType: ReportGenerator.CreateFullReport(CompatibilityResult)
 - uid: Backend.Services.ReportGenerator.CreateFullReport*
   name: CreateFullReport
   href: api/Backend.Services.ReportGenerator.html#Backend_Services_ReportGenerator_CreateFullReport_
@@ -806,15 +835,12 @@ references:
   isSpec: "True"
   fullName: Backend.Services.ReportGenerator.CreateFullReport
   nameWithType: ReportGenerator.CreateFullReport
-- uid: Backend.Services.ReportGenerator.FormatBody(System.String)
-  name: FormatBody(string)
-  href: api/Backend.Services.ReportGenerator.html#Backend_Services_ReportGenerator_FormatBody_System_String_
-  commentId: M:Backend.Services.ReportGenerator.FormatBody(System.String)
-  name.vb: FormatBody(String)
-  fullName: Backend.Services.ReportGenerator.FormatBody(string)
-  fullName.vb: Backend.Services.ReportGenerator.FormatBody(String)
-  nameWithType: ReportGenerator.FormatBody(string)
-  nameWithType.vb: ReportGenerator.FormatBody(String)
+- uid: Backend.Services.ReportGenerator.FormatBody(Backend.Models.CompatibilityResult)
+  name: FormatBody(CompatibilityResult)
+  href: api/Backend.Services.ReportGenerator.html#Backend_Services_ReportGenerator_FormatBody_Backend_Models_CompatibilityResult_
+  commentId: M:Backend.Services.ReportGenerator.FormatBody(Backend.Models.CompatibilityResult)
+  fullName: Backend.Services.ReportGenerator.FormatBody(Backend.Models.CompatibilityResult)
+  nameWithType: ReportGenerator.FormatBody(CompatibilityResult)
 - uid: Backend.Services.ReportGenerator.FormatBody*
   name: FormatBody
   href: api/Backend.Services.ReportGenerator.html#Backend_Services_ReportGenerator_FormatBody_
@@ -1041,15 +1067,12 @@ references:
   fullName.vb: Backend.Services.SimpleTextReport.New
   nameWithType: SimpleTextReport.SimpleTextReport
   nameWithType.vb: SimpleTextReport.New
-- uid: Backend.Services.SimpleTextReport.FormatBody(System.String)
-  name: FormatBody(string)
-  href: api/Backend.Services.SimpleTextReport.html#Backend_Services_SimpleTextReport_FormatBody_System_String_
-  commentId: M:Backend.Services.SimpleTextReport.FormatBody(System.String)
-  name.vb: FormatBody(String)
-  fullName: Backend.Services.SimpleTextReport.FormatBody(string)
-  fullName.vb: Backend.Services.SimpleTextReport.FormatBody(String)
-  nameWithType: SimpleTextReport.FormatBody(string)
-  nameWithType.vb: SimpleTextReport.FormatBody(String)
+- uid: Backend.Services.SimpleTextReport.FormatBody(Backend.Models.CompatibilityResult)
+  name: FormatBody(CompatibilityResult)
+  href: api/Backend.Services.SimpleTextReport.html#Backend_Services_SimpleTextReport_FormatBody_Backend_Models_CompatibilityResult_
+  commentId: M:Backend.Services.SimpleTextReport.FormatBody(Backend.Models.CompatibilityResult)
+  fullName: Backend.Services.SimpleTextReport.FormatBody(Backend.Models.CompatibilityResult)
+  nameWithType: SimpleTextReport.FormatBody(CompatibilityResult)
 - uid: Backend.Services.SimpleTextReport.FormatBody*
   name: FormatBody
   href: api/Backend.Services.SimpleTextReport.html#Backend_Services_SimpleTextReport_FormatBody_

@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class DiagnosticDecorator | SkincareArchitect Documentation </title>
+      <title>Class CompatibilityResult | SkincareArchitect Documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class DiagnosticDecorator | SkincareArchitect Documentation ">
+      <meta name="title" content="Class CompatibilityResult | SkincareArchitect Documentation ">
       
-      <meta name="description" content="Реалізація патерна Decorator для моніторингу продуктивності. Додає функціонал вимірювання часу виконання до будь-якої стратегії сумісності.">
+      <meta name="description" content="Об&#39;єкт, що зберігає результати перевірки сумісності продуктів.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/dontwastemytimew/SkincareArchitect/new/master/apiSpec/new?filename=Backend_Services_DiagnosticDecorator.md&amp;value=---%0Auid%3A%20Backend.Services.DiagnosticDecorator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/dontwastemytimew/SkincareArchitect/new/master/apiSpec/new?filename=Backend_Models_CompatibilityResult.md&amp;value=---%0Auid%3A%20Backend.Models.CompatibilityResult%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,26 +84,25 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Backend.Services.DiagnosticDecorator">
+        <article data-uid="Backend.Models.CompatibilityResult">
 
 
 
-  <h1 id="Backend_Services_DiagnosticDecorator" data-uid="Backend.Services.DiagnosticDecorator" class="text-break">
-Class DiagnosticDecorator  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <h1 id="Backend_Models_CompatibilityResult" data-uid="Backend.Models.CompatibilityResult" class="text-break">
+Class CompatibilityResult  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/CompatibilityResult.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Backend.html">Backend</a>.<a class="xref" href="Backend.Services.html">Services</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Backend.html">Backend</a>.<a class="xref" href="Backend.Models.html">Models</a></dd></dl>
   <dl><dt>Assembly</dt><dd>Backend.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Реалізація патерна Decorator для моніторингу продуктивності.
-Додає функціонал вимірювання часу виконання до будь-якої стратегії сумісності.</p>
+  <div class="markdown summary"><p>Об'єкт, що зберігає результати перевірки сумісності продуктів.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DiagnosticDecorator : ICompatibilityStrategy</code></pre>
+    <pre><code class="lang-csharp hljs">public class CompatibilityResult</code></pre>
   </div>
 
 
@@ -113,16 +112,10 @@ Class DiagnosticDecorator  <a class="header-action link-secondary" title="View s
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">DiagnosticDecorator</span></div>
+      <div><span class="xref">CompatibilityResult</span></div>
     </dd>
   </dl>
 
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="Backend.Services.ICompatibilityStrategy.html">ICompatibilityStrategy</a></div>
-    </dd>
-  </dl>
 
 
   <dl class="typelist inheritedMembers">
@@ -156,33 +149,33 @@ Class DiagnosticDecorator  <a class="header-action link-secondary" title="View s
 
 
 
-  <h2 class="section" id="constructors">Constructors
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
-  <a id="Backend_Services_DiagnosticDecorator__ctor_" data-uid="Backend.Services.DiagnosticDecorator.#ctor*"></a>
+  <a id="Backend_Models_CompatibilityResult_IsSafe_" data-uid="Backend.Models.CompatibilityResult.IsSafe*"></a>
 
-  <h3 id="Backend_Services_DiagnosticDecorator__ctor_Backend_Services_ICompatibilityStrategy_Microsoft_Extensions_Logging_ILogger_Backend_Services_DiagnosticDecorator__" data-uid="Backend.Services.DiagnosticDecorator.#ctor(Backend.Services.ICompatibilityStrategy,Microsoft.Extensions.Logging.ILogger{Backend.Services.DiagnosticDecorator})">
-  DiagnosticDecorator(ICompatibilityStrategy, ILogger&lt;DiagnosticDecorator&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Backend_Models_CompatibilityResult_IsSafe" data-uid="Backend.Models.CompatibilityResult.IsSafe">
+  IsSafe
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/CompatibilityResult.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Ініціалізує новий екземпляр класу <a class="xref" href="Backend.Services.DiagnosticDecorator.html">DiagnosticDecorator</a>.</p>
+  <div class="markdown level1 summary"><p>Загальний статус безпеки (true - безпечно, false - є критичні конфлікти).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DiagnosticDecorator(ICompatibilityStrategy innerStrategy, ILogger&lt;DiagnosticDecorator&gt; logger)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsSafe { get; set; }</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
+
+
+
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><code>innerStrategy</code> <a class="xref" href="Backend.Services.ICompatibilityStrategy.html">ICompatibilityStrategy</a></dt>
-    <dd><p>Об'єкт стратегії, який потрібно задекорувати.</p>
-</dd>
-    <dt><code>logger</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="Backend.Services.DiagnosticDecorator.html">DiagnosticDecorator</a>&gt;</dt>
-    <dd><p>Сервіс логування.</p>
-</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -192,48 +185,30 @@ Class DiagnosticDecorator  <a class="header-action link-secondary" title="View s
 
 
 
+  <a id="Backend_Models_CompatibilityResult_Warnings_" data-uid="Backend.Models.CompatibilityResult.Warnings*"></a>
 
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Backend_Services_DiagnosticDecorator_Check_" data-uid="Backend.Services.DiagnosticDecorator.Check*"></a>
-
-  <h3 id="Backend_Services_DiagnosticDecorator_Check_Backend_Models_Product_Backend_Models_Product_" data-uid="Backend.Services.DiagnosticDecorator.Check(Backend.Models.Product,Backend.Models.Product)">
-  Check(Product, Product)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Backend_Models_CompatibilityResult_Warnings" data-uid="Backend.Models.CompatibilityResult.Warnings">
+  Warnings
+  <a class="header-action link-secondary" title="View source" href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/CompatibilityResult.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Перевіряє сумісність продуктів, вимірюючи швидкість роботи вкладеної стратегії.</p>
+  <div class="markdown level1 summary"><p>Список попереджень та знайдених проблем для користувача.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CompatibilityResult Check(Product p1, Product p2)</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Warnings { get; set; }</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
+
+
+
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><code>p1</code> <a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-    <dd><p>Перший косметичний засіб.</p>
-</dd>
-    <dt><code>p2</code> <a class="xref" href="Backend.Models.Product.html">Product</a></dt>
-    <dd><p>Другий косметичний засіб.</p>
-</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Backend.Models.CompatibilityResult.html">CompatibilityResult</a></dt>
-    <dd><p>CompatibilityResult.</p>
-</dd>
-  </dl>
-
-
-
 
 
 
@@ -246,7 +221,7 @@ Class DiagnosticDecorator  <a class="header-action link-secondary" title="View s
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Services/DiagnosticDecorator.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/dontwastemytimew/SkincareArchitect/blob/master/Backend/Models/CompatibilityResult.cs/#L6" class="edit-link">Edit this page</a>
         </div>
 
 
