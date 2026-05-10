@@ -2,6 +2,8 @@
 using Backend.Services;
 using Microsoft.Extensions.Logging.Abstractions;
 using NUnit.Framework;
+using Microsoft.Extensions.Localization;
+using Moq;
 
 namespace Backend.Tests;
 
@@ -9,11 +11,17 @@ namespace Backend.Tests;
 public class CompatibilityTests
 {
     private SimpleCompatibilityStrategy _strategy;
+    private Mock<IStringLocalizer<SharedResource>> _mockLocalizer;
 
     [SetUp]
     public void Setup()
     {
-        _strategy = new SimpleCompatibilityStrategy(NullLogger<SimpleCompatibilityStrategy>.Instance);
+        _mockLocalizer = new Mock<IStringLocalizer<SharedResource>>();
+        _mockLocalizer.Setup(l => l[It.IsAny<string>()]).Returns((string key) => new LocalizedString(key, key));
+        _mockLocalizer.Setup(l => l[It.IsAny<string>(), It.IsAny<object[]>()])
+            .Returns((string key, object[] args) => new LocalizedString(key, key));
+
+        _strategy = new SimpleCompatibilityStrategy(NullLogger<SimpleCompatibilityStrategy>.Instance, _mockLocalizer.Object);
     }
 
     [Test]
@@ -27,7 +35,7 @@ public class CompatibilityTests
         
         var result = _strategy.Check(p1, p2);
         
-        Assert.That(result, Is.False, "Дві кислоти з pH < 3.5 мають бути несумісними");
+        Assert.That(result.IsSafe, Is.False, "Дві кислоти з критичним pH мають бути несумісними");
     }
 
     [Test]
@@ -41,7 +49,10 @@ public class CompatibilityTests
         
         var result = _strategy.Check(p1, p2);
         
-        Assert.That(result, Is.False, "Сумарна концентрація 6% > 5% має бути небезпечною");
+        Assert.Multiple(() => {
+            Assert.That(result.IsSafe, Is.False);
+            Assert.That(result.Warnings, Is.Not.Empty, "Має бути хоча б одне попередження про концентрацію");
+        });
     }
 
     [Test]

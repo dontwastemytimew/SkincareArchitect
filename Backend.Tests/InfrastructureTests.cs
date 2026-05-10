@@ -39,24 +39,34 @@ public class InfrastructureTests
     [Test]
     public void Decorator_ReturnsCorrectResultFromInnerStrategy()
     {
-        var realStrategy = new SimpleCompatibilityStrategy(NullLogger<SimpleCompatibilityStrategy>.Instance);
+        var mockLocalizer = new Mock<IStringLocalizer<SharedResource>>();
+        mockLocalizer.Setup(l => l[It.IsAny<string>()]).Returns((string key) => new LocalizedString(key, key));
+
+        var realStrategy = new SimpleCompatibilityStrategy(NullLogger<SimpleCompatibilityStrategy>.Instance, mockLocalizer.Object);
         var decorator = new DiagnosticDecorator(realStrategy, NullLogger<DiagnosticDecorator>.Instance);
     
-        var p1 = new Product();
-        var p2 = new Product();
+        var p1 = new Product { Name = "P1", Ingredients = new List<Ingredient>() };
+        var p2 = new Product { Name = "P2", Ingredients = new List<Ingredient>() };
     
         var expected = realStrategy.Check(p1, p2);
         var actual = decorator.Check(p1, p2);
         
-        Assert.That(actual.IsSafe, Is.EqualTo(expected.IsSafe), "Декоратор не має змінювати логіку роботи стратегії");
+        Assert.That(actual.IsSafe, Is.EqualTo(expected.IsSafe));
     }
     
     [Test]
     public void Facade_AnalyzeRoutine_ReturnsReport()
     {
-        var strategy = new SimpleCompatibilityStrategy(NullLogger<SimpleCompatibilityStrategy>.Instance);
         var mockLocalizer = new Mock<IStringLocalizer<SharedResource>>();
+        
         mockLocalizer.Setup(l => l[It.IsAny<string>()]).Returns(new LocalizedString("key", "value text"));
+        mockLocalizer.Setup(l => l[It.IsAny<string>(), It.IsAny<object[]>()])
+            .Returns((string key, object[] args) => new LocalizedString(key, $"mock {key}"));
+        
+        var strategy = new SimpleCompatibilityStrategy(
+            NullLogger<SimpleCompatibilityStrategy>.Instance, 
+            mockLocalizer.Object
+        );
 
         var facade = new SkincareFacade(
             strategy, 
@@ -66,11 +76,11 @@ public class InfrastructureTests
         );
 
         var routine = new Routine("Test Routine");
-        routine.Add(new Product { Name = "P1" });
-        routine.Add(new Product { Name = "P2" });
-        
+        routine.Add(new Product { Name = "P1", Ingredients = new List<Ingredient>() });
+        routine.Add(new Product { Name = "P2", Ingredients = new List<Ingredient>() });
+     
         var result = facade.SimpleCheck(routine);
-        
+     
         Assert.That(result, Is.Not.Null.Or.Empty);
     }
     
