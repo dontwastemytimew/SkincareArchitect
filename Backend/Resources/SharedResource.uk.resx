@@ -189,4 +189,19 @@
     <data name="TimeEvening" xml:space="preserve">
         <value>Вечір</value>
     </data>
+    <data name="AboutMissionTitle" xml:space="preserve">
+        <value>Наша місія</value>
+    </data>
+    <data name="AboutMissionDesc" xml:space="preserve">
+        <value>Зробити професійний підхід до догляду за шкірою доступним для кожного. Ми віримо, що краса починається з розуміння складу та хімії процесів.</value>
+    </data>
+    <data name="AboutHowTitle" xml:space="preserve">
+        <value>Як це працює?</value>
+    </data>
+    <data name="AboutHowDesc" xml:space="preserve">
+        <value>Наш алгоритм аналізує базу даних із тисяч косметичних засобів, виявляючи конфліктні комбінації активів (як-от ретинол та кислоти) та підказуючи правильний порядок нанесення.</value>
+    </data>
+    <data name="AboutDisclaimer" xml:space="preserve">
+        <value>Skincare Architect — це автоматизована система аналізу, а не медична консультація. Ми не несемо відповідальності за індивідуальні реакції вашої шкіри. Консультуйтеся з дерматологом.</value>
+    </data>
 </root>

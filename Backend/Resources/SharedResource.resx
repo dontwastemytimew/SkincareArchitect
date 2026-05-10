@@ -189,4 +189,19 @@
     <data name="TimeEvening" xml:space="preserve">
         <value>Evening</value>
     </data>
+    <data name="AboutMissionTitle" xml:space="preserve">
+        <value>Our Mission</value>
+    </data>
+    <data name="AboutMissionDesc" xml:space="preserve">
+        <value>To make professional skin care accessible to everyone. We believe that beauty starts with understanding ingredients and chemical processes.</value>
+    </data>
+    <data name="AboutHowTitle" xml:space="preserve">
+        <value>How it works?</value>
+    </data>
+    <data name="AboutHowDesc" xml:space="preserve">
+        <value>Our algorithm analyzes a database of thousands of products, identifying conflicting active combinations (like retinol and acids) and suggesting the correct application order.</value>
+    </data>
+    <data name="AboutDisclaimer" xml:space="preserve">
+        <value>Skincare Architect is an automated analysis system, not a medical consultation. We are not responsible for individual skin reactions. Always consult a dermatologist.</value>
+    </data>
 </root>

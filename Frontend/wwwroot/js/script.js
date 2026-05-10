@@ -7,6 +7,39 @@ let userName = "";
 let analysisQueue = [];
 let myShelf = [];
 let selectedSource = 'all';
+let catalogPage = 1;
+const itemsPerPage = 24;
+
+
+// Повертає іконку залежно від типу продукту або його назви
+function getProductIcon(product) {
+    const name = product.name.toLowerCase();
+    const type = product.type.toLowerCase();
+
+    // Сонцезахист
+    if (name.includes('spf') || name.includes('sunscreen') || name.includes('uv')) {
+        return { icon: 'fa-sun', color: 'var(--burgundy)' };
+    }
+    // Креми
+    if (name.includes('cream') || name.includes('moisturizer')) {
+        return { icon: 'fa-mortar-pestle', color: 'var(--burgundy)' };
+    }
+    // Сироватки та Активи
+    if (name.includes('serum') || name.includes('essence') || name.includes('liquid') || type === 'acid') {
+        return { icon: 'fa-vial', color: 'var(--burgundy)' };
+    }
+    // Вмивання та Тоніки
+    if (name.includes('toner') || name.includes('cleanser') || name.includes('wash') || name.includes('water')) {
+        return { icon: 'fa-soap', color: 'var(--burgundy)' };
+    }
+    // Маски
+    if (name.includes('mask')) {
+        return { icon: 'fa-face-smile-beam', color: 'var(--burgundy)' };
+    }
+
+    // Стандартна іконка
+    return { icon: 'fa-pump-soap', color: 'var(--burgundy)' };
+}
 
 // Локалізація
 async function changeLang(lang) {
@@ -171,12 +204,15 @@ function addProductToAnalysis(id) {
 // Оновлює візуальний список обраних продуктів у конструкторі
 function updateAnalysisUI() {
     const container = document.getElementById('queueList');
-    container.innerHTML = analysisQueue.map((p, index) => {
-        const titleText = translations?.ClickToRemove;
+    const titleText = translations?.ClickToRemove;
 
+    container.innerHTML = analysisQueue.map((p, index) => {
+        const iconData = getProductIcon(p);
         return `
             <div class="product-card-mini" onclick="removeFromAnalysis(${index})" title="${titleText}">
-                <div class="product-img-stub"><i class="fas fa-pump-soap"></i></div>
+                <div class="product-img-stub">
+                    <i class="fas ${iconData.icon}" style="color: ${iconData.color};"></i>
+                </div>
                 <div style="display: flex; flex-direction: column;">
                     <span style="font-weight: 600; color: var(--burgundy); font-size: 0.9rem;">${p.name}</span>
                     <small style="color: var(--lapis-lazuli); font-size: 0.7rem;">${p.type}</small>
@@ -388,21 +424,10 @@ function renderCatalog() {
     if (!container) return;
 
     const searchTerm = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
-
+    
     const btnText = translations?.BtnToShelf;
     const addedText = translations?.AddedStatus;
-
-    if (searchTerm.length === 0) {
-        container.style.display = 'block';
-        container.innerHTML = `
-            <div style="text-align: center; padding: 40px; color: var(--lapis-lazuli);">
-                <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 15px;"></i>
-                <p>${translations[currentLang].CatalogSearchPrompt}</p>
-            </div>`;
-        return;
-    }
-
-    container.style.display = 'grid';
+    const nothingFoundText = translations?.NothingFound;
 
     let filteredProducts = mockProducts.filter(p =>
         p.name.toLowerCase().includes(searchTerm) ||
@@ -412,32 +437,67 @@ function renderCatalog() {
 
     if (filteredProducts.length === 0) {
         container.style.display = 'block';
-        container.innerHTML = `
-            <div style="text-align: center; padding: 40px; color: var(--lapis-lazuli);">
-                <i class="fas fa-box-open" style="font-size: 3rem; color: #ccc; margin-bottom: 15px;"></i>
-                <p>${translations[currentLang].NothingFound} "<strong>${searchTerm}</strong>"</p>
-            </div>`;
+        container.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--lapis-lazuli);"><p>${nothingFoundText}</p></div>`;
         return;
     }
+    
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+    if (catalogPage > totalPages) catalogPage = 1;
 
-    const displayProducts = filteredProducts.slice(0, 50);
+    const start = (catalogPage - 1) * itemsPerPage;
+    const displayProducts = filteredProducts.slice(start, start + itemsPerPage);
 
+    container.style.display = 'grid';
     container.innerHTML = displayProducts.map(p => {
         const alreadyInShelf = myShelf.some(item => item.id === p.id);
         const btnClass = alreadyInShelf ? "btn-catalog-add btn-catalog-added" : "btn-catalog-add";
-        const label = alreadyInShelf ? addedText : btnText;
-        const icon = alreadyInShelf ? "fa-check" : "fa-plus";
+        
+        const iconData = getProductIcon(p);
 
         return `
         <div class="catalog-card">
-            <div class="catalog-img"><i class="fas fa-pump-soap"></i></div>
+            <div class="catalog-img">
+                <i class="fas ${iconData.icon}" style="color: ${iconData.color};"></i>
+            </div>
             <h4>${p.name}</h4>
             <small>${p.brand || 'Skincare'} • ${p.type}</small>
             <button class="${btnClass}" onclick="addToShelf('${p.id}', this)">
-                <i class="fas ${icon}"></i> ${label}
+                <i class="fas ${alreadyInShelf ? "fa-check" : "fa-plus"}"></i> 
+                ${alreadyInShelf ? addedText : btnText}
             </button>
         </div>`;
     }).join('');
+
+    renderPaginationUI(totalPages);
+}
+
+function renderPaginationUI(totalPages) {
+    const catalogSection = document.getElementById('catalogSection');
+    let nav = document.getElementById('catalogPagination');
+
+    if (!nav) {
+        nav = document.createElement('div');
+        nav.id = 'catalogPagination';
+        nav.className = 'pagination-container';
+        catalogSection.appendChild(nav);
+    }
+
+    if (totalPages <= 1) {
+        nav.innerHTML = '';
+        return;
+    }
+
+    nav.innerHTML = `
+        <button onclick="changeCatalogPage(-1)" ${catalogPage === 1 ? 'disabled' : ''}><i class="fas fa-chevron-left"></i></button>
+        <span>${catalogPage} / ${totalPages}</span>
+        <button onclick="changeCatalogPage(1)" ${catalogPage === totalPages ? 'disabled' : ''}><i class="fas fa-chevron-right"></i></button>
+    `;
+}
+
+function changeCatalogPage(step) {
+    catalogPage += step;
+    renderCatalog();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function renderFullShelf() {
@@ -449,10 +509,11 @@ function renderFullShelf() {
     userTitle.innerText = `${collectionTitle}: ${userName}`;
 
     if (myShelf.length === 0) {
+        const emptyText = translations?.EmptyShelfText;
         container.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
                 <i class="fas fa-ghost" style="font-size: 3rem; color: #ccc; margin-bottom: 15px;"></i>
-                <p>${translations?.EmptyShelfText}</p>
+                <p>${emptyText}</p>
             </div>`;
         return;
     }
@@ -463,6 +524,8 @@ function renderFullShelf() {
         if (p.time === 'evening') timeLabel = translations?.TimeEvening;
 
         const removeText = translations?.RemoveFromShelf;
+        
+        const iconData = getProductIcon(p);
 
         return `
             <div class="catalog-card">
@@ -471,13 +534,13 @@ function renderFullShelf() {
                 </button>
                 
                 <div class="catalog-img">
-                    <i class="fas fa-wine-bottle"></i>
+                    <i class="fas ${iconData.icon}" style="color: ${iconData.color};"></i>
                 </div>
                 <h4>${p.name}</h4>
-                <small>${p.type}</small>
+                <small style="color: var(--lapis-lazuli);">${p.type}</small>
                 
-                <div style="font-size: 0.7rem; color: var(--silver-blue); margin-top: 10px;">
-                    <i class="fas fa-clock"></i> ${timeLabel}
+                <div style="font-size: 0.75rem; color: var(--silver-blue); margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                    <i class="far fa-clock"></i> <span>${timeLabel}</span>
                 </div>
             </div>
         `;
@@ -528,26 +591,20 @@ function renderConstructorSearch() {
     const sourceArray = selectedSource === 'all' ? mockProducts : myShelf;
     
     if (term.length === 0) {
-        if (selectedSource === 'all') {
-            container.innerHTML = '';
-            return;
-        } else {
-            renderListToConstructor(myShelf, container);
-            return;
-        }
+        container.innerHTML = '';
+        return;
     }
-    
+
     const filtered = sourceArray.filter(p =>
-        p.name.toLowerCase().includes(term) ||
-        (p.brand && p.brand.toLowerCase().includes(term))
+        p.name.toLowerCase().includes(term) || (p.brand && p.brand.toLowerCase().includes(term))
     );
 
     if (filtered.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding: 10px; font-size: 0.9rem; color: var(--lapis-lazuli);">${currentLang === 'uk' ? 'Не знайдено' : 'Not found'}</div>`;
+        container.innerHTML = `<div style="text-align:center; padding: 10px;">${translations?.NothingFound}</div>`;
         return;
     }
     
-    const displayLimit = selectedSource === 'all' ? filtered.slice(0, 10) : filtered;
+    const displayLimit = filtered.slice(0, 100);
     renderListToConstructor(displayLimit, container);
 }
 
@@ -563,13 +620,18 @@ function closeAdminPanel() {
 }
 
 function renderListToConstructor(list, container) {
-    container.innerHTML = list.map(p => `
+    container.innerHTML = list.map(p => {
+        const iconData = getProductIcon(p);
+        return `
         <div class="constructor-result-item" onclick="addProductToAnalysis('${p.id}')">
-            <div>
-                <strong style="color:var(--burgundy); font-size:0.9rem;">${p.name}</strong><br>
-                <small style="color:var(--lapis-lazuli);">${p.brand || 'Skincare'} • ${p.type}</small>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas ${iconData.icon}" style="color: ${iconData.color}; width: 20px; text-align: center;"></i>
+                <div>
+                    <strong style="color:var(--burgundy); font-size:0.9rem;">${p.name}</strong><br>
+                    <small style="color:var(--lapis-lazuli);">${p.brand || 'Skincare'} • ${p.type}</small>
+                </div>
             </div>
             <i class="fas fa-plus" style="color:var(--burgundy);"></i>
         </div>
-    `).join('');
+    `;}).join('');
 }

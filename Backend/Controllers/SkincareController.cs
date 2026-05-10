@@ -102,7 +102,8 @@ public class SkincareController : ControllerBase
             "SearchConstructor", "SearchCatalog", "ConflictBarrier", "WarnIrritation", "ConflictBurn",
             "WarnTwoAcids", "WarnMissingConc", "CriticalConflictsHeader", "RecommendationsHeader", "IncompatibilityDetected",
             "LoginFirst", "AddedStatus", "EmptyShelfAlert", "AlreadyInQueue", "ClickToRemove", "MinProductsAlert",
-            "LoadingText", "RoutineNotBuilt", "ServerError", "WelcomeUser", "NothingFound", "CatalogSearchPrompt"
+            "LoadingText", "RoutineNotBuilt", "ServerError", "WelcomeUser", "NothingFound", "CatalogSearchPrompt",
+            "AboutMissionTitle", "AboutMissionDesc", "AboutHowTitle", "AboutHowDesc", "AboutDisclaimer"
         };
         
         var translations = keys.ToDictionary(k => k, k => _facade.GetTranslation(k));

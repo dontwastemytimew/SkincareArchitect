@@ -41,7 +41,7 @@ public class SephoraDataService
 
         return csv.GetRecords<SephoraProduct>().ToList();
     }
-    
+
     /// <summary>
     /// Послідовна обробка інгредієнтів (1 потік).
     /// Використовується як еталон для вимірювання прискорення.
@@ -55,6 +55,7 @@ public class SephoraDataService
         {
             ProcessSingleProduct(product);
         }
+
         sw.Stop();
         return sw.ElapsedMilliseconds;
     }
@@ -68,10 +69,7 @@ public class SephoraDataService
     public long ParseParallel(List<SephoraProduct> products)
     {
         var sw = Stopwatch.StartNew();
-        Parallel.ForEach(products, product =>
-        {
-            ProcessSingleProduct(product);
-        });
+        Parallel.ForEach(products, product => { ProcessSingleProduct(product); });
         sw.Stop();
         return sw.ElapsedMilliseconds;
     }
@@ -82,83 +80,86 @@ public class SephoraDataService
     /// </summary>
     /// <param name="product">Продукт, чиї інгредієнти потрібно розібрати.</param>
     private void ProcessSingleProduct(SephoraProduct product)
-{
-    if (string.IsNullOrEmpty(product.Ingredients)) return;
-    
-    string[] rawIngredients = product.Ingredients.Split(new[] { ',', '.', ';' }, StringSplitOptions.RemoveEmptyEntries);
-
-    foreach (var raw in rawIngredients)
     {
-        string cleanName = raw.Trim().ToLower();
-        
-        // Пошук активних ретиноїдів
-        if (Regex.IsMatch(cleanName, @"\bretin[oa]l\b|\bretinoid\b|\badapalene\b"))
+        if (string.IsNullOrEmpty(product.Ingredients)) return;
+
+        string[] rawIngredients =
+            product.Ingredients.Split(new[] { ',', '.', ';' }, StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (var raw in rawIngredients)
         {
-            double conc = ExtractConcentration(cleanName);
-            if (conc == 0) conc = ExtractConcentration(product.ProductName.ToLower());
+            string cleanName = raw.Trim().ToLower();
 
-            product.ParsedIngredients.Add(new Ingredient { 
-                Name = raw.Trim(), 
-                ActiveType = "Retinoid", 
-                Concentration = conc 
-            });
+            // Пошук активних ретиноїдів
+            if (Regex.IsMatch(cleanName, @"\bretin[oa]l\b|\bretinoid\b|\badapalene\b"))
+            {
+                double conc = ExtractConcentration(cleanName);
+                if (conc == 0) conc = ExtractConcentration(product.ProductName.ToLower());
+
+                product.ParsedIngredients.Add(new Ingredient
+                {
+                    Name = raw.Trim(),
+                    ActiveType = "Retinoid",
+                    Concentration = conc
+                });
+            }
+            // Пошук активних кислот
+            else if (Regex.IsMatch(cleanName, @"\b(glycolic|salicylic|lactic|mandelic|tartaric)\b.*\bacid\b"))
+            {
+                double conc = ExtractConcentration(cleanName);
+                if (conc == 0) conc = ExtractConcentration(product.ProductName.ToLower());
+
+                product.ParsedIngredients.Add(new Ingredient
+                {
+                    Name = raw.Trim(),
+                    ActiveType = "Acid",
+                    PHLevel = 3.2,
+                    Concentration = conc
+                });
+            }
         }
-        // Пошук активних кислот
-        else if (Regex.IsMatch(cleanName, @"\b(glycolic|salicylic|lactic|mandelic|tartaric)\b.*\bacid\b"))
+
+        // Визначення рекомендованого часу
+        if (product.ParsedIngredients.Any(i => i.ActiveType == "Retinoid") ||
+            product.ProductName.Contains("Night", StringComparison.OrdinalIgnoreCase))
         {
-            double conc = ExtractConcentration(cleanName);
-            if (conc == 0) conc = ExtractConcentration(product.ProductName.ToLower());
+            product.PreferredTime = "evening";
+        }
+        else if (product.ProductName.Contains("SPF", StringComparison.OrdinalIgnoreCase) ||
+                 product.ProductName.Contains("Sunscreen", StringComparison.OrdinalIgnoreCase) ||
+                 product.ProductName.Contains("Day", StringComparison.OrdinalIgnoreCase))
+        {
+            product.PreferredTime = "morning";
+        }
+        else
+        {
+            product.PreferredTime = "both";
+        }
 
-            product.ParsedIngredients.Add(new Ingredient { 
-                Name = raw.Trim(), 
-                ActiveType = "Acid", 
-                PHLevel = 3.2,
-                Concentration = conc
-            });
+        // Визначення черговості нанесення за текстурою
+        string lowerName = product.ProductName.ToLower();
+
+        if (lowerName.Contains("toner") || lowerName.Contains("essence") || lowerName.Contains("liquid"))
+        {
+            product.ApplicationOrder = 1; // Найрідші (тоніки)
+        }
+        else if (lowerName.Contains("serum") || lowerName.Contains("ampoule") || lowerName.Contains("gel"))
+        {
+            product.ApplicationOrder = 2; // Сироватки
+        }
+        else if (lowerName.Contains("cream") || lowerName.Contains("moisturizer") || lowerName.Contains("lotion"))
+        {
+            product.ApplicationOrder = 3; // Креми
+        }
+        else if (lowerName.Contains("spf") || lowerName.Contains("sunscreen"))
+        {
+            product.ApplicationOrder = 4; // Заключний шар
+        }
+        else
+        {
+            product.ApplicationOrder = 3; // За замовчуванням вважаємо кремовою текстурою
         }
     }
-
-    // Визначення рекомендованого часу
-    if (product.ParsedIngredients.Any(i => i.ActiveType == "Retinoid") || 
-        product.ProductName.Contains("Night", StringComparison.OrdinalIgnoreCase))
-    {
-        product.PreferredTime = "evening";
-    }
-    else if (product.ProductName.Contains("SPF", StringComparison.OrdinalIgnoreCase) || 
-             product.ProductName.Contains("Sunscreen", StringComparison.OrdinalIgnoreCase) ||
-             product.ProductName.Contains("Day", StringComparison.OrdinalIgnoreCase))
-    {
-        product.PreferredTime = "morning";
-    }
-    else 
-    {
-        product.PreferredTime = "both";
-    }
-
-    // Визначення черговості нанесення за текстурою
-    string lowerName = product.ProductName.ToLower();
-
-    if (lowerName.Contains("toner") || lowerName.Contains("essence") || lowerName.Contains("liquid"))
-    {
-        product.ApplicationOrder = 1; // Найрідші (тоніки)
-    }
-    else if (lowerName.Contains("serum") || lowerName.Contains("ampoule") || lowerName.Contains("gel"))
-    {
-        product.ApplicationOrder = 2; // Сироватки
-    }
-    else if (lowerName.Contains("cream") || lowerName.Contains("moisturizer") || lowerName.Contains("lotion"))
-    {
-        product.ApplicationOrder = 3; // Креми
-    }
-    else if (lowerName.Contains("spf") || lowerName.Contains("sunscreen"))
-    {
-        product.ApplicationOrder = 4; // Заключний шар
-    }
-    else
-    {
-        product.ApplicationOrder = 3; // За замовчуванням вважаємо кремовою текстурою
-    }
-}
 
     /// <summary>
     /// Допоміжний метод для витягування відсотка концентрації з тексту.
@@ -172,29 +173,35 @@ public class SephoraDataService
             return val;
         return 0.0;
     }
-    
+
     /// <summary>
     /// Перевіряє, чи належить продукт до догляду за обличчям.
     /// </summary>
     public bool IsValidSkincare(SephoraProduct product)
     {
         if (string.IsNullOrEmpty(product.ProductName)) return false;
+        
+        string searchArea = $"{product.ProductName} {product.BrandName}".ToLower();
 
-        string lowerName = product.ProductName.ToLower();
-    
-        // Список слів-маркерів, які ми НЕ хочемо бачити
-        var stopWords = new[] { 
-            "hair", "shampoo", "conditioner", "scalp", "mousse", "styler", "liner", "sharpener", "scissors", "brush", "lashes", "tweezers", "waver",
-            "makeup", "foundation", "concealer", "lipstick", "mascara", "eyeshadow", "palette", "blush", "balm", "gloss", "highlighter", "eye shadow",
-            "body", "hand", "foot", "nail", "perfume", "fragrance", "cologne", "deodorant", "parfum", "spray", "mist", "waterproof", "haircare", "oil",
-            "candle", "diffuser", "butter", "set", "kit", "bronzer", "contouring", "brow", "iron", "pomade", "lip", "contour", "pencil", "roller", "Tangier", 
-            "Conditioning", "curl", "aerin"
+        var stopWords = new[]
+        {
+            "hair", "shampoo", "conditioner", "scalp", "mousse", "styler", "waver", "curl", "brush", "comb", "dryer",
+            "iron", "pomade", "haircare", "shave", "aftershave", "beard", "lip", "anastasia beverly hills",
+            "makeup", "foundation", "concealer", "lipstick", "mascara", "eyeshadow", "palette", "blush", "gloss",
+            "highlighter", "bronzer", "contour", "liner", "sharpener", "lashes", "brow", "pencil", "primer",
+            "setting spray", "powder", "beautyblender", "berdoues", "bio ionic", "bumble and bumble", "burberry",
+            "body", "hand", "foot", "nail", "butter", "deodorant", "bath", "salt", "soap", "scrub", "tan", "sunless",
+            "perfume", "fragrance", "cologne", "parfum", "spray", "mist", "diffuser", "candle", "edp", "edt",
+            "rollerball", "calvin klein", "caliray", "chanel", "corrector", "filter", "chloé", "color",
+            "scissors", "tweezers", "roller", "set", "kit", "sponge", "applicator", "bag", "case", "mirror",
+            "aerin", "armani", "tangier", "conditioning", "gift", "value", "acqua di parma", "commodity"
         };
+
         foreach (var word in stopWords)
         {
-            if (lowerName.Contains(word)) return false;
+            if (searchArea.Contains(word)) return false;
         }
-        
+
         return true;
     }
 }

@@ -352,6 +352,58 @@ footer {
     margin-left: 25%;
 }
 
+.about-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.about-item {
+    max-width: 600px;
+    text-align: center;
+}
+
+.about-item h4 {
+    color: var(--burgundy);
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
+
+.about-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--lapis-lazuli);
+    margin: 0;
+}
+
+.disclaimer-box {
+    background: rgba(108, 8, 32, 0.05);
+    border-top: 2px solid var(--burgundy);
+    border-bottom: 2px solid var(--burgundy);
+    padding: 20px;
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.disclaimer-box i {
+    color: var(--burgundy);
+    margin-top: 4px;
+}
+
+.disclaimer-box p {
+    font-size: 0.85rem;
+    color: var(--burgundy);
+    margin: 0;
+}
+
 .analysis-result-header {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
@@ -605,3 +657,52 @@ footer {
     margin: 20px auto 0;
     padding: 10px 25px;
 }
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0;
+    color: var(--burgundy);
+}
+
+.pagination-container button {
+    background: var(--burgundy);
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pagination-container button:disabled {
+    background: var(--silver-blue);
+    cursor: not-allowed;
+}
+
+.pagination-container span {
+    font-weight: 600;
+    font-family: 'Monaco', monospace;
+}
+
+#constructorSearchResults {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid var(--misty-rose);
+    border-radius: 10px;
+    background: white;
+}
+
+#constructorSearchResults::-webkit-scrollbar {
+    width: 6px;
+}
+#constructorSearchResults::-webkit-scrollbar-thumb {
+    background: var(--misty-rose);
+    border-radius: 10px;
+}
+#constructorSearchResults::-webkit-scrollbar-thumb:hover {
+    background: var(--cherry-pink);
+}
+
