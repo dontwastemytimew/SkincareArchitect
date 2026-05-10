@@ -102,4 +102,91 @@
     <data name="BtnToShelf" xml:space="preserve">
         <value>to shelf</value>
     </data>
+    <data name="SearchConstructor" xml:space="preserve">
+        <value>Start typing the product name...</value>
+    </data>
+    <data name="SearchCatalog" xml:space="preserve">
+        <value>Start typing (e.g., Cerave, Serum)...</value>
+    </data>
+    <data name="ConflictBarrier" xml:space="preserve">
+        <value>Barrier Conflict: found '{0}' and '{1}'. Both components aggressively renew the skin. Simultaneous application can cause severe irritation. Separate their use to different days or morning/evening.</value>
+    </data>
+    <data name="WarnIrritation" xml:space="preserve">
+        <value>Irritation Risk: '{0}' and '{1}' together. It is recommended to use Vitamin C in the morning (with SPF), and acids in the evening.</value>
+    </data>
+    <data name="ConflictBurn" xml:space="preserve">
+        <value>Chemical Burn Risk: Total acid concentration ('{0}' and '{1}') is {2}%. This exceeds the safe limit ({3}%).</value>
+    </data>
+    <data name="WarnTwoAcids" xml:space="preserve">
+        <value>Caution: You are using two different acids together. Since the exact concentration is unknown, monitor your skin's reaction carefully.</value>
+    </data>
+    <data name="WarnMissingConc" xml:space="preserve">
+        <value>Unknown concentration of '{0}'. Please check the product packaging! Safe limit: for acids (AHA/BHA) up to 10%, for retinol up to 1%. If the percentage is higher, do not combine with other actives.</value>
+    </data>
+    <data name="CriticalConflictsHeader" xml:space="preserve">
+        <value>CRITICAL CONFLICTS FOUND</value>
+    </data>
+    <data name="RecommendationsHeader" xml:space="preserve">
+        <value>RECOMMENDATIONS AND WARNINGS</value>
+    </data>
+    <data name="AllGood" xml:space="preserve">
+        <value>Your routine is perfect! No conflicts found.</value>
+    </data>
+    <data name="IncompatibilityDetected" xml:space="preserve">
+        <value>A set incompatibility was detected.</value>
+    </data>
+    <data name="LoginFirst" xml:space="preserve">
+        <value>Log in first!</value>
+    </data>
+    <data name="AddedStatus" xml:space="preserve">
+        <value>Added</value>
+    </data>
+    <data name="EmptyShelfAlert" xml:space="preserve">
+        <value>Your shelf is empty!</value>
+    </data>
+    <data name="ClickToRemove" xml:space="preserve">
+        <value>Click to remove</value>
+    </data>
+    <data name="AlreadyInQueue" xml:space="preserve">
+        <value>Already in queue!</value>
+    </data>
+    <data name="ServerError" xml:space="preserve">
+        <value>Error: Server not responding</value>
+    </data>
+    <data name="RoutineNotBuilt" xml:space="preserve">
+        <value>&lt;strong&gt;Routine not built:&lt;/strong&gt; Please remove conflicting products to create a safe skincare routine.</value>
+    </data>
+    <data name="LoadingText" xml:space="preserve">
+        <value>loading...</value>
+    </data>
+    <data name="MinProductsAlert" xml:space="preserve">
+        <value>add at least two products</value>
+    </data>
+    <data name="WelcomeUser" xml:space="preserve">
+        <value>Welcome, {name}!</value>
+    </data>
+    <data name="CatalogSearchPrompt" xml:space="preserve">
+        <value>Type a brand or product name to search...</value>
+    </data>
+    <data name="NothingFound" xml:space="preserve">
+        <value>Nothing found for</value>
+    </data>
+    <data name="CollectionTitle" xml:space="preserve">
+        <value>Collection</value>
+    </data>
+    <data name="EmptyShelfText" xml:space="preserve">
+        <value>Empty here. Add something from catalog!</value>
+    </data>
+    <data name="RemoveFromShelf" xml:space="preserve">
+        <value>Remove from shelf</value>
+    </data>
+    <data name="TimeBoth" xml:space="preserve">
+        <value>Morning &amp; Evening</value>
+    </data>
+    <data name="TimeMorning" xml:space="preserve">
+        <value>Morning</value>
+    </data>
+    <data name="TimeEvening" xml:space="preserve">
+        <value>Evening</value>
+    </data>
 </root>

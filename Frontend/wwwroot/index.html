@@ -43,7 +43,7 @@
                 <button id="btnAll" class="toggle-btn active" data-i18n="SourceAll" onclick="setSource('all')">Вся база</button>
                 <button id="btnShelf" class="toggle-btn" data-i18n="SourceShelf" onclick="setSource('shelf')">Моя поличка</button>
             </div>
-            <input type="text" id="constructorSearch" class="constructor-search-input" oninput="renderConstructorSearch()" placeholder="Почніть вводити назву засобу...">
+            <input type="text" id="constructorSearch" class="constructor-search-input" oninput="renderConstructorSearch()" data-i18n-placeholder="SearchConstructor" placeholder="Почніть вводити назву засобу...">
             <div id="constructorSearchResults" class="constructor-results-container"></div>
             <div id="queueList" class="shelf-grid"></div>
         </div>
@@ -71,6 +71,7 @@
             <h3 data-i18n="NavCatalog"><i class="fas fa-book-open"></i> каталог засобів</h3>
             <div class="catalog-controls" style="display: flex; gap: 10px; margin-bottom: 20px;">
                 <input type="text" id="searchInput" oninput="renderCatalog()"
+                       data-i18n-placeholder="SearchCatalog"
                        placeholder="Почніть вводити назву (наприклад: Cerave, Serum)..."
                        style="flex: 1; padding: 12px 20px; border: 1px solid var(--misty-rose); border-radius: 25px; font-family: inherit; font-size: 1rem; color: var(--burgundy); outline: none; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);">
             </div>

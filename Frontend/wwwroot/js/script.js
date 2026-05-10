@@ -1,4 +1,5 @@
 ﻿let mockProducts = [];
+let translations = {};
 
 let currentLang = localStorage.getItem('selectedLang') || 'uk';
 let isLogged = false;
@@ -12,8 +13,15 @@ async function changeLang(lang) {
     localStorage.setItem('selectedLang', lang);
     currentLang = lang;
     await applyTranslations();
+
     const panel = document.getElementById('settingsPanel');
     if (panel) panel.style.display = 'none';
+    
+    const reportArea = document.getElementById('reportArea');
+    
+    if (reportArea && reportArea.style.display === 'block') {
+        await runAnalysis();
+    }
 }
 
 // Завантажує переклади з бекенду та замінює текст у всіх елементах
@@ -22,7 +30,7 @@ async function applyTranslations() {
         const response = await fetch(`http://localhost:5016/api/skincare/translations?v=${Date.now()}`, {
             headers: { 'Accept-Language': currentLang }
         });
-        const translations = await response.json();
+        translations = await response.json();
 
         document.querySelectorAll('[data-i18n], [data-i18n-placeholder]').forEach(el => {
             const key = el.getAttribute('data-i18n');
@@ -65,22 +73,24 @@ function showConstructor() {
 
 function addToShelf(id, buttonElement) {
     if (!isLogged) {
-        showAlert(currentLang === 'uk' ? "Спочатку увійдіть!" : "Please login first!");
         login();
         return;
     }
+    
+    const product = mockProducts.find(p => p.id == id);
 
-    const product = mockProducts.find(p => p.id === id);
+    if (product) {
+        if (!myShelf.some(p => p.id == id)) {
+            myShelf.push(product);
 
-    if (!myShelf.some(p => p.id === id)) {
-        myShelf.push(product);
-        
-        if (buttonElement) {
-            buttonElement.classList.add('btn-catalog-added');
-            buttonElement.innerHTML = `<i class="fas fa-check"></i> ${currentLang === 'uk' ? 'Додано' : 'Added'}`;
+            if (buttonElement) {
+                buttonElement.classList.add('btn-catalog-added');
+                const addedLabel = translations?.AddedStatus || "Added";
+                buttonElement.innerHTML = `<i class="fas fa-check"></i> ${addedLabel}`;
+            }
+
+            renderFullShelf();
         }
-        
-        renderFullShelf();
     }
 }
 
@@ -110,23 +120,29 @@ function updateNavActive(index) {
 
 // Перемикає джерело пошуку в конструкторі
 function setSource(source) {
+    if (source === 'shelf' && !isLogged) {
+        login();
+        return;
+    }
+    
+    if (source === 'shelf' && myShelf.length === 0) {
+        const emptyMsg = translations?.EmptyShelfAlert;
+        showAlert(emptyMsg);
+        return;
+    }
+    
     selectedSource = source;
+
     const btnAll = document.getElementById('btnAll');
     const btnShelf = document.getElementById('btnShelf');
+
     if(btnAll) btnAll.classList.toggle('active', source === 'all');
     if(btnShelf) btnShelf.classList.toggle('active', source === 'shelf');
 
     const searchInput = document.getElementById('constructorSearch');
-    if (searchInput) {
-        searchInput.value = ''; // Очищаємо поле при перемиканні
-    }
+    if (searchInput) searchInput.value = '';
 
     if (source === 'shelf') {
-        if (!isLogged || myShelf.length === 0) {
-            showAlert(currentLang === 'uk' ? "Ваша поличка порожня!" : "Your shelf is empty!");
-            setSource('all');
-            return;
-        }
         renderConstructorSearch();
     } else {
         document.getElementById('constructorSearchResults').innerHTML = '';
@@ -146,7 +162,8 @@ function addProductToAnalysis(id) {
             document.getElementById('constructorSearch').value = '';
             document.getElementById('constructorSearchResults').innerHTML = '';
         } else {
-            showAlert(currentLang === 'uk' ? "Цей засіб вже у черзі!" : "Already in queue!");
+            const msg = translations?.AlreadyInQueue || "Already in queue!";
+            showAlert(msg);
         }
     }
 }
@@ -154,15 +171,19 @@ function addProductToAnalysis(id) {
 // Оновлює візуальний список обраних продуктів у конструкторі
 function updateAnalysisUI() {
     const container = document.getElementById('queueList');
-    container.innerHTML = analysisQueue.map((p, index) => `
-        <div class="product-card-mini" onclick="removeFromAnalysis(${index})" title="Клікніть, щоб прибрати">
-            <div class="product-img-stub"><i class="fas fa-pump-soap"></i></div>
-            <div style="display: flex; flex-direction: column;">
-                <span style="font-weight: 600; color: var(--burgundy); font-size: 0.9rem;">${p.name}</span>
-                <small style="color: var(--lapis-lazuli); font-size: 0.7rem;">${p.type}</small>
+    container.innerHTML = analysisQueue.map((p, index) => {
+        const titleText = translations?.ClickToRemove;
+
+        return `
+            <div class="product-card-mini" onclick="removeFromAnalysis(${index})" title="${titleText}">
+                <div class="product-img-stub"><i class="fas fa-pump-soap"></i></div>
+                <div style="display: flex; flex-direction: column;">
+                    <span style="font-weight: 600; color: var(--burgundy); font-size: 0.9rem;">${p.name}</span>
+                    <small style="color: var(--lapis-lazuli); font-size: 0.7rem;">${p.type}</small>
+                </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 // Видаляє продукт із черги на аналіз по кліку
@@ -174,14 +195,15 @@ function removeFromAnalysis(index) {
 // Відправляє зібрану рутину на бекенд для перевірки сумісності
 async function runAnalysis() {
     if (analysisQueue.length < 2) {
-        const msg = currentLang === 'uk' ? "додайте хоча б два засоби" : "add at least two products";
-        showAlert(msg);
+        showAlert(translations?.MinProductsAlert);
         return;
     }
 
     const reportArea = document.getElementById('reportArea');
     reportArea.style.display = 'block';
-    reportArea.innerHTML = "<em>loading...</em>";
+    
+    const loadingMsg = translations?.LoadingText;
+    reportArea.innerHTML = `<em>${loadingMsg}</em>`;
 
     try {
         const response = await fetch('http://localhost:5016/api/skincare/analyze', {
@@ -194,33 +216,63 @@ async function runAnalysis() {
         });
 
         const data = await response.json();
-        const routine = getRoutineSuggestion();
-        
-        const cleanAnalysis = data.analysis
-            .replace(/--- РЕЗУЛЬТАТ АНАЛІЗУ ---/g, '')
-            .replace(/--- ANALYSIS RESULT ---/g, '')
-            .replace(/\[SkincareArchitect 2026\]/g, '')
+
+        let cleanAnalysis = data.analysis
+            .replace(/--- РЕЗУЛЬТАТ АНАЛІЗУ ---/gi, '')
+            .replace(/--- ANALYSIS RESULT ---/gi, '')
             .trim();
+
+        const hasCriticalConflict = cleanAnalysis.toLowerCase().includes("критичні конфлікти") ||
+            cleanAnalysis.toLowerCase().includes("critical conflict");
+
+        let formattedText = cleanAnalysis.replace(/\n/g, '<br>');
+        formattedText = formattedText.replace(/(<br>\s*){3,}/g, '<br><br>');
         
-        reportArea.innerHTML = `
-            <div class="analysis-result-header" data-i18n="RoutineHeader">РЕЗУЛЬТАТ АНАЛІЗУ</div>
-            <div class="analysis-main-msg">${cleanAnalysis}</div>
-            <div class="routine-recommendation">
-                <div class="routine-block">
-                    <p><i class="fas fa-sun" style="color: #f1c40f;"></i> <strong data-i18n="MorningTitle">РАНОК</strong></p>
-                    <p class="routine-path">${routine.morning.length > 0 ? routine.morning.map(p => p.name).join(' → ') : '---'}</p>
-                </div>
-                <div class="routine-block" style="margin-top: 15px;">
-                    <p><i class="fas fa-moon" style="color: #f39c12;"></i> <strong data-i18n="EveningTitle">ВЕЧІР</strong></p>
-                    <p class="routine-path">${routine.evening.length > 0 ? routine.evening.map(p => p.name).join(' → ') : '---'}</p>
-                </div>
+        let htmlContent = `
+            <div class="analysis-result-header" data-i18n="RoutineHeader" style="text-align: center !important; margin-bottom: 15px; color: var(--misty-rose) !important; font-family: 'Playfair Display', serif !important;">РЕЗУЛЬТАТ АНАЛІЗУ</div>
+            <div class="analysis-main-msg" style="text-align: center !important; font-weight: normal !important; line-height: 1.8 !important; color: var(--misty-rose) !important;">
+                ${formattedText}
             </div>
         `;
-        
+
+        if (hasCriticalConflict) {
+            const warningMsg = translations?.RoutineNotBuilt || "Routine not built due to conflicts.";
+            
+            htmlContent += `
+                <div style="margin-top: 20px; padding: 20px; background-color: rgba(242, 174, 188, 0.15) !important; border: 1px solid rgba(242, 174, 188, 0.3) !important; border-radius: 12px; color: var(--misty-rose) !important; text-align: center !important;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 1.5rem; color: var(--cherry-pink); margin-bottom: 10px; opacity: 0.8;"></i><br>
+                    <div style="font-size: 0.95rem !important; line-height: 1.5 !important; font-weight: normal !important; font-family: inherit !important;">
+                        ${warningMsg}
+                    </div>
+                </div>
+            `;
+        } else {
+            const routine = getRoutineSuggestion();
+            
+            const morningTitle = translations?.MorningTitle;
+            const eveningTitle = translations?.EveningTitle;
+
+            htmlContent += `
+                <div class="routine-recommendation">
+                    <div class="routine-block">
+                        <p><i class="fas fa-sun" style="color: #f1c40f;"></i> <strong>${morningTitle}</strong></p>
+                        <p class="routine-path">${routine.morning.length > 0 ? routine.morning.map(p => p.name).join(' → ') : '---'}</p>
+                    </div>
+                    <div class="routine-block" style="margin-top: 15px;">
+                        <p><i class="fas fa-moon" style="color: #bdc3c7;"></i> <strong>${eveningTitle}</strong></p>
+                        <p class="routine-path">${routine.evening.length > 0 ? routine.evening.map(p => p.name).join(' → ') : '---'}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        reportArea.innerHTML = htmlContent;
         await applyTranslations();
 
     } catch (e) {
-        reportArea.innerText = "Error: Server not responding";
+        console.error(e);
+        const errorMsg = translations?.ServerError;
+        reportArea.innerText = errorMsg;
     }
 }
 
@@ -242,13 +294,10 @@ window.onload = async () => {
     
     try {
         const response = await fetch('http://localhost:5016/api/skincare/products');
-        const data = await response.json();
-        
-        mockProducts = data;
-        
-        setSource('all');
+        mockProducts = await response.json();
 
-        console.log(`Завантажено ${mockProducts.length} реальних продуктів з бази Sephora`);
+        setSource('all');
+        console.log(`Завантажено ${mockProducts.length} реальних продуктів`);
     } catch (e) {
         console.error("Помилка завантаження бази продуктів:", e);
     }
@@ -279,7 +328,7 @@ function confirmLogin() {
     if (nameInput.value.trim()) {
         userName = nameInput.value;
         isLogged = true;
-        
+
         const btn = document.querySelector('.auth-btn');
         btn.innerHTML = `<i class="fas fa-user"></i> ${userName}`;
         btn.onclick = null;
@@ -287,7 +336,9 @@ function confirmLogin() {
         document.getElementById('logoutBtn').style.display = 'inline-block';
         closeLogin();
 
-        const msg = currentLang === 'uk' ? `Вітаємо, ${userName}!` : `Welcome, ${userName}!`;
+        const template = translations?.WelcomeUser;
+        const msg = template.replace('{name}', userName);
+
         showAlert(msg);
     }
 }
@@ -335,39 +386,40 @@ function hideAllSections() {
 function renderCatalog() {
     const container = document.getElementById('catalogGrid');
     if (!container) return;
-    
+
     const searchTerm = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
-    const btnText = currentLang === 'uk' ? "на поличку" : "to shelf";
-    const addedText = currentLang === 'uk' ? "Додано" : "Added";
-    
+
+    const btnText = translations?.BtnToShelf;
+    const addedText = translations?.AddedStatus;
+
     if (searchTerm.length === 0) {
         container.style.display = 'block';
         container.innerHTML = `
             <div style="text-align: center; padding: 40px; color: var(--lapis-lazuli);">
                 <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 15px;"></i>
-                <p>${currentLang === 'uk' ? 'Введіть назву бренду або засобу для пошуку...' : 'Type a brand or product name to search...'}</p>
+                <p>${translations[currentLang].CatalogSearchPrompt}</p>
             </div>`;
         return;
     }
-    
+
     container.style.display = 'grid';
-    
+
     let filteredProducts = mockProducts.filter(p =>
         p.name.toLowerCase().includes(searchTerm) ||
         (p.brand && p.brand.toLowerCase().includes(searchTerm)) ||
         p.type.toLowerCase().includes(searchTerm)
     );
-    
+
     if (filteredProducts.length === 0) {
         container.style.display = 'block';
         container.innerHTML = `
             <div style="text-align: center; padding: 40px; color: var(--lapis-lazuli);">
                 <i class="fas fa-box-open" style="font-size: 3rem; color: #ccc; margin-bottom: 15px;"></i>
-                <p>${currentLang === 'uk' ? 'Нічого не знайдено за запитом' : 'Nothing found for'} "<strong>${searchTerm}</strong>"</p>
+                <p>${translations[currentLang].NothingFound} "<strong>${searchTerm}</strong>"</p>
             </div>`;
         return;
     }
-    
+
     const displayProducts = filteredProducts.slice(0, 50);
 
     container.innerHTML = displayProducts.map(p => {
@@ -391,37 +443,45 @@ function renderCatalog() {
 function renderFullShelf() {
     const container = document.getElementById('fullShelfDisplay');
     const userTitle = document.getElementById('shelfUserName');
-
     if (!container) return;
-
-    userTitle.innerText = currentLang === 'uk' ? `Колекція: ${userName}` : `Collection: ${userName}`;
+    
+    const collectionTitle = translations?.CollectionTitle;
+    userTitle.innerText = `${collectionTitle}: ${userName}`;
 
     if (myShelf.length === 0) {
         container.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
                 <i class="fas fa-ghost" style="font-size: 3rem; color: #ccc; margin-bottom: 15px;"></i>
-                <p>${currentLang === 'uk' ? 'Тут поки порожньо. Додайте щось із каталогу!' : 'Empty here. Add something from catalog!'}</p>
+                <p>${translations?.EmptyShelfText}</p>
             </div>`;
         return;
     }
-    
-    container.innerHTML = myShelf.map((p, index) => `
-        <div class="catalog-card">
-            <button class="btn-remove-shelf" onclick="removeFromShelf(${index})" title="${currentLang === 'uk' ? 'Прибрати з полички' : 'Remove from shelf'}">
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <div class="catalog-img">
-                <i class="fas fa-wine-bottle"></i>
+
+    container.innerHTML = myShelf.map((p, index) => {
+        let timeLabel = translations?.TimeBoth;
+        if (p.time === 'morning') timeLabel = translations?.TimeMorning;
+        if (p.time === 'evening') timeLabel = translations?.TimeEvening;
+
+        const removeText = translations?.RemoveFromShelf;
+
+        return `
+            <div class="catalog-card">
+                <button class="btn-remove-shelf" onclick="removeFromShelf(${index})" title="${removeText}">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <div class="catalog-img">
+                    <i class="fas fa-wine-bottle"></i>
+                </div>
+                <h4>${p.name}</h4>
+                <small>${p.type}</small>
+                
+                <div style="font-size: 0.7rem; color: var(--silver-blue); margin-top: 10px;">
+                    <i class="fas fa-clock"></i> ${timeLabel}
+                </div>
             </div>
-            <h4>${p.name}</h4>
-            <small>${p.type}</small>
-            
-            <div style="font-size: 0.7rem; color: var(--silver-blue); margin-top: 10px;">
-                <i class="fas fa-clock"></i> ${p.time === 'both' ? (currentLang === 'uk' ? 'Ранок та вечір' : 'Morning & Evening') : (p.time === 'morning' ? (currentLang === 'uk' ? 'Ранок' : 'Morning') : (currentLang === 'uk' ? 'Вечір' : 'Evening'))}
-            </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 function removeFromShelf(index) {

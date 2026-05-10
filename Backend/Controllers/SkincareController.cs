@@ -98,7 +98,11 @@ public class SkincareController : ControllerBase
             "SourceAll", "SourceShelf", "BtnAddAnalysis", "BtnRunScan", "BtnBack",
             "HeaderOverlay", "TitleConstructor", "TitleAnalysis", "SelectPlaceholder",
             "AboutDescription", "FooterText", "BtnConfirm", "BtnCancel", "PlaceholderName", 
-            "CatalogSub", "BtnToShelf", "MorningTitle", "EveningTitle", "RoutineHeader"
+            "CatalogSub", "BtnToShelf", "MorningTitle", "EveningTitle", "RoutineHeader",
+            "SearchConstructor", "SearchCatalog", "ConflictBarrier", "WarnIrritation", "ConflictBurn",
+            "WarnTwoAcids", "WarnMissingConc", "CriticalConflictsHeader", "RecommendationsHeader", "IncompatibilityDetected",
+            "LoginFirst", "AddedStatus", "EmptyShelfAlert", "AlreadyInQueue", "ClickToRemove", "MinProductsAlert",
+            "LoadingText", "RoutineNotBuilt", "ServerError", "WelcomeUser", "NothingFound", "CatalogSearchPrompt"
         };
         
         var translations = keys.ToDictionary(k => k, k => _facade.GetTranslation(k));

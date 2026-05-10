@@ -102,4 +102,91 @@
     <data name="BtnToShelf" xml:space="preserve">
         <value>на поличку</value>
     </data>
+    <data name="SearchConstructor" xml:space="preserve">
+        <value>Почніть вводити назву засобу...</value>
+    </data>
+    <data name="SearchCatalog" xml:space="preserve">
+        <value>Почніть вводити назву (наприклад: Cerave, Serum)..</value>
+    </data>
+    <data name="ConflictBarrier" xml:space="preserve">
+        <value>Конфлікт бар'єру: знайдено '{0}' та '{1}'. Обидва компоненти агресивно оновлюють шкіру. Одночасне нанесення може викликати сильне подразнення. Рознесіть їх використання на різні дні або ранок/вечір.</value>
+    </data>
+    <data name="WarnIrritation" xml:space="preserve">
+        <value>Ризик подразнення: '{0}' та '{1}' разом. Рекомендується використовувати Вітамін С вранці (з SPF), а кислоти — ввечері.</value>
+    </data>
+    <data name="ConflictBurn" xml:space="preserve">
+        <value>Хімічний опік: Сумарна концентрація кислот ('{0}' та '{1}') становить {2}%. Це перевищує безпечний ліміт ({3}%).</value>
+    </data>
+    <data name="WarnTwoAcids" xml:space="preserve">
+        <value>Обережно: Ви використовуєте дві різні кислоти разом. Оскільки точна концентрація невідома, уважно слідкуйте за реакцією шкіри.</value>
+    </data>
+    <data name="WarnMissingConc" xml:space="preserve">
+        <value>Невідома концентрація '{0}'. Будь ласка, перевірте пакування засобу! Безпечний ліміт: для кислот (AHA/BHA) до 10%, для ретинолу до 1%. Якщо відсоток вищий, не поєднуйте з іншими активами.</value>
+    </data>
+    <data name="CriticalConflictsHeader" xml:space="preserve">
+        <value>ЗНАЙДЕНО КРИТИЧНІ КОНФЛІКТИ</value>
+    </data>
+    <data name="RecommendationsHeader" xml:space="preserve">
+        <value>РЕКОМЕНДАЦІЇ ТА ПОПЕРЕДЖЕННЯ</value>
+    </data>
+    <data name="AllGood" xml:space="preserve">
+        <value>Ваша рутина ідеальна! Конфліктів не знайдено.</value>
+    </data>
+    <data name="IncompatibilityDetected" xml:space="preserve">
+        <value>Виявлено несумісність у наборі</value>
+    </data>
+    <data name="LoginFirst" xml:space="preserve">
+        <value>Спочатку увійдіть!</value>
+    </data>
+    <data name="AddedStatus" xml:space="preserve">
+        <value>Додано</value>
+    </data>
+    <data name="EmptyShelfAlert" xml:space="preserve">
+        <value>Ваша поличка порожня!</value>
+    </data>
+    <data name="ClickToRemove" xml:space="preserve">
+        <value>Клікніть, щоб прибрати</value>
+    </data>
+    <data name="AlreadyInQueue" xml:space="preserve">
+        <value>Цей засіб вже у черзі!</value>
+    </data>
+    <data name="ServerError" xml:space="preserve">
+        <value>Помилка: сервер не відповідає</value>
+    </data>
+    <data name="RoutineNotBuilt" xml:space="preserve">
+        <value>&lt;strong&gt;Рутину не побудовано:&lt;/strong&gt; Будь ласка, видаліть конфліктні засоби з аналізу, щоб створити безпечну схему догляду.</value>
+    </data>
+    <data name="LoadingText" xml:space="preserve">
+        <value>завантаження...</value>
+    </data>
+    <data name="MinProductsAlert" xml:space="preserve">
+        <value>додайте хоча б два засоби</value>
+    </data>
+    <data name="WelcomeUser" xml:space="preserve">
+        <value>Вітаємо, {name}!</value>
+    </data>
+    <data name="CatalogSearchPrompt" xml:space="preserve">
+        <value>Введіть назву бренду або засобу для пошуку...</value>
+    </data>
+    <data name="NothingFound" xml:space="preserve">
+        <value>Нічого не знайдено за запитом</value>
+    </data>
+    <data name="CollectionTitle" xml:space="preserve">
+        <value>Колекція</value>
+    </data>
+    <data name="EmptyShelfText" xml:space="preserve">
+        <value>Тут поки порожньо. Додайте щось із каталогу!</value>
+    </data>
+    <data name="RemoveFromShelf" xml:space="preserve">
+        <value>Прибрати з полички</value>
+    </data>
+    <data name="TimeBoth" xml:space="preserve">
+        <value>Ранок та вечір</value>
+    </data>
+    <data name="TimeMorning" xml:space="preserve">
+        <value>Ранок</value>
+    </data>
+    <data name="TimeEvening" xml:space="preserve">
+        <value>Вечір</value>
+    </data>
 </root>

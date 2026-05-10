@@ -71,18 +71,18 @@ public class SimpleTextReport : ReportGenerator
     {
         if (analysisResult.IsSafe && analysisResult.Warnings.Count == 0)
         {
-            return _localizer["AllGood"] ?? "Ваша рутина ідеальна! Конфліктів не знайдено.";
+            return _localizer["AllGood"];
         }
 
         string body = "";
-        
+    
         if (!analysisResult.IsSafe)
         {
-            body += "ЗНАЙДЕНО КРИТИЧНІ КОНФЛІКТИ:\n";
+            body += _localizer["CriticalConflictsHeader"] + "\n";
         }
         else
         {
-            body += "РЕКОМЕНДАЦІЇ ТА ПОПЕРЕДЖЕННЯ:\n";
+            body += _localizer["RecommendationsHeader"] + "\n";
         }
 
         foreach (var warning in analysisResult.Warnings)

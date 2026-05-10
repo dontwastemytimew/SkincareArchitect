@@ -79,7 +79,7 @@ public class SkincareFacade
         {
             var notifier = new ConflictNotifier();
             notifier.Attach(new SecurityLogger(_logger));
-            notifier.Notify($"Виявлено несумісність у наборі: {routine.GetName()}");
+            notifier.Notify($"{_localizer["IncompatibilityDetected"]}: {routine.GetName()}");
         }
     
         var report = new SimpleTextReport(_localizer);

@@ -1,4 +1,5 @@
 ﻿using Backend.Models;
+using Microsoft.Extensions.Localization;
 
 namespace Backend.Services;
 
@@ -10,14 +11,21 @@ public class SimpleCompatibilityStrategy : ICompatibilityStrategy
 {
     /// <summary>Сервіс логування для відстеження процесу перевірки.</summary>
     private readonly ILogger<SimpleCompatibilityStrategy> _logger;
+    
+    /// <summary>Сервіс локалізації для генерації багатомовних попереджень та підказок.</summary>
+    private readonly IStringLocalizer<SharedResource> _localizer;
 
     /// <summary>
-    /// Ініціалізує новий екземпляр стратегії з підтримкою логування.
+    /// Ініціалізує новий екземпляр стратегії з підтримкою логування та локалізації.
     /// </summary>
     /// <param name="logger">Екземпляр логера.</param>
-    public SimpleCompatibilityStrategy(ILogger<SimpleCompatibilityStrategy> logger)
+    /// <param name="localizer">Сервіс локалізації для підтримки різних мов (укр/англ).</param>
+    public SimpleCompatibilityStrategy(
+        ILogger<SimpleCompatibilityStrategy> logger, 
+        IStringLocalizer<SharedResource> localizer)
     {
         _logger = logger;
+        _localizer = localizer;
     }
 
     /// <summary>
@@ -29,11 +37,10 @@ public class SimpleCompatibilityStrategy : ICompatibilityStrategy
     /// Об'єкт <see cref="CompatibilityResult"/>, що містить загальний статус сумісності 
     /// та список детальних попереджень для користувача.
     /// </returns>
-    public CompatibilityResult Check(Product p1, Product p2)
+   public CompatibilityResult Check(Product p1, Product p2)
     {
         var result = new CompatibilityResult();
-        var settings =
-            SystemSettings.GetInstance(new Microsoft.Extensions.Logging.Abstractions.NullLogger<SystemSettings>());
+        var settings = SystemSettings.GetInstance(new Microsoft.Extensions.Logging.Abstractions.NullLogger<SystemSettings>());
 
         foreach (var ing1 in p1.Ingredients)
         {
@@ -48,17 +55,18 @@ public class SimpleCompatibilityStrategy : ICompatibilityStrategy
                 if (isRetinoidAndAcid)
                 {
                     result.IsSafe = false;
-                    result.Warnings.Add($"Конфлікт бар'єру: знайдено '{p1.Name}' та '{p2.Name}'. Обидва компоненти агресивно оновлюють шкіру. Одночасне нанесення може викликати сильне подразнення. Рознесіть їх використання на різні дні або ранок/вечір.");
+                    // Використовуємо ключ "ConflictBarrier" та передаємо назви як параметри {0} та {1}
+                    result.Warnings.Add(_localizer["ConflictBarrier", p1.Name, p2.Name]);
                 }
 
-                // КОНФЛІКТ: Вітамін С + Кислоти (Низький pH)
+                // КОНФЛІКТ: Вітамін С + Кислоти
                 bool isVitCAndAcid = (ing1.ActiveType == "Antioxidant" && ing1.Name.Contains("Vitamin C") &&
                                       ing2.ActiveType == "Acid") ||
                                      (ing2.ActiveType == "Antioxidant" && ing2.Name.Contains("Vitamin C") &&
                                       ing1.ActiveType == "Acid");
                 if (isVitCAndAcid)
                 {
-                    result.Warnings.Add($"Ризик подразнення: '{p1.Name}' та '{p2.Name}' разом. Рекомендується використовувати Вітамін С вранці (з SPF), а кислоти — ввечері.");
+                    result.Warnings.Add(_localizer["WarnIrritation", p1.Name, p2.Name]);
                 }
 
                 // КОНФЛІКТ: Дві кислоти
@@ -69,12 +77,11 @@ public class SimpleCompatibilityStrategy : ICompatibilityStrategy
                     if (totalConc > 0 && totalConc > settings.MaxSafeConcentration)
                     {
                         result.IsSafe = false;
-                        result.Warnings.Add($"Хімічний опік: Сумарна концентрація кислот ('{p1.Name}' та '{p2.Name}') становить {totalConc}%. Це перевищує безпечний ліміт ({settings.MaxSafeConcentration}%).");
+                        result.Warnings.Add(_localizer["ConflictBurn", p1.Name, p2.Name, totalConc, settings.MaxSafeConcentration]);
                     }
                     else if (totalConc == 0)
                     {
-                        result.Warnings.Add(
-                            $"Обережно: Ви використовуєте дві різні кислоти разом. Оскільки точна концентрація невідома, уважно слідкуйте за реакцією шкіри.");
+                        result.Warnings.Add(_localizer["WarnTwoAcids"]);
                     }
                 }
             }
@@ -97,7 +104,7 @@ public class SimpleCompatibilityStrategy : ICompatibilityStrategy
     {
         if (ing.Concentration == 0 && (ing.ActiveType == "Acid" || ing.ActiveType == "Retinoid"))
         {
-            string warning = $"Невідома концентрація '{ing.Name}'. Будь ласка, перевірте пакування засобу! Безпечний ліміт: для кислот (AHA/BHA) до 10%, для ретинолу до 1%. Якщо відсоток вищий, не поєднуйте з іншими активами.";
+            string warning = _localizer["WarnMissingConc", ing.Name];
             
             if (!result.Warnings.Contains(warning))
             {
