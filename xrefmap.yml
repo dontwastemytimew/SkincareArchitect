@@ -1010,15 +1010,15 @@ references:
   commentId: T:Backend.Services.SimpleCompatibilityStrategy
   fullName: Backend.Services.SimpleCompatibilityStrategy
   nameWithType: SimpleCompatibilityStrategy
-- uid: Backend.Services.SimpleCompatibilityStrategy.#ctor(Microsoft.Extensions.Logging.ILogger{Backend.Services.SimpleCompatibilityStrategy})
-  name: SimpleCompatibilityStrategy(ILogger<SimpleCompatibilityStrategy>)
-  href: api/Backend.Services.SimpleCompatibilityStrategy.html#Backend_Services_SimpleCompatibilityStrategy__ctor_Microsoft_Extensions_Logging_ILogger_Backend_Services_SimpleCompatibilityStrategy__
-  commentId: M:Backend.Services.SimpleCompatibilityStrategy.#ctor(Microsoft.Extensions.Logging.ILogger{Backend.Services.SimpleCompatibilityStrategy})
-  name.vb: New(ILogger(Of SimpleCompatibilityStrategy))
-  fullName: Backend.Services.SimpleCompatibilityStrategy.SimpleCompatibilityStrategy(Microsoft.Extensions.Logging.ILogger<Backend.Services.SimpleCompatibilityStrategy>)
-  fullName.vb: Backend.Services.SimpleCompatibilityStrategy.New(Microsoft.Extensions.Logging.ILogger(Of Backend.Services.SimpleCompatibilityStrategy))
-  nameWithType: SimpleCompatibilityStrategy.SimpleCompatibilityStrategy(ILogger<SimpleCompatibilityStrategy>)
-  nameWithType.vb: SimpleCompatibilityStrategy.New(ILogger(Of SimpleCompatibilityStrategy))
+- uid: Backend.Services.SimpleCompatibilityStrategy.#ctor(Microsoft.Extensions.Logging.ILogger{Backend.Services.SimpleCompatibilityStrategy},Microsoft.Extensions.Localization.IStringLocalizer{Backend.SharedResource})
+  name: SimpleCompatibilityStrategy(ILogger<SimpleCompatibilityStrategy>, IStringLocalizer<SharedResource>)
+  href: api/Backend.Services.SimpleCompatibilityStrategy.html#Backend_Services_SimpleCompatibilityStrategy__ctor_Microsoft_Extensions_Logging_ILogger_Backend_Services_SimpleCompatibilityStrategy__Microsoft_Extensions_Localization_IStringLocalizer_Backend_SharedResource__
+  commentId: M:Backend.Services.SimpleCompatibilityStrategy.#ctor(Microsoft.Extensions.Logging.ILogger{Backend.Services.SimpleCompatibilityStrategy},Microsoft.Extensions.Localization.IStringLocalizer{Backend.SharedResource})
+  name.vb: New(ILogger(Of SimpleCompatibilityStrategy), IStringLocalizer(Of SharedResource))
+  fullName: Backend.Services.SimpleCompatibilityStrategy.SimpleCompatibilityStrategy(Microsoft.Extensions.Logging.ILogger<Backend.Services.SimpleCompatibilityStrategy>, Microsoft.Extensions.Localization.IStringLocalizer<Backend.SharedResource>)
+  fullName.vb: Backend.Services.SimpleCompatibilityStrategy.New(Microsoft.Extensions.Logging.ILogger(Of Backend.Services.SimpleCompatibilityStrategy), Microsoft.Extensions.Localization.IStringLocalizer(Of Backend.SharedResource))
+  nameWithType: SimpleCompatibilityStrategy.SimpleCompatibilityStrategy(ILogger<SimpleCompatibilityStrategy>, IStringLocalizer<SharedResource>)
+  nameWithType.vb: SimpleCompatibilityStrategy.New(ILogger(Of SimpleCompatibilityStrategy), IStringLocalizer(Of SharedResource))
 - uid: Backend.Services.SimpleCompatibilityStrategy.#ctor*
   name: SimpleCompatibilityStrategy
   href: api/Backend.Services.SimpleCompatibilityStrategy.html#Backend_Services_SimpleCompatibilityStrategy__ctor_
