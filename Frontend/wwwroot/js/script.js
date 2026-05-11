@@ -524,9 +524,8 @@ function renderFullShelf() {
     const userTitle = document.getElementById('shelfUserName');
     if (!container) return;
 
-    const t = translations;
-    const title = t?.CollectionTitle || "Колекція";
-    userTitle.innerText = `${title}: ${userName}`;
+    const collectionLabel = translations?.CollectionTitle || "Collection";
+    userTitle.innerText = `${collectionLabel}: ${userName}`;
 
     if (myShelf.length === 0) {
         const emptyText = translations?.EmptyShelfText;
