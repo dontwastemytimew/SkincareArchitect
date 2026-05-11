@@ -69,4 +69,18 @@ public class CompatibilityTests
             Assert.That(product.Ingredients[0].Concentration, Is.EqualTo(2.0));
         });
     }
+    
+    [Test]
+    public void Check_RetinoidAndAcid_ReturnsFalse()
+    {
+        var p1 = new Product { Name = "Retinol Serum" };
+        p1.Ingredients.Add(new Ingredient { ActiveType = "Retinoid" });
+
+        var p2 = new Product { Name = "Glycolic Toner" };
+        p2.Ingredients.Add(new Ingredient { ActiveType = "Acid" });
+
+        var result = _strategy.Check(p1, p2);
+
+        Assert.That(result.IsSafe, Is.False, "Поєднання ретиноїдів та кислот має бути небезпечним");
+    }
 }

@@ -504,9 +504,10 @@ function renderFullShelf() {
     const container = document.getElementById('fullShelfDisplay');
     const userTitle = document.getElementById('shelfUserName');
     if (!container) return;
-    
-    const collectionTitle = translations?.CollectionTitle;
-    userTitle.innerText = `${collectionTitle}: ${userName}`;
+
+    const t = translations;
+    const title = t?.CollectionTitle || "Колекція";
+    userTitle.innerText = `${title}: ${userName}`;
 
     if (myShelf.length === 0) {
         const emptyText = translations?.EmptyShelfText;
@@ -519,9 +520,9 @@ function renderFullShelf() {
     }
 
     container.innerHTML = myShelf.map((p, index) => {
-        let timeLabel = translations?.TimeBoth;
-        if (p.time === 'morning') timeLabel = translations?.TimeMorning;
-        if (p.time === 'evening') timeLabel = translations?.TimeEvening;
+        let timeLabel = translations?.TimeBoth || "Anytime";
+        if (p.time === 'morning') timeLabel = translations?.TimeMorning || "Morning";
+        if (p.time === 'evening') timeLabel = translations?.TimeEvening || "Evening";
 
         const removeText = translations?.RemoveFromShelf;
         

@@ -99,4 +99,31 @@ public class MultithreadingTests
         bool allProcessed = bigData.All(p => p.ParsedIngredients.Count == 2);
         Assert.That(allProcessed, Is.True, "Кожен продукт мав бути оброблений повністю без втрати даних у потоках");
     }
+    
+    [Test]
+    public void IsValidSkincare_ShouldRejectNonSkincareProducts()
+    {
+        var valid = new SephoraProduct { ProductName = "Hydrating Face Cream", BrandName = "Brand" };
+        var invalid = new SephoraProduct { ProductName = "Shampoo for oily hair", BrandName = "Brand" };
+    
+        Assert.Multiple(() => {
+            Assert.That(_service.IsValidSkincare(valid), Is.True);
+            Assert.That(_service.IsValidSkincare(invalid), Is.False, "Шампунь має бути відфільтрований");
+        });
+    }
+    
+    [Test]
+    public void ProcessSingleProduct_ShouldSetCorrectMetadata()
+    {
+        var spf = new SephoraProduct { ProductName = "Ultra SPF 50 Sunscreen", Ingredients = "Water" };
+        var night = new SephoraProduct { ProductName = "Night Recovery Serum", Ingredients = "Retinol" };
+
+        _service.ParseParallel(new List<SephoraProduct> { spf, night });
+
+        Assert.Multiple(() => {
+            Assert.That(spf.PreferredTime, Is.EqualTo("morning"));
+            Assert.That(spf.ApplicationOrder, Is.EqualTo(4));
+            Assert.That(night.PreferredTime, Is.EqualTo("evening"));
+        });
+    }
 }
