@@ -73,8 +73,10 @@ public class SimpleCompatibilityStrategy : ICompatibilityStrategy
                 if (ing1.ActiveType == "Acid" && ing2.ActiveType == "Acid" && ing1.Name != ing2.Name)
                 {
                     double totalConc = ing1.Concentration + ing2.Concentration;
+                    
+                    bool isTooAcidic = ing1.PHLevel < 3.5 && ing2.PHLevel < 3.5;
 
-                    if (totalConc > 0 && totalConc > settings.MaxSafeConcentration)
+                    if (isTooAcidic || (totalConc > 0 && totalConc > settings.MaxSafeConcentration))
                     {
                         result.IsSafe = false;
                         result.Warnings.Add(_localizer["ConflictBurn", p1.Name, p2.Name, totalConc, settings.MaxSafeConcentration]);

@@ -168,8 +168,9 @@ public class SephoraDataService
     /// <returns>Числове значення концентрації або 0.0.</returns>
     private double ExtractConcentration(string text)
     {
+        text = text.Replace(',', '.');
         var match = Regex.Match(text, @"(\d+(\.\d+)?)%");
-        if (match.Success && double.TryParse(match.Groups[1].Value, out double val))
+        if (match.Success && double.TryParse(match.Groups[1].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out double val))
             return val;
         return 0.0;
     }

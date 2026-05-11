@@ -27,15 +27,15 @@ public class CompatibilityTests
     [Test]
     public void Check_TwoStrongAcids_ReturnsFalse_DueToLowPH()
     {
-        var p1 = new Product { Name = "Acid 1" };
-        p1.Ingredients.Add(new Ingredient { ActiveType = "Acid", PHLevel = 3.0 });
+        var p1 = new Product { Name = "Product A" };
+        p1.Ingredients.Add(new Ingredient { Name = "Glycolic", ActiveType = "Acid", PHLevel = 3.0 });
 
-        var p2 = new Product { Name = "Acid 2" };
-        p2.Ingredients.Add(new Ingredient { ActiveType = "Acid", PHLevel = 3.2 });
-        
+        var p2 = new Product { Name = "Product B" };
+        p2.Ingredients.Add(new Ingredient { Name = "Lactic", ActiveType = "Acid", PHLevel = 3.2 });
+    
         var result = _strategy.Check(p1, p2);
-        
-        Assert.That(result.IsSafe, Is.False, "Дві кислоти з критичним pH мають бути несумісними");
+    
+        Assert.That(result.IsSafe, Is.False, "Дві кислоти з низьким pH мають бути небезпечними");
     }
 
     [Test]
