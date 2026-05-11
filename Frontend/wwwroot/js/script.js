@@ -2,8 +2,8 @@
 let translations = {};
 
 let currentLang = localStorage.getItem('selectedLang') || 'uk';
-let isLogged = false;
-let userName = "";
+let userName = localStorage.getItem('userName') || "";
+let isLogged = !!userName;
 let analysisQueue = [];
 let myShelf = [];
 let selectedSource = 'all';
@@ -326,6 +326,13 @@ function getRoutineSuggestion() {
 }
 
 window.onload = async () => {
+    userName = localStorage.getItem('userName') || "";
+    isLogged = !!userName;
+    
+    if (isLogged) {
+        updateUIForLoggedInUser();
+    }
+    
     await applyTranslations();
     
     try {
@@ -338,6 +345,20 @@ window.onload = async () => {
         console.error("Помилка завантаження бази продуктів:", e);
     }
 };
+
+function updateUIForLoggedInUser() {
+    const btn = document.querySelector('.auth-btn');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    if (btn && userName) {
+        btn.innerHTML = `<i class="fas fa-user"></i> ${userName}`;
+        btn.onclick = null;
+    }
+
+    if (logoutBtn) {
+        logoutBtn.style.display = 'inline-block';
+    }
+}
 
 function showAlert(message, title = "Skincare Architect") {
     document.getElementById('alertTitle').innerText = title;
@@ -360,49 +381,47 @@ function closeLogin() {
 
 // Зберігає ім'я користувача та оновлює шапку
 function confirmLogin() {
-    const nameInput = document.getElementById('loginName');
-    if (nameInput.value.trim()) {
-        userName = nameInput.value;
-        isLogged = true;
+    const name = document.getElementById('loginName').value.trim();
+    const pass = document.getElementById('loginPass').value.trim();
 
-        const btn = document.querySelector('.auth-btn');
-        btn.innerHTML = `<i class="fas fa-user"></i> ${userName}`;
-        btn.onclick = null;
-
-        document.getElementById('logoutBtn').style.display = 'inline-block';
-        closeLogin();
-
-        const template = translations?.WelcomeUser;
-        const msg = template.replace('{name}', userName);
-
-        showAlert(msg);
+    if (!name || !pass) {
+        showAlert(translations?.FillAllFields || "Заповніть всі поля!");
+        return;
     }
+    
+    let users = JSON.parse(localStorage.getItem('registeredUsers') || "{}");
+
+    if (users[name]) {
+        if (users[name] === pass) {
+            loginSuccess(name);
+        } else {
+            showAlert(translations?.WrongPass || "Невірний пароль!");
+        }
+    } else {
+        users[name] = pass;
+        localStorage.setItem('registeredUsers', JSON.stringify(users));
+        loginSuccess(name);
+        showAlert(translations?.RegisteredSuccess || "Ви успішно зареєстровані!");
+    }
+}
+
+function loginSuccess(name) {
+    userName = name;
+    isLogged = true;
+    localStorage.setItem('userName', name);
+
+    updateUIForLoggedInUser();
+    closeLogin();
+
+    const welcome = (translations?.WelcomeUser || "Вітаємо, {name}!").replace('{name}', userName);
+    showAlert(welcome);
 }
 
 function logout() {
     isLogged = false;
     userName = "";
-    analysisQueue = [];
-    myShelf = [];
-
-    // Оновлюємо кнопку профілю
-    const btn = document.querySelector('.auth-btn');
-    btn.innerHTML = '';
-    btn.onclick = login;
-
-    document.getElementById('logoutBtn').style.display = 'none';
-    document.getElementById('loginName').value = '';
-    
-    if (document.getElementById('catalogSection').style.display === 'block') {
-        renderCatalog();
-    }
-    
-    if (document.getElementById('shelfSection').style.display === 'block') {
-        renderFullShelf();
-    }
-
-    showConstructor();
-    applyTranslations();
+    localStorage.removeItem('userName');
+    location.reload();
 }
 
 function showCatalog() {

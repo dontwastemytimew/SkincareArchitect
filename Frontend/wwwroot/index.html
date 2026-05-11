@@ -135,11 +135,14 @@
 </div>
 
 <div id="loginModal" class="modal-overlay" style="display:none;">
-    <div class="card modal-card">
-        <h3 data-i18n="AuthLogin">увійти</h3>
+    <div class="modal-content card">
+        <h3 data-i18n="LoginTitle">Вхід до системи</h3>
         <input type="text" id="loginName" data-i18n-placeholder="PlaceholderName" placeholder="Ваше ім'я">
-        <button class="btn-add" data-i18n="BtnConfirm" onclick="confirmLogin()">УВІЙТИ</button>
-        <button class="btn-undo" data-i18n="BtnCancel" onclick="closeLogin()" style="margin-top:10px;">СКАСУВАТИ</button>
+        <input type="password" id="loginPass" data-i18n-placeholder="PlaceholderPass" placeholder="Пароль">
+        <div style="margin-top: 15px;">
+            <button class="btn-add" onclick="confirmLogin()" data-i18n="BtnConfirm">Увійти</button>
+            <button class="btn-undo" onclick="closeLogin()" data-i18n="BtnCancel">Скасувати</button>
+        </div>
     </div>
 </div>
 

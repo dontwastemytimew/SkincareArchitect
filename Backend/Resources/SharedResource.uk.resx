@@ -204,4 +204,19 @@
     <data name="AboutDisclaimer" xml:space="preserve">
         <value>Skincare Architect — це автоматизована система аналізу, а не медична консультація. Ми не несемо відповідальності за індивідуальні реакції вашої шкіри. Консультуйтеся з дерматологом.</value>
     </data>
+    <data name="RegisteredSuccess" xml:space="preserve">
+        <value>Нового користувача створено!</value>
+    </data>
+    <data name="FillAllFields" xml:space="preserve">
+        <value>Будь ласка, заповніть логін та пароль.</value>
+    </data>
+    <data name="WrongPass" xml:space="preserve">
+        <value>Невірний пароль для цього користувача!</value>
+    </data>
+    <data name="PlaceholderPass" xml:space="preserve">
+        <value>Введіть пароль</value>
+    </data>
+    <data name="LoginTitle" xml:space="preserve">
+        <value>Вхід / Реєстрація</value>
+    </data>
 </root>

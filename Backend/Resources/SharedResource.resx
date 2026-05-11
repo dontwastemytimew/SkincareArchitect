@@ -204,4 +204,19 @@
     <data name="AboutDisclaimer" xml:space="preserve">
         <value>Skincare Architect is an automated analysis system, not a medical consultation. We are not responsible for individual skin reactions. Always consult a dermatologist.</value>
     </data>
+    <data name="RegisteredSuccess" xml:space="preserve">
+        <value>New user created!</value>
+    </data>
+    <data name="FillAllFields" xml:space="preserve">
+        <value>Please fill in your username and password.</value>
+    </data>
+    <data name="WrongPass" xml:space="preserve">
+        <value>Incorrect password for this user!</value>
+    </data>
+    <data name="PlaceholderPass" xml:space="preserve">
+        <value>Enter password</value>
+    </data>
+    <data name="LoginTitle" xml:space="preserve">
+        <value>Login / Register</value>
+    </data>
 </root>
